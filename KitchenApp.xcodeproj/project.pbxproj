@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,12 @@
 		42486E50253C1AAA00C3BD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42486E4E253C1AAA00C3BD41 /* LaunchScreen.storyboard */; };
 		42486E5B253C1AAA00C3BD41 /* KitchenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E5A253C1AAA00C3BD41 /* KitchenAppTests.swift */; };
 		42486E66253C1AAA00C3BD41 /* KitchenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E65253C1AAA00C3BD41 /* KitchenAppUITests.swift */; };
+		4262F0252542BFCF0065537B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4262F0242542BFCF0065537B /* GoogleService-Info.plist */; };
+		4262F02D2542C0DC0065537B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F02C2542C0DC0065537B /* Constants.swift */; };
+		4262F0322542C3560065537B /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F0312542C3560065537B /* AccountDetailsViewController.swift */; };
+		4262F0372542C3720065537B /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F0362542C3720065537B /* OrderHistoryViewController.swift */; };
+		4262F03C2542C3850065537B /* CurrentOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F03B2542C3850065537B /* CurrentOrdersViewController.swift */; };
+		4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F0402542C3B90065537B /* CurrentDishesViewController.swift */; };
 		87A6F08747A8EE740FD0C477 /* Pods_KitchenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */; };
 		8CEE77239049B70DEE0D1FDD /* Pods_KitchenApp_KitchenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */; };
 		B3AEB61844919C5BAE67A6C0 /* Pods_KitchenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC95EF068E6C763944F9C3CC /* Pods_KitchenApp.framework */; };
@@ -53,6 +59,12 @@
 		42486E61253C1AAA00C3BD41 /* KitchenAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KitchenAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42486E65253C1AAA00C3BD41 /* KitchenAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenAppUITests.swift; sourceTree = "<group>"; };
 		42486E67253C1AAA00C3BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4262F0242542BFCF0065537B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4262F02C2542C0DC0065537B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4262F0312542C3560065537B /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
+		4262F0362542C3720065537B /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
+		4262F03B2542C3850065537B /* CurrentOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrdersViewController.swift; sourceTree = "<group>"; };
+		4262F0402542C3B90065537B /* CurrentDishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDishesViewController.swift; sourceTree = "<group>"; };
 		43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1AF183C5CE9DD63EA17CD9 /* Pods-KitchenApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenApp.release.xcconfig"; path = "Target Support Files/Pods-KitchenApp/Pods-KitchenApp.release.xcconfig"; sourceTree = "<group>"; };
 		82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenApp_KitchenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +128,11 @@
 		42486E42253C1AA900C3BD41 /* KitchenApp */ = {
 			isa = PBXGroup;
 			children = (
+				4262F0242542BFCF0065537B /* GoogleService-Info.plist */,
+				4262F0232542BEF70065537B /* Models */,
+				4262F0222542BEEC0065537B /* Utilities */,
+				4262F01F2542BEB80065537B /* Delegates */,
+				4262F0212542BECC0065537B /* ViewControllers */,
 				42486E43253C1AA900C3BD41 /* AppDelegate.swift */,
 				42486E45253C1AA900C3BD41 /* SceneDelegate.swift */,
 				42486E47253C1AA900C3BD41 /* ViewController.swift */,
@@ -145,6 +162,39 @@
 			path = KitchenAppUITests;
 			sourceTree = "<group>";
 		};
+		4262F01F2542BEB80065537B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		4262F0212542BECC0065537B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4262F0312542C3560065537B /* AccountDetailsViewController.swift */,
+				4262F0362542C3720065537B /* OrderHistoryViewController.swift */,
+				4262F03B2542C3850065537B /* CurrentOrdersViewController.swift */,
+				4262F0402542C3B90065537B /* CurrentDishesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4262F0222542BEEC0065537B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4262F02C2542C0DC0065537B /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4262F0232542BEF70065537B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4FAB5359B0D8C206A9A250B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +215,6 @@
 				F730A302D0174ABC57AD07E5 /* Pods-KitchenAppTests.debug.xcconfig */,
 				2D74C0EE69946F789A2A77E4 /* Pods-KitchenAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -280,6 +329,7 @@
 				42486E50253C1AAA00C3BD41 /* LaunchScreen.storyboard in Resources */,
 				42486E4D253C1AAA00C3BD41 /* Assets.xcassets in Resources */,
 				42486E4B253C1AA900C3BD41 /* Main.storyboard in Resources */,
+				4262F0252542BFCF0065537B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,9 +457,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4262F0372542C3720065537B /* OrderHistoryViewController.swift in Sources */,
 				42486E48253C1AA900C3BD41 /* ViewController.swift in Sources */,
+				4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */,
+				4262F03C2542C3850065537B /* CurrentOrdersViewController.swift in Sources */,
 				42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */,
 				42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */,
+				4262F0322542C3560065537B /* AccountDetailsViewController.swift in Sources */,
+				4262F02D2542C0DC0065537B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

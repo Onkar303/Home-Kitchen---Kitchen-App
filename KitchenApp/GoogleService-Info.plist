@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>50942331302-3ftad4l1u3h99cbfm99ptcqhife8gg4n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.50942331302-3ftad4l1u3h99cbfm99ptcqhife8gg4n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB2x5Z-FmrtNsldMhUi8ksTm5hPAP28iRU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>50942331302</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kalpavriksha.onkar.KitchenApp</string>
+	<key>PROJECT_ID</key>
+	<string>kitchenapp-cd419</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kitchenapp-cd419.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:50942331302:ios:2ec593d15c97143a206767</string>
+	<key>DATABASE_URL</key>
+	<string>https://kitchenapp-cd419.firebaseio.com</string>
+</dict>
+</plist>
