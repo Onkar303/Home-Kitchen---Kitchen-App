@@ -8,7 +8,9 @@
 import Foundation
 
 
-class Contants{
+class Constants{
+    
+    static let CORNER_RADIUS = 20
     
     
     static func setUserDefaults(email:String?, password:String?){

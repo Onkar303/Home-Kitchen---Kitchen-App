@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E43253C1AA900C3BD41 /* AppDelegate.swift */; };
 		42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E45253C1AA900C3BD41 /* SceneDelegate.swift */; };
-		42486E48253C1AA900C3BD41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E47253C1AA900C3BD41 /* ViewController.swift */; };
+		42486E48253C1AA900C3BD41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E47253C1AA900C3BD41 /* LoginViewController.swift */; };
 		42486E4B253C1AA900C3BD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42486E49253C1AA900C3BD41 /* Main.storyboard */; };
 		42486E4D253C1AAA00C3BD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42486E4C253C1AAA00C3BD41 /* Assets.xcassets */; };
 		42486E50253C1AAA00C3BD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42486E4E253C1AAA00C3BD41 /* LaunchScreen.storyboard */; };
@@ -21,6 +21,13 @@
 		4262F0372542C3720065537B /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F0362542C3720065537B /* OrderHistoryViewController.swift */; };
 		4262F03C2542C3850065537B /* CurrentOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F03B2542C3850065537B /* CurrentOrdersViewController.swift */; };
 		4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F0402542C3B90065537B /* CurrentDishesViewController.swift */; };
+		4262F0492542CBB50065537B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F0482542CBB50065537B /* CardView.swift */; };
+		4262F04E2542D6820065537B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F04D2542D6820065537B /* SignUpViewController.swift */; };
+		4262F0562542D7D80065537B /* AccountDetailsStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F0552542D7D80065537B /* AccountDetailsStoryBoard.storyboard */; };
+		4262F05E2542D8C30065537B /* CurrentOrderStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F05D2542D8C30065537B /* CurrentOrderStoryboard.storyboard */; };
+		4262F0662542D94E0065537B /* OrderHistoryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F0652542D94E0065537B /* OrderHistoryStoryboard.storyboard */; };
+		4262F06E2542DA500065537B /* CurrentDishesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F06D2542DA500065537B /* CurrentDishesStoryboard.storyboard */; };
+		4262F0732542DBE70065537B /* SignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F0722542DBE70065537B /* SignUpStoryboard.storyboard */; };
 		87A6F08747A8EE740FD0C477 /* Pods_KitchenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */; };
 		8CEE77239049B70DEE0D1FDD /* Pods_KitchenApp_KitchenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */; };
 		B3AEB61844919C5BAE67A6C0 /* Pods_KitchenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC95EF068E6C763944F9C3CC /* Pods_KitchenApp.framework */; };
@@ -48,7 +55,7 @@
 		42486E40253C1AA900C3BD41 /* KitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42486E43253C1AA900C3BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42486E45253C1AA900C3BD41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		42486E47253C1AA900C3BD41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42486E47253C1AA900C3BD41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		42486E4A253C1AA900C3BD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42486E4C253C1AAA00C3BD41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42486E4F253C1AAA00C3BD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +72,13 @@
 		4262F0362542C3720065537B /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		4262F03B2542C3850065537B /* CurrentOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrdersViewController.swift; sourceTree = "<group>"; };
 		4262F0402542C3B90065537B /* CurrentDishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDishesViewController.swift; sourceTree = "<group>"; };
+		4262F0482542CBB50065537B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		4262F04D2542D6820065537B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4262F0552542D7D80065537B /* AccountDetailsStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountDetailsStoryBoard.storyboard; sourceTree = "<group>"; };
+		4262F05D2542D8C30065537B /* CurrentOrderStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentOrderStoryboard.storyboard; sourceTree = "<group>"; };
+		4262F0652542D94E0065537B /* OrderHistoryStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderHistoryStoryboard.storyboard; sourceTree = "<group>"; };
+		4262F06D2542DA500065537B /* CurrentDishesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentDishesStoryboard.storyboard; sourceTree = "<group>"; };
+		4262F0722542DBE70065537B /* SignUpStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpStoryboard.storyboard; sourceTree = "<group>"; };
 		43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1AF183C5CE9DD63EA17CD9 /* Pods-KitchenApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenApp.release.xcconfig"; path = "Target Support Files/Pods-KitchenApp/Pods-KitchenApp.release.xcconfig"; sourceTree = "<group>"; };
 		82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenApp_KitchenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +149,7 @@
 				4262F0212542BECC0065537B /* ViewControllers */,
 				42486E43253C1AA900C3BD41 /* AppDelegate.swift */,
 				42486E45253C1AA900C3BD41 /* SceneDelegate.swift */,
-				42486E47253C1AA900C3BD41 /* ViewController.swift */,
+				42486E47253C1AA900C3BD41 /* LoginViewController.swift */,
 				42486E49253C1AA900C3BD41 /* Main.storyboard */,
 				42486E4C253C1AAA00C3BD41 /* Assets.xcassets */,
 				42486E4E253C1AAA00C3BD41 /* LaunchScreen.storyboard */,
@@ -173,9 +187,15 @@
 			isa = PBXGroup;
 			children = (
 				4262F0312542C3560065537B /* AccountDetailsViewController.swift */,
+				4262F0552542D7D80065537B /* AccountDetailsStoryBoard.storyboard */,
 				4262F0362542C3720065537B /* OrderHistoryViewController.swift */,
+				4262F0652542D94E0065537B /* OrderHistoryStoryboard.storyboard */,
 				4262F03B2542C3850065537B /* CurrentOrdersViewController.swift */,
+				4262F05D2542D8C30065537B /* CurrentOrderStoryboard.storyboard */,
 				4262F0402542C3B90065537B /* CurrentDishesViewController.swift */,
+				4262F06D2542DA500065537B /* CurrentDishesStoryboard.storyboard */,
+				4262F04D2542D6820065537B /* SignUpViewController.swift */,
+				4262F0722542DBE70065537B /* SignUpStoryboard.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				4262F02C2542C0DC0065537B /* Constants.swift */,
+				4262F0482542CBB50065537B /* CardView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -327,8 +348,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				42486E50253C1AAA00C3BD41 /* LaunchScreen.storyboard in Resources */,
+				4262F06E2542DA500065537B /* CurrentDishesStoryboard.storyboard in Resources */,
+				4262F0562542D7D80065537B /* AccountDetailsStoryBoard.storyboard in Resources */,
+				4262F05E2542D8C30065537B /* CurrentOrderStoryboard.storyboard in Resources */,
 				42486E4D253C1AAA00C3BD41 /* Assets.xcassets in Resources */,
 				42486E4B253C1AA900C3BD41 /* Main.storyboard in Resources */,
+				4262F0662542D94E0065537B /* OrderHistoryStoryboard.storyboard in Resources */,
+				4262F0732542DBE70065537B /* SignUpStoryboard.storyboard in Resources */,
 				4262F0252542BFCF0065537B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +484,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4262F0372542C3720065537B /* OrderHistoryViewController.swift in Sources */,
-				42486E48253C1AA900C3BD41 /* ViewController.swift in Sources */,
+				4262F0492542CBB50065537B /* CardView.swift in Sources */,
+				4262F04E2542D6820065537B /* SignUpViewController.swift in Sources */,
+				42486E48253C1AA900C3BD41 /* LoginViewController.swift in Sources */,
 				4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */,
 				4262F03C2542C3850065537B /* CurrentOrdersViewController.swift in Sources */,
 				42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */,
