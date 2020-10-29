@@ -6,14 +6,34 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AccountDetailsViewController: UIViewController {
 
+    var authController:Auth?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        instantiateAuth()
+        signOut()
         // Do any additional setup after loading the view.
     }
+    
+    
+    func instantiateAuth(){
+        authController = Auth.auth()
+    }
+    
+    
+    func signOut(){
+        do {
+            try authController?.signOut()
+            tabBarController?.removeFromParent()
+        } catch let err {
+            print("error signinout \(err)")
+        }
+    }
+    
+    
     
 
     /*

@@ -61,6 +61,7 @@ class LoginViewController: UIViewController {
     //MARK:- SignIn Using FireBase
     func signInWithFireBase(){
         
+        view.endEditing(true)
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         

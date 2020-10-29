@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hVf-AF-0XJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hpj-7G-kh7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Dishes-->
+        <!--Current Dishes View Controller-->
         <scene sceneID="IbB-Y6-TNX">
             <objects>
                 <viewController id="hVf-AF-0XJ" customClass="CurrentDishesViewController" customModule="KitchenApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,11 +27,48 @@
                         <viewLayoutGuide key="safeArea" id="faD-wV-jlN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dishes" id="E5F-eV-WXf"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="T7S-dS-RsD">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="dye-cA-4PI">
+                            <connections>
+                                <segue destination="77c-Nm-P09" kind="show" id="1ud-rW-15s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGo-wQ-5BP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861" y="-283"/>
+            <point key="canvasLocation" x="4771.0144927536239" y="-283.25892857142856"/>
+        </scene>
+        <!--NewDishStoryboard-->
+        <scene sceneID="SMJ-8C-xib">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewDishStoryboard" id="77c-Nm-P09" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5lH-VE-BzH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="psI-YB-K6X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5569" y="-283"/>
+        </scene>
+        <!--Dishes-->
+        <scene sceneID="yMx-Sk-6Yr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hpj-7G-kh7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dishes" id="E5F-eV-WXf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Elq-ON-xe6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hVf-AF-0XJ" kind="relationship" relationship="rootViewController" id="f5g-oB-eis"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etg-FL-eD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3860.8695652173915" y="-283.25892857142856"/>
         </scene>
     </scenes>
     <resources>

@@ -28,6 +28,10 @@
 		4262F06E2542DA500065537B /* CurrentDishesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F06D2542DA500065537B /* CurrentDishesStoryboard.storyboard */; };
 		4262F0732542DBE70065537B /* SignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4262F0722542DBE70065537B /* SignUpStoryboard.storyboard */; };
 		4262F07E2542E1930065537B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262F07D2542E1930065537B /* SignUpViewController.swift */; };
+		4272F3A8254AA04B008BFE61 /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3A7254AA04A008BFE61 /* AddDishViewController.swift */; };
+		4272F3AD254AA062008BFE61 /* AddDishStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272F3AC254AA062008BFE61 /* AddDishStoryboard.storyboard */; };
+		4272F3B7254AA115008BFE61 /* NewDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3B6254AA115008BFE61 /* NewDishViewController.swift */; };
+		4272F3BC254AA121008BFE61 /* NewDishStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272F3BB254AA121008BFE61 /* NewDishStoryboard.storyboard */; };
 		87A6F08747A8EE740FD0C477 /* Pods_KitchenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */; };
 		8CEE77239049B70DEE0D1FDD /* Pods_KitchenApp_KitchenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */; };
 		B3AEB61844919C5BAE67A6C0 /* Pods_KitchenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC95EF068E6C763944F9C3CC /* Pods_KitchenApp.framework */; };
@@ -79,6 +83,10 @@
 		4262F06D2542DA500065537B /* CurrentDishesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentDishesStoryboard.storyboard; sourceTree = "<group>"; };
 		4262F0722542DBE70065537B /* SignUpStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpStoryboard.storyboard; sourceTree = "<group>"; };
 		4262F07D2542E1930065537B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4272F3A7254AA04A008BFE61 /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
+		4272F3AC254AA062008BFE61 /* AddDishStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddDishStoryboard.storyboard; sourceTree = "<group>"; };
+		4272F3B6254AA115008BFE61 /* NewDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDishViewController.swift; sourceTree = "<group>"; };
+		4272F3BB254AA121008BFE61 /* NewDishStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewDishStoryboard.storyboard; sourceTree = "<group>"; };
 		43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1AF183C5CE9DD63EA17CD9 /* Pods-KitchenApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenApp.release.xcconfig"; path = "Target Support Files/Pods-KitchenApp/Pods-KitchenApp.release.xcconfig"; sourceTree = "<group>"; };
 		82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenApp_KitchenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +204,10 @@
 				4262F06D2542DA500065537B /* CurrentDishesStoryboard.storyboard */,
 				4262F07D2542E1930065537B /* SignUpViewController.swift */,
 				4262F0722542DBE70065537B /* SignUpStoryboard.storyboard */,
+				4272F3A7254AA04A008BFE61 /* AddDishViewController.swift */,
+				4272F3AC254AA062008BFE61 /* AddDishStoryboard.storyboard */,
+				4272F3B6254AA115008BFE61 /* NewDishViewController.swift */,
+				4272F3BB254AA121008BFE61 /* NewDishStoryboard.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -356,6 +368,8 @@
 				4262F0662542D94E0065537B /* OrderHistoryStoryboard.storyboard in Resources */,
 				4262F0732542DBE70065537B /* SignUpStoryboard.storyboard in Resources */,
 				4262F0252542BFCF0065537B /* GoogleService-Info.plist in Resources */,
+				4272F3BC254AA121008BFE61 /* NewDishStoryboard.storyboard in Resources */,
+				4272F3AD254AA062008BFE61 /* AddDishStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,9 +504,11 @@
 				4262F07E2542E1930065537B /* SignUpViewController.swift in Sources */,
 				4262F03C2542C3850065537B /* CurrentOrdersViewController.swift in Sources */,
 				42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */,
+				4272F3B7254AA115008BFE61 /* NewDishViewController.swift in Sources */,
 				42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */,
 				4262F0322542C3560065537B /* AccountDetailsViewController.swift in Sources */,
 				4262F02D2542C0DC0065537B /* Constants.swift in Sources */,
+				4272F3A8254AA04B008BFE61 /* AddDishViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
