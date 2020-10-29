@@ -32,6 +32,9 @@
 		4272F3AD254AA062008BFE61 /* AddDishStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272F3AC254AA062008BFE61 /* AddDishStoryboard.storyboard */; };
 		4272F3B7254AA115008BFE61 /* NewDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3B6254AA115008BFE61 /* NewDishViewController.swift */; };
 		4272F3BC254AA121008BFE61 /* NewDishStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272F3BB254AA121008BFE61 /* NewDishStoryboard.storyboard */; };
+		4272F3C9254AF739008BFE61 /* DishResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3C8254AF739008BFE61 /* DishResults.swift */; };
+		4272F3EB254B00AC008BFE61 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3EA254B00AC008BFE61 /* Utilities.swift */; };
+		4272F3F0254B0124008BFE61 /* NewDishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3EF254B0124008BFE61 /* NewDishTableViewCell.swift */; };
 		87A6F08747A8EE740FD0C477 /* Pods_KitchenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */; };
 		8CEE77239049B70DEE0D1FDD /* Pods_KitchenApp_KitchenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */; };
 		B3AEB61844919C5BAE67A6C0 /* Pods_KitchenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC95EF068E6C763944F9C3CC /* Pods_KitchenApp.framework */; };
@@ -87,6 +90,9 @@
 		4272F3AC254AA062008BFE61 /* AddDishStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddDishStoryboard.storyboard; sourceTree = "<group>"; };
 		4272F3B6254AA115008BFE61 /* NewDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDishViewController.swift; sourceTree = "<group>"; };
 		4272F3BB254AA121008BFE61 /* NewDishStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewDishStoryboard.storyboard; sourceTree = "<group>"; };
+		4272F3C8254AF739008BFE61 /* DishResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishResults.swift; sourceTree = "<group>"; };
+		4272F3EA254B00AC008BFE61 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4272F3EF254B0124008BFE61 /* NewDishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDishTableViewCell.swift; sourceTree = "<group>"; };
 		43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1AF183C5CE9DD63EA17CD9 /* Pods-KitchenApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenApp.release.xcconfig"; path = "Target Support Files/Pods-KitchenApp/Pods-KitchenApp.release.xcconfig"; sourceTree = "<group>"; };
 		82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenApp_KitchenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +224,7 @@
 			children = (
 				4262F02C2542C0DC0065537B /* Constants.swift */,
 				4262F0482542CBB50065537B /* CardView.swift */,
+				4272F3EA254B00AC008BFE61 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -225,6 +232,7 @@
 		4262F0232542BEF70065537B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4272F3C8254AF739008BFE61 /* DishResults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 		4272F3C3254AA4BA008BFE61 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				4272F3EF254B0124008BFE61 /* NewDishTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -507,6 +516,7 @@
 			files = (
 				4262F0372542C3720065537B /* OrderHistoryViewController.swift in Sources */,
 				4262F0492542CBB50065537B /* CardView.swift in Sources */,
+				4272F3EB254B00AC008BFE61 /* Utilities.swift in Sources */,
 				42486E48253C1AA900C3BD41 /* LoginViewController.swift in Sources */,
 				4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */,
 				4262F07E2542E1930065537B /* SignUpViewController.swift in Sources */,
@@ -514,7 +524,9 @@
 				42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */,
 				4272F3B7254AA115008BFE61 /* NewDishViewController.swift in Sources */,
 				42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */,
+				4272F3F0254B0124008BFE61 /* NewDishTableViewCell.swift in Sources */,
 				4262F0322542C3560065537B /* AccountDetailsViewController.swift in Sources */,
+				4272F3C9254AF739008BFE61 /* DishResults.swift in Sources */,
 				4262F02D2542C0DC0065537B /* Constants.swift in Sources */,
 				4272F3A8254AA04B008BFE61 /* AddDishViewController.swift in Sources */,
 			);

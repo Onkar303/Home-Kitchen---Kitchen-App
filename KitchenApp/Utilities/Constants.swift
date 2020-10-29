@@ -12,18 +12,18 @@ class Constants{
     
     static let CORNER_RADIUS = 20
     
+    static let SPOONOCULAR_BASE = "https://api.spoonacular.com/recipes/complexSearch?"
+    static let SPOONOCULAR_KEY = "7197d6ced50f405c963c1ea1e7d24844"
+    static let SPOONOCULAR_KEYPARAM = "&apiKey="
+    static let SPOONOCULAR_CUISINEPARAM = "&cuisine="
     
-    static func setUserDefaults(email:String?, password:String?){
-        
-        guard let email = email else {return}
-        guard let password = password else {return}
-        
-        let userDefaults = UserDefaults.standard
-        userDefaults.setValue(email, forKey: "email")
-        userDefaults.setValue(password, forKey: "password")
-        
-        
-        
-    }
+    //Indicates the number of results you want
+    static let SPOONOCULAR_NUMBER = "&number="
+    
+    //Incudicates the number of result you want to skip
+    static let SPOONOCULAR_OFFSET = "&offset="
+    
+    
+    
     
 }

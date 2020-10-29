@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController {
             if let error = error {
                 print("error in signin in \(error)")
             }else{
-                Constants.setUserDefaults(email: email, password: password)
+                Utilities.setUserDefaults(email: email, password: password)
                 self.segueToHomeContoller()
             }
         })

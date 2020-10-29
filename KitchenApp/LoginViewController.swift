@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
             if let error = error {
                 print("Error occured while signing in  \(error)")
             }else {
-                Constants.setUserDefaults(email: email, password: password)
+                Utilities.setUserDefaults(email: email, password: password)
                 self.segueToHomeController()
                 print("Login Successfull")
             }
