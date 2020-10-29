@@ -19,14 +19,17 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         configureUI()
         configureAuth()
+        attachDelegates()
     }
     
+    //MARK:- Configure Auth
     func configureUI(){
         self.navigationController?.navigationBar.isHidden = true
         self.passwordTextField.isSecureTextEntry = true
         attachTapGesture()
     }
     
+    //MARK:- Configuring FireBase Auth
     func configureAuth(){
         authController = Auth.auth()
     }
@@ -39,7 +42,15 @@ class LoginViewController: UIViewController {
         signUpLabel.isUserInteractionEnabled = true
     }
     
+    //MARK:- Attaching Delegates
+    func attachDelegates(){
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
     
+    
+    
+    //MARK:-Segue to SignUpController
     @objc func segueToSignUpController(){
         let storyBoard = UIStoryboard(name:"SignUpStoryboard", bundle: .main)
         let signUpController = storyBoard.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
@@ -47,31 +58,51 @@ class LoginViewController: UIViewController {
     }
     
     
+    //MARK:- SignIn Using FireBase
     func signInWithFireBase(){
         
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         
         authController?.signIn(withEmail:email, password: password, completion: { (authDataResult, error) in
-            
             if let error = error {
                 print("Error occured while signing in  \(error)")
             }else {
                 Constants.setUserDefaults(email: email, password: password)
-                
+                self.segueToHomeController()
                 print("Login Successfull")
             }
-            
         })
-        
-        
-        
     }
+    
     
     @IBAction func tapLoginButton(_ sender: Any) {
         signInWithFireBase()
-        
     }
     
+    
+    //MARK:- Segue To HomeController
+    func segueToHomeController(){
+        self.navigationController?.popViewController(animated: false)
+        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+        let tabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarController")
+        self.navigationController?.pushViewController(tabBarController, animated: true)
+    }
+    
+}
+
+//MARK:- Handling Keyboard
+extension LoginViewController:UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return true
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
