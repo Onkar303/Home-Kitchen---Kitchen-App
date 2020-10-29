@@ -9,10 +9,37 @@ import UIKit
 
 class OrderHistoryViewController: UIViewController {
 
+    @IBOutlet weak var orderHistoryTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        attachDelegates()
+        configureUI()
+    }
+    
+    
+    
+    //MARK:- Attaching Delegates
+    func attachDelegates(){
+        orderHistoryTableView.delegate = self
+        orderHistoryTableView.dataSource = self
+    }
+    
+    
+    //MARK:- Configuring UI
+    func configureUI(){
+            
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        self.navigationItem.searchController = searchController
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true;
+        
+        
+    
+        
     }
     
 
@@ -26,4 +53,18 @@ class OrderHistoryViewController: UIViewController {
     }
     */
 
+}
+
+
+//MARK:- Handling Table View
+extension OrderHistoryViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
 }

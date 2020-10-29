@@ -9,10 +9,19 @@ import UIKit
 
 class AddDishViewController: UIViewController {
 
+    static let SCREEN_IDENTIFIER = "AddDishViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureUI()
+    }
+    
+    
+    //MARK:- Cofigure UI
+    func configureUI(){
+        self.title = "Dish Name"
     }
     
 

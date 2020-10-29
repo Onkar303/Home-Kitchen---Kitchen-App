@@ -11,7 +11,7 @@
         <!--AdddishesViewController-->
         <scene sceneID="NRv-5e-duR">
             <objects>
-                <viewController title="AdddishesViewController" id="lRH-YM-P2O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddDishViewController" title="AdddishesViewController" id="lRH-YM-P2O" customClass="AddDishViewController" customModule="KitchenApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SFd-3n-NqK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

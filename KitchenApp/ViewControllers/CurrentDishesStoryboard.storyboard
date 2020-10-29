@@ -8,38 +8,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Current Dishes View Controller-->
-        <scene sceneID="IbB-Y6-TNX">
+        <!--Current Dishes-->
+        <scene sceneID="IaV-lx-dHP">
             <objects>
-                <viewController id="hVf-AF-0XJ" customClass="CurrentDishesViewController" customModule="KitchenApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xfQ-q8-v5u">
+                <viewController id="cqX-gI-nd5" customClass="CurrentDishesViewController" customModule="KitchenApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQ0-qm-Ddm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dishes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spz-rf-bjy">
-                                <rect key="frame" x="186" y="438" width="52" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BO6-M9-j4C">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yL4-6V-jRZ">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yL4-6V-jRZ" id="s4T-hn-hKF">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="faD-wV-jlN"/>
+                        <viewLayoutGuide key="safeArea" id="NO4-Mx-pYA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NO4-Mx-pYA" firstAttribute="trailing" secondItem="BO6-M9-j4C" secondAttribute="trailing" id="0G1-0j-bx2"/>
+                            <constraint firstItem="NO4-Mx-pYA" firstAttribute="bottom" secondItem="BO6-M9-j4C" secondAttribute="bottom" id="Wg9-gX-Qzb"/>
+                            <constraint firstItem="BO6-M9-j4C" firstAttribute="leading" secondItem="NO4-Mx-pYA" secondAttribute="leading" id="hUJ-d7-fWN"/>
+                            <constraint firstItem="BO6-M9-j4C" firstAttribute="top" secondItem="NO4-Mx-pYA" secondAttribute="top" id="vGN-Vq-3G1"/>
+                        </constraints>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="T7S-dS-RsD">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="dye-cA-4PI">
+                    <navigationItem key="navigationItem" title="Current Dishes" id="bSx-V2-Shu">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="9tT-6G-yEF">
                             <connections>
-                                <segue destination="77c-Nm-P09" kind="show" id="1ud-rW-15s"/>
+                                <segue destination="77c-Nm-P09" kind="show" id="xgn-Qn-FdP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="currentDishesTableView" destination="BO6-M9-j4C" id="TCv-hL-z0j"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cGo-wQ-5BP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xyG-RY-9ZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4771.0144927536239" y="-283.25892857142856"/>
+            <point key="canvasLocation" x="4894" y="-283"/>
         </scene>
         <!--NewDishStoryboard-->
         <scene sceneID="SMJ-8C-xib">
@@ -55,7 +69,7 @@
         <scene sceneID="yMx-Sk-6Yr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hpj-7G-kh7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dishes" id="E5F-eV-WXf"/>
+                    <tabBarItem key="tabBarItem" title="Dishes" image="hand.raised" catalog="system" selectedImage="hand.raised.fill" id="E5F-eV-WXf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Elq-ON-xe6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -63,7 +77,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hVf-AF-0XJ" kind="relationship" relationship="rootViewController" id="f5g-oB-eis"/>
+                        <segue destination="cqX-gI-nd5" kind="relationship" relationship="rootViewController" id="9rJ-BZ-HLd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etg-FL-eD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -72,6 +86,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hand.raised" catalog="system" width="128" height="128"/>
+        <image name="hand.raised.fill" catalog="system" width="128" height="124"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

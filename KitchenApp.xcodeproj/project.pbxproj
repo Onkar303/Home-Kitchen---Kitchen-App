@@ -150,7 +150,7 @@
 		42486E42253C1AA900C3BD41 /* KitchenApp */ = {
 			isa = PBXGroup;
 			children = (
-				4262F0242542BFCF0065537B /* GoogleService-Info.plist */,
+				4272F3C3254AA4BA008BFE61 /* TableViewCells */,
 				4262F0232542BEF70065537B /* Models */,
 				4262F0222542BEEC0065537B /* Utilities */,
 				4262F01F2542BEB80065537B /* Delegates */,
@@ -162,6 +162,7 @@
 				42486E4C253C1AAA00C3BD41 /* Assets.xcassets */,
 				42486E4E253C1AAA00C3BD41 /* LaunchScreen.storyboard */,
 				42486E51253C1AAA00C3BD41 /* Info.plist */,
+				4262F0242542BFCF0065537B /* GoogleService-Info.plist */,
 			);
 			path = KitchenApp;
 			sourceTree = "<group>";
@@ -226,6 +227,13 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4272F3C3254AA4BA008BFE61 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		4FAB5359B0D8C206A9A250B7 /* Frameworks */ = {
