@@ -91,13 +91,18 @@ extension NewDishViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:NewDishTableViewCell.CELL_IDENTIFIER,for: indexPath) as! NewDishTableViewCell
-        cell.dishNameLabel.text = dishes[indexPath.row].title
+        
+        Utilities.getImage(url:dishes[indexPath.row].image, imageView: cell.dishImageView)
+        cell.dishImageView.layer.cornerRadius = CGFloat(Constants.CORNER_RADIUS)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         segueToAddDishScreen()
-    }    
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(220)
+    }
     
 }
 
@@ -112,8 +117,8 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewDishCollectionViewCell.CELL_IDENITIFIER, for:indexPath) as! NewDishCollectionViewCell
         
-        cell.layer.borderWidth = 2
-        cell.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         cell.layer.cornerRadius = 10
         cell.categoryLabel.text = cuisines[indexPath.row]
         

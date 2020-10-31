@@ -21,29 +21,38 @@
                                 <rect key="frame" x="0.0" y="106.5" width="414" height="755.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellNewDish" rowHeight="46" id="4yt-RK-C6r" customClass="NewDishTableViewCell" customModule="KitchenApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="46"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellNewDish" rowHeight="220" id="4yt-RK-C6r" customClass="NewDishTableViewCell" customModule="KitchenApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4yt-RK-C6r" id="t0R-qp-94a">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIf-x0-Qkc">
-                                                    <rect key="frame" x="20" y="10" width="374" height="26"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="htD-Ui-wbv" customClass="CardView" customModule="KitchenApp" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="20" width="374" height="180"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xtI-TK-hX9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="xtI-TK-hX9" secondAttribute="trailing" id="457-cD-U3N"/>
+                                                        <constraint firstItem="xtI-TK-hX9" firstAttribute="top" secondItem="htD-Ui-wbv" secondAttribute="top" id="4TF-y9-C2G"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xtI-TK-hX9" secondAttribute="bottom" id="PyS-mI-Idz"/>
+                                                        <constraint firstItem="xtI-TK-hX9" firstAttribute="leading" secondItem="htD-Ui-wbv" secondAttribute="leading" id="fDp-sD-P49"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wIf-x0-Qkc" firstAttribute="leading" secondItem="t0R-qp-94a" secondAttribute="leading" constant="20" symbolic="YES" id="KTZ-bM-A7l"/>
-                                                <constraint firstItem="wIf-x0-Qkc" firstAttribute="top" secondItem="t0R-qp-94a" secondAttribute="top" constant="10" id="olA-6b-Qgw"/>
-                                                <constraint firstAttribute="trailing" secondItem="wIf-x0-Qkc" secondAttribute="trailing" constant="20" symbolic="YES" id="pds-wW-GVg"/>
-                                                <constraint firstAttribute="bottom" secondItem="wIf-x0-Qkc" secondAttribute="bottom" constant="10" id="wKS-DK-qUi"/>
+                                                <constraint firstAttribute="trailing" secondItem="htD-Ui-wbv" secondAttribute="trailing" constant="20" symbolic="YES" id="3xJ-7k-QiF"/>
+                                                <constraint firstItem="htD-Ui-wbv" firstAttribute="leading" secondItem="t0R-qp-94a" secondAttribute="leading" constant="20" symbolic="YES" id="Emt-4n-pRe"/>
+                                                <constraint firstAttribute="bottom" secondItem="htD-Ui-wbv" secondAttribute="bottom" constant="20" symbolic="YES" id="nGd-j8-vQs"/>
+                                                <constraint firstItem="htD-Ui-wbv" firstAttribute="top" secondItem="t0R-qp-94a" secondAttribute="top" constant="20" symbolic="YES" id="xTA-Vp-nDh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dishNameLabel" destination="wIf-x0-Qkc" id="eeO-Rn-aBi"/>
+                                            <outlet property="dishImageView" destination="xtI-TK-hX9" id="EAM-fc-YpZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -30,7 +30,7 @@ import UIKit
         layer.shadowOffset = CGSize.zero
         let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         layer.shadowPath = shadowPath.cgPath
-        layer.backgroundColor = UIColor(named: "ThemeColor")?.cgColor
+        layer.backgroundColor = UIColor(named: "ThemeColor")?.cgColor 
         layer.shadowOpacity = Float(shadowOpacity)
     
 
