@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Current Dishes-->
+        <!--Your Dishes-->
         <scene sceneID="IaV-lx-dHP">
             <objects>
                 <viewController id="cqX-gI-nd5" customClass="CurrentDishesViewController" customModule="KitchenApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                             <constraint firstItem="BO6-M9-j4C" firstAttribute="top" secondItem="NO4-Mx-pYA" secondAttribute="top" id="vGN-Vq-3G1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Current Dishes" id="bSx-V2-Shu">
+                    <navigationItem key="navigationItem" title="Your Dishes" id="bSx-V2-Shu">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="9tT-6G-yEF">
                             <connections>
                                 <segue destination="77c-Nm-P09" kind="show" id="xgn-Qn-FdP"/>

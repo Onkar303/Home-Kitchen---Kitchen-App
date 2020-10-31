@@ -23,6 +23,33 @@ class Constants{
     //Incudicates the number of result you want to skip
     static let SPOONOCULAR_OFFSET = "&offset="
     
+    static let SPPONOCULAR_CUISINE_CATEGORY = ["African",
+                                         "American",
+                                         "British",
+                                         "Cajun",
+                                         "Caribbean",
+                                         "Chinese",
+                                         "Eastern European",
+                                         "European",
+                                         "French",
+                                         "German",
+                                         "Greek",
+                                         "Indian",
+                                         "Irish",
+                                         "Italian",
+                                         "Japanese",
+                                         "Jewish",
+                                         "Korean",
+                                         "Latin American",
+                                         "Mediterranean",
+                                         "Mexican",
+                                         "Middle Eastern",
+                                         "Nordic",
+                                         "Southern",
+                                         "Spanish",
+                                         "Thai",
+                                         "Vietnamese"]
+    
     
     
     

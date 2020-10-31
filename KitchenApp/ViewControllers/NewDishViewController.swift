@@ -9,7 +9,10 @@ import UIKit
 
 class NewDishViewController: UIViewController {
     
+    @IBOutlet weak var newDishesCategoryCollectionView: UICollectionView!
     @IBOutlet weak var newDishesTableView: UITableView!
+    
+    var cuisines = Constants.SPPONOCULAR_CUISINE_CATEGORY
     var dishes:[Dishes] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,7 @@ class NewDishViewController: UIViewController {
         
         configureUI()
         attachDelegates()
-        fetchDishes()
+        
     }
     
     //MARK:- Configure UI
@@ -26,18 +29,30 @@ class NewDishViewController: UIViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        newDishesCategoryCollectionView.showsHorizontalScrollIndicator = false
+        
+ 
+        
     }
     
     //MARK:- Attach Delegates
     func attachDelegates(){
         newDishesTableView.delegate = self
         newDishesTableView.dataSource = self
+        
+        newDishesCategoryCollectionView.delegate = self
+        newDishesCategoryCollectionView.dataSource = self
     }
     
     
     //MARK:- Making Api Call
-    func fetchDishes(){
-        let url = Constants.SPOONOCULAR_BASE + Constants.SPOONOCULAR_KEYPARAM + Constants.SPOONOCULAR_KEY + Constants.SPOONOCULAR_CUISINEPARAM + "indian"
+    func fetchDishes(cuisineParam:String?){
+        
+        guard let cuisineParam = cuisineParam else {return}
+        
+        let url = Constants.SPOONOCULAR_BASE + Constants.SPOONOCULAR_KEYPARAM + Constants.SPOONOCULAR_KEY + Constants.SPOONOCULAR_CUISINEPARAM + cuisineParam
         URLSession.shared.dataTask(with: URL(string: url)!) { (data, urlResponse, error) in
             if let error = error {
                 print("unable to fetch data \(error)")
@@ -46,8 +61,11 @@ class NewDishViewController: UIViewController {
                     let jsonDecoder = JSONDecoder()
                     let dishData = try jsonDecoder.decode(DishResults.self, from: data!)
                     guard let dishResults = dishData.results else {return}
+                    self.dishes.removeAll(keepingCapacity:true)
                     self.dishes.append(contentsOf:dishResults)
-                    self.newDishesTableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.newDishesTableView.reloadData()
+                    }
                 }catch let error{
                   print("unable to decode data \(error)")
                 }
@@ -81,4 +99,28 @@ extension NewDishViewController:UITableViewDataSource,UITableViewDelegate{
         segueToAddDishScreen()
     }    
     
+}
+
+
+//MARK:- Handling collectionView
+extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cuisines.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewDishCollectionViewCell.CELL_IDENITIFIER, for:indexPath) as! NewDishCollectionViewCell
+        
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        cell.layer.cornerRadius = 10
+        cell.categoryLabel.text = cuisines[indexPath.row]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        fetchDishes(cuisineParam: cuisines[indexPath.row])
+    }
 }

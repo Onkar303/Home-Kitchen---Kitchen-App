@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42426A75254DB9EA00ADC3EA /* NewDishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42426A74254DB9EA00ADC3EA /* NewDishCollectionViewCell.swift */; };
 		42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E43253C1AA900C3BD41 /* AppDelegate.swift */; };
 		42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E45253C1AA900C3BD41 /* SceneDelegate.swift */; };
 		42486E48253C1AA900C3BD41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E47253C1AA900C3BD41 /* LoginViewController.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		2D74C0EE69946F789A2A77E4 /* Pods-KitchenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenAppTests.release.xcconfig"; path = "Target Support Files/Pods-KitchenAppTests/Pods-KitchenAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		42426A74254DB9EA00ADC3EA /* NewDishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDishCollectionViewCell.swift; sourceTree = "<group>"; };
 		42486E40253C1AA900C3BD41 /* KitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42486E43253C1AA900C3BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42486E45253C1AA900C3BD41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42426A73254DB9BB00ADC3EA /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				42426A74254DB9EA00ADC3EA /* NewDishCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		42486E37253C1AA900C3BD41 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +166,7 @@
 		42486E42253C1AA900C3BD41 /* KitchenApp */ = {
 			isa = PBXGroup;
 			children = (
+				42426A73254DB9BB00ADC3EA /* CollectionViewCell */,
 				4272F3C3254AA4BA008BFE61 /* TableViewCells */,
 				4262F0232542BEF70065537B /* Models */,
 				4262F0222542BEEC0065537B /* Utilities */,
@@ -517,6 +528,7 @@
 				4262F0372542C3720065537B /* OrderHistoryViewController.swift in Sources */,
 				4262F0492542CBB50065537B /* CardView.swift in Sources */,
 				4272F3EB254B00AC008BFE61 /* Utilities.swift in Sources */,
+				42426A75254DB9EA00ADC3EA /* NewDishCollectionViewCell.swift in Sources */,
 				42486E48253C1AA900C3BD41 /* LoginViewController.swift in Sources */,
 				4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */,
 				4262F07E2542E1930065537B /* SignUpViewController.swift in Sources */,

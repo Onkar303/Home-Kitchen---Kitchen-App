@@ -20,6 +20,19 @@ class Utilities {
         userDefaults.setValue(password, forKey: "password")
     }
     
+    static func showMessage(title:String? ,message:String?) -> UIAlertController{
+    
+        guard let title = title else {return UIAlertController()}
+        guard let message = message else {return UIAlertController()}
+        
+        let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title:"Ok", style: .cancel, handler: nil)
+        
+        alertcontroller.addAction(alertAction)
+        return alertcontroller
+        
+    }
+    
     
     static func getImage(url:String?,imageView:UIImageView){
         guard let stringUrl = url else {return}
