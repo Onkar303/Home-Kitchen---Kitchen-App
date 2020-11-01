@@ -23,6 +23,8 @@ class Constants{
     //Incudicates the number of result you want to skip
     static let SPOONOCULAR_OFFSET = "&offset="
     
+    
+    
     static let SPPONOCULAR_CUISINE_CATEGORY = ["African",
                                          "American",
                                          "British",
