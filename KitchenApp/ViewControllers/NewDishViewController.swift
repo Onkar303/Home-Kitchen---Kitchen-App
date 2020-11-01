@@ -93,7 +93,9 @@ extension NewDishViewController:UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier:NewDishTableViewCell.CELL_IDENTIFIER,for: indexPath) as! NewDishTableViewCell
         
         Utilities.getImage(url:dishes[indexPath.row].image, imageView: cell.dishImageView)
-        cell.dishImageView.layer.cornerRadius = CGFloat(Constants.CORNER_RADIUS)
+        cell.dishImageView.setRounded()
+        cell.dishNameLabel.text = dishes[indexPath.row].title
+        
         return cell
     }
     
@@ -101,7 +103,7 @@ extension NewDishViewController:UITableViewDataSource,UITableViewDelegate{
         segueToAddDishScreen()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(220)
+        return CGFloat(160)
     }
     
 }
