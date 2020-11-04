@@ -46,4 +46,10 @@ class Utilities {
             }
         }.resume()
     }
+    
+    
+    static func removeHtmlTags(text:String?) ->String{
+        guard let text = text else {return ""}
+        return text.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
 }

@@ -52,7 +52,7 @@ class NewDishViewController: UIViewController {
         
         guard let cuisineParam = cuisineParam else {return}
         
-        let url = Constants.SPOONOCULAR_BASE + Constants.SPOONOCULAR_KEYPARAM + Constants.SPOONOCULAR_KEY + Constants.SPOONOCULAR_CUISINEPARAM + cuisineParam
+        let url = Constants.SPOONOCULAR_BASE + Constants.SPOONOCULAR_COMPLEXPARAM + Constants.SPOONOCULAR_KEYPARAM + Constants.SPOONOCULAR_KEY + Constants.SPOONOCULAR_CUISINEPARAM + cuisineParam
         URLSession.shared.dataTask(with: URL(string: url)!) { (data, urlResponse, error) in
             if let error = error {
                 print("unable to fetch data \(error)")
@@ -74,9 +74,10 @@ class NewDishViewController: UIViewController {
     }
     
     //MARK:- Segue To Add Dish Screen
-    func segueToAddDishScreen(){
+    func segueToAddDishScreen(dishId:Int?){
         let storyBoard = UIStoryboard(name: "AddDishStoryboard", bundle: .main)
         let addDishViewController = storyBoard.instantiateViewController(withIdentifier: AddDishViewController.SCREEN_IDENTIFIER) as! AddDishViewController
+        addDishViewController.dishId = dishId
         self.navigationController?.pushViewController(addDishViewController, animated: true)
     }
     
@@ -100,7 +101,7 @@ extension NewDishViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        segueToAddDishScreen()
+        segueToAddDishScreen(dishId:dishes[indexPath.row].id)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(160)

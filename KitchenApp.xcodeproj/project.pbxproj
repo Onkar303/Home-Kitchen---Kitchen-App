@@ -37,6 +37,11 @@
 		4272F3C9254AF739008BFE61 /* DishResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3C8254AF739008BFE61 /* DishResults.swift */; };
 		4272F3EB254B00AC008BFE61 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3EA254B00AC008BFE61 /* Utilities.swift */; };
 		4272F3F0254B0124008BFE61 /* NewDishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272F3EF254B0124008BFE61 /* NewDishTableViewCell.swift */; };
+		42D713D625525A2600193A49 /* DishInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D713D525525A2600193A49 /* DishInformation.swift */; };
+		42D713DB2552FF3400193A49 /* HomeKitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D713DA2552FF3400193A49 /* HomeKitchen.swift */; };
+		42D713E025530C5600193A49 /* FromStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42D713DF25530C5600193A49 /* FromStoryboard.storyboard */; };
+		42D713E525530C7200193A49 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D713E425530C7200193A49 /* FormViewController.swift */; };
+		42D713ED2553108800193A49 /* AccounTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D713EC2553108800193A49 /* AccounTableViewCell.swift */; };
 		87A6F08747A8EE740FD0C477 /* Pods_KitchenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */; };
 		8CEE77239049B70DEE0D1FDD /* Pods_KitchenApp_KitchenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */; };
 		B3AEB61844919C5BAE67A6C0 /* Pods_KitchenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC95EF068E6C763944F9C3CC /* Pods_KitchenApp.framework */; };
@@ -97,6 +102,11 @@
 		4272F3C8254AF739008BFE61 /* DishResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishResults.swift; sourceTree = "<group>"; };
 		4272F3EA254B00AC008BFE61 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4272F3EF254B0124008BFE61 /* NewDishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDishTableViewCell.swift; sourceTree = "<group>"; };
+		42D713D525525A2600193A49 /* DishInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInformation.swift; sourceTree = "<group>"; };
+		42D713DA2552FF3400193A49 /* HomeKitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKitchen.swift; sourceTree = "<group>"; };
+		42D713DF25530C5600193A49 /* FromStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FromStoryboard.storyboard; sourceTree = "<group>"; };
+		42D713E425530C7200193A49 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		42D713EC2553108800193A49 /* AccounTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccounTableViewCell.swift; sourceTree = "<group>"; };
 		43B223E95942399AE2E6A117 /* Pods_KitchenAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1AF183C5CE9DD63EA17CD9 /* Pods-KitchenApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenApp.release.xcconfig"; path = "Target Support Files/Pods-KitchenApp/Pods-KitchenApp.release.xcconfig"; sourceTree = "<group>"; };
 		82B4069D97AAF22F3C9480F0 /* Pods_KitchenApp_KitchenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenApp_KitchenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +238,8 @@
 				4272F3AC254AA062008BFE61 /* AddDishStoryboard.storyboard */,
 				4272F3B6254AA115008BFE61 /* NewDishViewController.swift */,
 				4272F3BB254AA121008BFE61 /* NewDishStoryboard.storyboard */,
+				42D713E425530C7200193A49 /* FormViewController.swift */,
+				42D713DF25530C5600193A49 /* FromStoryboard.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -247,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				4272F3C8254AF739008BFE61 /* DishResults.swift */,
+				42D713D525525A2600193A49 /* DishInformation.swift */,
+				42D713DA2552FF3400193A49 /* HomeKitchen.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				4272F3EF254B0124008BFE61 /* NewDishTableViewCell.swift */,
+				42D713EC2553108800193A49 /* AccounTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -399,6 +414,7 @@
 				4262F0662542D94E0065537B /* OrderHistoryStoryboard.storyboard in Resources */,
 				4262F0732542DBE70065537B /* SignUpStoryboard.storyboard in Resources */,
 				4262F0252542BFCF0065537B /* GoogleService-Info.plist in Resources */,
+				42D713E025530C5600193A49 /* FromStoryboard.storyboard in Resources */,
 				4272F3BC254AA121008BFE61 /* NewDishStoryboard.storyboard in Resources */,
 				4272F3AD254AA062008BFE61 /* AddDishStoryboard.storyboard in Resources */,
 			);
@@ -536,6 +552,9 @@
 				4262F0412542C3B90065537B /* CurrentDishesViewController.swift in Sources */,
 				4262F07E2542E1930065537B /* SignUpViewController.swift in Sources */,
 				4262F03C2542C3850065537B /* CurrentOrdersViewController.swift in Sources */,
+				42D713ED2553108800193A49 /* AccounTableViewCell.swift in Sources */,
+				42D713DB2552FF3400193A49 /* HomeKitchen.swift in Sources */,
+				42D713D625525A2600193A49 /* DishInformation.swift in Sources */,
 				42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */,
 				4272F3B7254AA115008BFE61 /* NewDishViewController.swift in Sources */,
 				42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */,
@@ -544,6 +563,7 @@
 				4272F3C9254AF739008BFE61 /* DishResults.swift in Sources */,
 				4200207F254E5D6F00C56392 /* CustomConfiguration.swift in Sources */,
 				4262F02D2542C0DC0065537B /* Constants.swift in Sources */,
+				42D713E525530C7200193A49 /* FormViewController.swift in Sources */,
 				4272F3A8254AA04B008BFE61 /* AddDishViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
