@@ -56,6 +56,8 @@ class AddDishViewController: UIViewController {
                 print("an error occured while saving the data \(error)")
             }
         }
+        
+        
     }
     
     //    func fetchDish(){

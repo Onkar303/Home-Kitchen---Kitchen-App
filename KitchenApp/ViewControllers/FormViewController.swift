@@ -10,14 +10,27 @@ import UIKit
 class FormViewController: UIViewController {
 
     static let STORYBOARD_IDENTIFIER = "FromViewController"
+    @IBOutlet weak var paramTitleLabel: UILabel!
+    @IBOutlet weak var commonTextField: UITextField!
+    
+    var titleLabel:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
         // Do any additional setup after loading the view.
     }
     
-
+    //MARK:- Configuring UI
+    func configureUI(){
+        paramTitleLabel.text = titleLabel
+    }
+    
+    //MARK:- Handling Save
+    @IBAction func saveTapped(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

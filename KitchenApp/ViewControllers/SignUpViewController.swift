@@ -7,10 +7,13 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import CryptoKit
 
 class SignUpViewController: UIViewController {
     
-    var authController:Auth?
+    var authController:Auth!
+    var fireStore:Firestore!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -20,15 +23,19 @@ class SignUpViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         configureUI()
-        configureAuth()
+        configureFirebase()
         attachDelegate()
+        
     }
     
     
     
     //MARK:-Configure FireBase Auth
-    func configureAuth(){
+    func configureFirebase(){
         authController = Auth.auth()
+        fireStore = Firestore.firestore()
+        
+        
     }
     
     
@@ -62,20 +69,48 @@ class SignUpViewController: UIViewController {
                 print("error in signin in \(error)")
             }else{
                 Utilities.setUserDefaults(email: email, password: password)
-                self.segueToHomeContoller()
+                let hash = self.createDocumentForKitchen()
+                self.segueToHomeKitchenViewConntroller(userHash: hash)
             }
         })
         
     }
     
     
-    //MARK:- Segue to Home Controller
-    func segueToHomeContoller(){
-        let storyboard = UIStoryboard(name:"Main", bundle:.main)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier:"tabBarController")
-        self.navigationController?.pushViewController(tabBarController, animated: true)
+    //MARK:- Segue to HomeKitchenFormViewController
+    func segueToHomeKitchenViewConntroller(userHash:String?){
+        
+        guard let userHash = userHash else {return}
+        
+        let storyboard = UIStoryboard(name:"HomeKitchenFormStoryboard", bundle:.main)
+        let homeKitchenFormViewController = storyboard.instantiateViewController(withIdentifier:HomeKitchenFormViewController.STORYBOARD_IDENTIFIER) as! HomeKitchenFormViewController
+        
+        homeKitchenFormViewController.userMD5UniqueHash = userHash
+        
+        self.navigationController?.pushViewController(homeKitchenFormViewController, animated: true)
     }
     
+  
+    
+    //MARK:- Create New Document for Kitchen
+    func createDocumentForKitchen() -> String{
+        let user = User.init(userName: UserDefaults.standard.string(forKey:"email"), password: UserDefaults.standard.string(forKey: "password"))
+        let hash = Utilities.MD5(string:"\(user.userName)"+"\(user.password)")
+        print(hash)
+        let docReference =  fireStore.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document("/\(hash)")
+        
+        docReference.setData(["isCreated" : "true"]) { (error) in
+            if let error = error {
+                print("Error Creating document in Signup Page with error \(error)")
+            }
+        }
+        
+        return hash
+    }
+    
+    
+    
+  
     
     
     

@@ -30,7 +30,7 @@ class NewDishViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        
+        	
         newDishesCategoryCollectionView.showsHorizontalScrollIndicator = false
         
  
@@ -101,10 +101,11 @@ extension NewDishViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         segueToAddDishScreen(dishId:dishes[indexPath.row].id)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(160)
+        return CGFloat(136)
     }
     
 }
@@ -129,6 +130,7 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         fetchDishes(cuisineParam: cuisines[indexPath.row])
     }
 }

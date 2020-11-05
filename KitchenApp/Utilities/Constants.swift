@@ -69,8 +69,21 @@ class Constants{
     
     
     
+    
+    //MARK:- Firestore Constants
+    static let FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME = "HomeKitchens"
+    
+    
  
     
     
     
+    
+    
+}
+
+//MARK:- User Default Constants
+extension Constants{
+    static let USERDEFAULTS_USERNAME = "email"
+    static let USERDEFAULTS_PASSOWRD = "password"
 }

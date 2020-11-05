@@ -28,17 +28,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l6-As-wMU">
-                                <rect key="frame" x="20" y="812" width="374" height="30"/>
+                                <rect key="frame" x="20" y="147" width="374" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveTapped:" destination="rQN-bs-bi9" eventType="touchUpInside" id="CT7-Bg-km7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N21-qX-yRe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xRf-6q-VL1" firstAttribute="top" secondItem="L96-0y-NBx" secondAttribute="bottom" constant="8" symbolic="YES" id="0mP-gj-8lP"/>
+                            <constraint firstItem="2l6-As-wMU" firstAttribute="top" secondItem="xRf-6q-VL1" secondAttribute="bottom" constant="20" id="3vE-mK-JBM"/>
                             <constraint firstItem="L96-0y-NBx" firstAttribute="leading" secondItem="N21-qX-yRe" secondAttribute="leading" constant="20" id="6FA-WV-VSr"/>
                             <constraint firstItem="L96-0y-NBx" firstAttribute="top" secondItem="N21-qX-yRe" secondAttribute="top" constant="20" id="L5j-5W-tAC"/>
                             <constraint firstItem="N21-qX-yRe" firstAttribute="trailing" secondItem="L96-0y-NBx" secondAttribute="trailing" constant="20" id="QAm-mV-3yd"/>
@@ -46,9 +50,12 @@
                             <constraint firstItem="N21-qX-yRe" firstAttribute="trailing" secondItem="2l6-As-wMU" secondAttribute="trailing" constant="20" id="dhc-uX-51f"/>
                             <constraint firstItem="2l6-As-wMU" firstAttribute="leading" secondItem="N21-qX-yRe" secondAttribute="leading" constant="20" id="h7A-vi-IRR"/>
                             <constraint firstItem="xRf-6q-VL1" firstAttribute="trailing" secondItem="L96-0y-NBx" secondAttribute="trailing" id="iJK-iJ-16C"/>
-                            <constraint firstItem="N21-qX-yRe" firstAttribute="bottom" secondItem="2l6-As-wMU" secondAttribute="bottom" constant="20" id="ut5-Zn-VjO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="commonTextField" destination="xRf-6q-VL1" id="Ck6-2A-spv"/>
+                        <outlet property="paramTitleLabel" destination="L96-0y-NBx" id="guF-1i-3HE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ma0-rQ-xbJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

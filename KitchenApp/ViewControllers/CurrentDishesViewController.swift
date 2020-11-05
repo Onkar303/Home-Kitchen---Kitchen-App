@@ -6,20 +6,34 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class CurrentDishesViewController: UIViewController {
 
+    var fireStore:Firestore!
+    
     @IBOutlet weak var currentDishesTableView: UITableView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        configureFireStore()
         configureUI()
         attachDelegates()
+        getDocuments()
+        
     }
     
+    
+    //MARK:- Configure Firebase
+    func configureFireStore(){
+        fireStore = Firestore.firestore()
+    }
     
     //MARK:- Configure the UI
     func configureUI(){
@@ -37,6 +51,21 @@ class CurrentDishesViewController: UIViewController {
     func attachDelegates(){
         currentDishesTableView.delegate = self
         currentDishesTableView.dataSource = self
+    }
+    
+    
+    //MARK:- Check if document Exists
+    func getDocuments(){
+        let hash = Utilities.createHashWithCredentials()
+        let docReference = fireStore.collection("HomeKitchen").document("\(hash)")
+        
+        docReference.getDocument { (docSnapShot, error) in
+            if let docSnapShot = docSnapShot, docSnapShot.exists {
+                print("document exists")
+            } else {
+                print("no document exists")
+            }
+        }
     }
     
     

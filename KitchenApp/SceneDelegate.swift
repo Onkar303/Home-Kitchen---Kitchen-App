@@ -19,8 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: .main)
         
+        print(UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_USERNAME))
         
-        if let _ = UserDefaults.standard.string(forKey: "email"){
+        if let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_USERNAME), let password = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_PASSOWRD),!userName.isEmpty,!password.isEmpty {
             let tabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarController")
             window?.rootViewController = tabBarController
         }else {

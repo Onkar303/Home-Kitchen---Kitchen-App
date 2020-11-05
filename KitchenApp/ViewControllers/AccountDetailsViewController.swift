@@ -50,6 +50,7 @@ class AccountDetailsViewController: UIViewController {
     func signOut(){
         do {
             try authController?.signOut()
+            Utilities.removeUserDefaults()
             changeRootController()
         } catch let err {
             print("error signinout \(err)")
@@ -70,9 +71,10 @@ class AccountDetailsViewController: UIViewController {
     }
     
     //MARK:- Presenting FormController Modally
-    func showFormController(){
+    func showFormController(indexPath:IndexPath){
         let storyBoard = UIStoryboard(name: "FromStoryboard", bundle: .main)
         let formViewController = storyBoard.instantiateViewController(identifier: FormViewController.STORYBOARD_IDENTIFIER) as! FormViewController
+        formViewController.titleLabel = accountParams[indexPath.row]
         present(formViewController, animated: true, completion: nil)
         
     }
@@ -114,7 +116,7 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
             signOut()
             return
         }
-        showFormController()
+        showFormController(indexPath: indexPath)
         
         
     }
