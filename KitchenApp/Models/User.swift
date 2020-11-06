@@ -8,13 +8,8 @@
 import Foundation
 import UIKit
 
-struct User:Hashable{
+struct User:Decodable{
     var userName:String?
     var password:String?
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(userName)
-        hasher.combine(password)
-    }
 }
 

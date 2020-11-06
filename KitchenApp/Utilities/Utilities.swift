@@ -11,14 +11,26 @@ import CryptoKit
 
 class Utilities {
     
+    
+    //MARK:- Save the userid and password inside the app
     static func setUserDefaults(email:String?, password:String?){
         
         guard let email = email else {return}
         guard let password = password else {return}
         
+        
         let userDefaults = UserDefaults.standard
-        userDefaults.setValue(email, forKey: "email")
-        userDefaults.setValue(password, forKey: "password")
+        userDefaults.setValue(email, forKey: Constants.USERDEFAULTS_USERNAME)
+        userDefaults.setValue(password, forKey: Constants.USERDEFAULTS_PASSOWRD)
+        userDefaults.setValue(MD5(string:email+password),forKey:Constants.USERDEFAULTS_KITCHENID)
+        //userDefaults.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+    }
+    
+    
+    static func setUserDefaults(homeKitchen:HomeKitchen?){
+        guard let homeKitchen = homeKitchen else {return}
+        
+        
     }
     
     static func showMessage(title:String? ,message:String?) -> UIAlertController{
@@ -54,15 +66,15 @@ class Utilities {
         return text.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
     
-    //MARK:- Setting unique ID Home Kitchen
-    static func createHashWithCredentials() -> Int{
-        let user =  User.init(userName: UserDefaults.standard.string(forKey:"email"), password: UserDefaults.standard.string(forKey: "password"))
-        var hasher = Hasher()
-        hasher.combine(user)
-        let hasValue = hasher.finalize()
-        return hasValue
-    }
-    
+//    //MARK:- Setting unique ID Home Kitchen
+//    static func createHashWithCredentials() -> Int{
+//        let user =  User.init(userName: UserDefaults.standard.string(forKey:"email"), password: UserDefaults.standard.string(forKey: "password"))
+//        var hasher = Hasher()
+//        hasher.combine(user)
+//        let hasValue = hasher.finalize()
+//        return hasValue
+//    }
+//    
     
     //MARK:- Removing UserDefaults 
     static func removeUserDefaults(){
@@ -72,14 +84,20 @@ class Utilities {
     }
     
     //MARK:- Retrived from URL:- https://stackoverflow.com/questions/32163848/how-can-i-convert-a-string-to-an-md5-hash-in-ios-using-swift
+    //Retriving the hash
     static func MD5(string: String) -> String {
-        
-        
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
-        
         return digest.map {
                 String(format: "%02hhx", $0)
         }.joined()
+    }
+    
+    
+    //MARK:- Retrived from URL :- https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
+    //Retriving time in seconds
+    static func currentTimeInSeconds() -> Double{
+        let currentTime = Date()
+        return currentTime.timeIntervalSinceReferenceDate
     }
 
 }

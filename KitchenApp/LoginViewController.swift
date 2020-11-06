@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var signUpLabel: UILabel!
@@ -14,11 +15,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var authController:Auth?
+    var fireStore:Firestore?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureUI()
         configureAuth()
+        configureFireStore()
         attachDelegates()
     }
     
@@ -32,6 +36,10 @@ class LoginViewController: UIViewController {
     //MARK:- Configuring FireBase Auth
     func configureAuth(){
         authController = Auth.auth()
+    }
+    
+    func configureFireStore(){
+        fireStore = Firestore.firestore()
     }
     
     //MARK:- Attach Tap gesture
@@ -69,7 +77,8 @@ class LoginViewController: UIViewController {
             if let error = error {
                 print("Error occured while signing in  \(error)")
             }else {
-                Utilities.setUserDefaults(email: email, password: password)
+                self.getHomeKitchenDocument()
+                //Utilities.setUserDefaults(homeKitchen: <#T##HomeKitchen?#>)
                 self.segueToHomeController()
                 print("Login Successfull")
             }
@@ -88,6 +97,21 @@ class LoginViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: .main)
         let tabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarController")
         self.navigationController?.pushViewController(tabBarController, animated: true)
+    }
+    
+    
+    func getHomeKitchenDocument()
+    {
+        let docReference = fireStore?.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document(Utilities.MD5(string:emailTextField.text!+passwordTextField.text!))
+        
+        docReference?.getDocument(completion: { (docSnapShot, error) in
+            if let error = error {
+                print("error retriving data from the Database \(error)")
+            }else {
+                let homeKitchen =  docSnapShot?.data()
+                print(homeKitchen)
+            }
+        })
     }
     
 }

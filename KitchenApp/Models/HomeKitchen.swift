@@ -11,7 +11,7 @@ import Foundation
 
 
 
-class HomeKitchen {
+class HomeKitchen:NSObject,Decodable {
     
     var userCredentials:User?
     var kitchenName:String?
@@ -21,6 +21,24 @@ class HomeKitchen {
     var foodHandlingCertificate:String?
     var foodAndHygineCertificate:String?
     var kitchenId:String?
+    var kitchenDishesCollectionReference:String?
+    var kitchenOrdersCollectionReference:String?
+    
+    
+    enum Keys:String,CodingKey {
+        case email
+        case password
+        case kitchenName
+        case kitchenAddress
+        case kitchenOwner
+        case kitchenContactNumber
+        case foodHandlingCertificate
+        case foodAndHygineCertificate
+        case kitchenId
+        case kitchenDishesCollectionReference
+        case kitchenOrdersCollectionReference
+    }
+    
     
     
     func convertToDictionary() -> [String:Any] {
@@ -35,6 +53,8 @@ class HomeKitchen {
         dictionary["foodHandlingCertificate"] = foodHandlingCertificate
         dictionary["foodAndHygineCertificate"] = foodAndHygineCertificate
         dictionary["kitchenID"] = kitchenId
+        dictionary["kitchenDishesCollectionReference"] = kitchenDishesCollectionReference
+        dictionary["kitchenOrdersCollectionReference"] = kitchenOrdersCollectionReference
         
         return dictionary
     }

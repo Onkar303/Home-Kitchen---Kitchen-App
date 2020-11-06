@@ -25,7 +25,7 @@ class CurrentDishesViewController: UIViewController {
         configureFireStore()
         configureUI()
         attachDelegates()
-        getDocuments()
+        //getDocuments()
         
     }
     
@@ -54,19 +54,19 @@ class CurrentDishesViewController: UIViewController {
     }
     
     
-    //MARK:- Check if document Exists
-    func getDocuments(){
-        let hash = Utilities.createHashWithCredentials()
-        let docReference = fireStore.collection("HomeKitchen").document("\(hash)")
-        
-        docReference.getDocument { (docSnapShot, error) in
-            if let docSnapShot = docSnapShot, docSnapShot.exists {
-                print("document exists")
-            } else {
-                print("no document exists")
-            }
-        }
-    }
+//    //MARK:- Check if document Exists
+//    func getDocuments(){
+//        let hash = Utilities.createHashWithCredentials()
+//        let docReference = fireStore.collection("HomeKitchen").document("\(hash)")
+//
+//        docReference.getDocument { (docSnapShot, error) in
+//            if let docSnapShot = docSnapShot, docSnapShot.exists {
+//                print("document exists")
+//            } else {
+//                print("no document exists")
+//            }
+//        }
+//    }
     
     
     

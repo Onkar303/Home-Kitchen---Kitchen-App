@@ -29,6 +29,7 @@ class HomeKitchenFormViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //MARK:- Handling tapped signup button
     @IBAction func createKitchenTapped(_ sender: Any) {
         setData()
     }
@@ -44,8 +45,6 @@ class HomeKitchenFormViewController: UIViewController {
     func setData(){
         guard let hash = userMD5UniqueHash,!hash.isEmpty else {return }
         let docReference = fireStore?.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document(hash)
-        
-    
         if isFormFilled() {
             docReference?.setData(createFireStoreDict(), completion: { (error) in
                 if let error = error {
@@ -57,28 +56,23 @@ class HomeKitchenFormViewController: UIViewController {
         } else {
             present(Utilities.showMessage(title: "Alert!", message: "Please enter the entire form to proceed!"), animated: true, completion: nil)
         }
-    
-       
     }
     
+    //MARK:- Creating OrderCollection and DishCollection New Collection
+//    func createNewCollection(){
+//        let docReference = fireStore?.collection()
+//    }
+//    
     
     //MARK:- Validating if Form is filled
     func isFormFilled() -> Bool{
-        
         guard let kitchenName = kitchenNameTextField.text, !kitchenName.isEmpty else {return false}
-        
         guard let kitchenAddress = KitchenAddressTextField.text, !kitchenAddress.isEmpty else {return false}
-        
         guard let kitchenOwner = kitchenOwnerTextField.text, !kitchenOwner.isEmpty else {return false}
-        
         guard let kitcheContactNumber = kitchenContactNumberTextField.text , !kitcheContactNumber.isEmpty else {return false}
-        
         guard let foodHandlingCertificate = foodHandlingCertificateTextField.text , !foodHandlingCertificate.isEmpty else {return false}
-        
         guard let foodAndHyginerCertificate = foodHygineCertificateTextField.text, !foodAndHyginerCertificate.isEmpty else {return false}
-        
         return true
-        
     }
     
     
@@ -95,6 +89,8 @@ class HomeKitchenFormViewController: UIViewController {
         
         newHomeKitchen.userCredentials = newUser
         
+        newHomeKitchen.kitchenDishesCollectionReference = Utilities.MD5(string:kitchenNameTextField.text! + String(Utilities.currentTimeInSeconds()))
+        newHomeKitchen.kitchenOrdersCollectionReference = Utilities.MD5(string:newUser.userName! + newUser.password! + userMD5UniqueHash!)
         return newHomeKitchen.convertToDictionary()
     }
     
@@ -119,4 +115,23 @@ class HomeKitchenFormViewController: UIViewController {
     }
     */
 
+}
+
+
+//MARK:- Handling the keyboard
+extension HomeKitchenFormViewController:UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        kitchenNameTextField.resignFirstResponder()
+        KitchenAddressTextField.resignFirstResponder()
+        kitchenOwnerTextField.resignFirstResponder()
+        kitchenContactNumberTextField.resignFirstResponder()
+        foodHandlingCertificateTextField.resignFirstResponder()
+        foodHygineCertificateTextField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
