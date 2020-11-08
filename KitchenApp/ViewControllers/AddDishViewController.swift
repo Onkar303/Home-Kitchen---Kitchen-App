@@ -72,22 +72,7 @@ class AddDishViewController: UIViewController {
         addDishConfirmation()
     }
     
-    //MARK:- Adding Dish to FireBase
-    func addDish(){
-        guard let dict = dishInformation?.converToDictionary() else {
-            print("error sending data")
-            return
-        }
-        fireStore?.collection("/Sample").addDocument(data:dict, completion: { (error) in
-            if let error = error {
-                print("error entering the data \(error)")
-            }else{
-                self.present(Utilities.showMessage(title:Constants.SUCCESS, message:"Dish Added Successfully!"), animated: true, completion: nil)
-            }
-        })
-    }
-    
-    
+ 
     //MARK:- Fetch the Dish by Id
     func fetchDish(){
         guard let dishId = dishId else{return}
@@ -106,9 +91,9 @@ class AddDishViewController: UIViewController {
                 let jsonDecoder = JSONDecoder()
                 self.dishInformation = try jsonDecoder.decode(DishInformation.self, from: data)
                 DispatchQueue.main.async {
-                    self.title = self.dishInformation?.dishTitle
-                    self.dishSummaryTextField.text = Utilities.removeHtmlTags(text: self.dishInformation?.dishSummary)
-                    Utilities.getImage(url:self.dishInformation?.dishImage, imageView: self.dishImageView)
+                    self.title = self.dishInformation?.title
+                    self.dishSummaryTextField.text = Utilities.removeHtmlTags(text: self.dishInformation?.summary)
+                    Utilities.getImage(url:self.dishInformation?.image, imageView: self.dishImageView)
                 }
               
             }catch let error{
@@ -121,16 +106,37 @@ class AddDishViewController: UIViewController {
     
     //MARK:- Adding Confirmation Alert Controller
     func addDishConfirmation(){
-        guard let dishTitle = dishInformation?.dishTitle else {return}
+        guard let dishTitle = dishInformation?.title else {return}
         let confirmationAlertContoller = UIAlertController(title:"Confirmation", message:"Are you sure you want to add '\(dishTitle)'", preferredStyle: .alert)
         let confirmationAlertActionConfirm = UIAlertAction(title: Constants.CONFIRM, style: .default) { (alertAction) in
-            self.addDish()
+            self.addDishForHomeKitchen()
         }
         let confirmationAlertActionCancel = UIAlertAction(title: Constants.CANCEL, style: .destructive, handler: nil)
         confirmationAlertContoller.addAction(confirmationAlertActionConfirm)
         confirmationAlertContoller.addAction(confirmationAlertActionCancel)
         present(confirmationAlertContoller, animated: true, completion: nil)
     }
+    
+    
+    //MARK:- Adding Dish to FireBase
+    func addDishForHomeKitchen(){
+        guard let dict = dishInformation?.converToDictionary() else {
+            print("error sending data")
+            return
+        }
+        
+        guard let homeKitchenDishCollection = UserDefaults.standard.string(forKey:Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE) else {return}
+        fireStore?.collection(homeKitchenDishCollection).addDocument(data:dict, completion: { (error) in
+            if let error = error {
+                print("error entering the data \(error)")
+            }else{
+                self.present(Utilities.showMessage(title:Constants.SUCCESS, message:"Dish Added Successfully!"), animated: true, completion: nil)
+            }
+        })
+    }
+    
+    
+    
     
     
     

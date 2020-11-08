@@ -27,9 +27,19 @@ class Utilities {
     }
     
     
-    static func setUserDefaults(homeKitchen:HomeKitchen?){
-        guard let homeKitchen = homeKitchen else {return}
+    //MARK:- Saving Import data into Userdefaults from firestore
+    static func setUserDefaults(homeKitchenDictionary:[String:Any]?){
+        guard let homeKitchenDictionary = homeKitchenDictionary else {return}
         
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_USERNAME], forKey: Constants.USERDEFAULTS_USERNAME)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_PASSOWRD], forKey: Constants.USERDEFAULTS_PASSOWRD)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENID], forKey: Constants.USERDEFAULTS_KITCHENID)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENOWNER], forKey: Constants.USERDEFAULTS_KITCHENOWNER)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENADDRESS], forKey: Constants.USERDEFAULTS_KITCHENADDRESS)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENCONTACTNUMBER], forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE], forKey: Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENORDERSCOLLECTIONREFERENCE], forKey: Constants.USERDEFAULTS_KITCHENORDERSCOLLECTIONREFERENCE)
         
     }
     

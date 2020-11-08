@@ -95,7 +95,7 @@ class SignUpViewController: UIViewController {
     //MARK:- Create New Document for Kitchen
     func createDocumentForKitchen() -> String{
         let user = User.init(userName: UserDefaults.standard.string(forKey:"email"), password: UserDefaults.standard.string(forKey: "password"))
-        let hash = Utilities.MD5(string:"\(user.userName)"+"\(user.password)")
+        let hash = Utilities.MD5(string:user.userName! + user.password!)
         print(hash)
         let docReference =  fireStore.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document("/\(hash)")
         

@@ -100,19 +100,26 @@ class LoginViewController: UIViewController {
     }
     
     
+    //MARK:- Receiving login data from firestore
     func getHomeKitchenDocument()
     {
-        let docReference = fireStore?.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document(Utilities.MD5(string:emailTextField.text!+passwordTextField.text!))
         
+        let hash = Utilities.MD5(string:emailTextField.text!+passwordTextField.text!)
+        let docReference = fireStore?.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document(hash)
+        	
         docReference?.getDocument(completion: { (docSnapShot, error) in
             if let error = error {
                 print("error retriving data from the Database \(error)")
             }else {
-                let homeKitchen =  docSnapShot?.data()
-                print(homeKitchen)
+                let loginDictionary = docSnapShot?.data()
+                Utilities.setUserDefaults(homeKitchenDictionary: loginDictionary)
+                print(UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE))
             }
         })
     }
+    
+    
+
     
 }
 

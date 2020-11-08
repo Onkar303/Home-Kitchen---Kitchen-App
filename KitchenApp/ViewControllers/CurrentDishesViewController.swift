@@ -9,24 +9,32 @@ import UIKit
 import FirebaseFirestore
 
 class CurrentDishesViewController: UIViewController {
-
-    var fireStore:Firestore!
     
+    var fireStore:Firestore!
     @IBOutlet weak var currentDishesTableView: UITableView!
+    var currentDishesList = [DishInformation]()
+    
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         configureFireStore()
         configureUI()
         attachDelegates()
-        //getDocuments()
         
+        
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getDishesForList()
     }
     
     
@@ -54,48 +62,92 @@ class CurrentDishesViewController: UIViewController {
     }
     
     
-//    //MARK:- Check if document Exists
-//    func getDocuments(){
-//        let hash = Utilities.createHashWithCredentials()
-//        let docReference = fireStore.collection("HomeKitchen").document("\(hash)")
-//
-//        docReference.getDocument { (docSnapShot, error) in
-//            if let docSnapShot = docSnapShot, docSnapShot.exists {
-//                print("document exists")
-//            } else {
-//                print("no document exists")
-//            }
-//        }
-//    }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK:- Check if document Exists
+    func getDishesForList(){
+        currentDishesList.removeAll()
+        guard let hash = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE) else {return}
+        let docReference = fireStore.collection(hash)
+        docReference.getDocuments { (querySnapShot, error) in
+            if let error = error {
+                print(error)
+            } else {
+                querySnapShot?.documents.forEach({ (docSnapShot) in
+                    let dish = self.convertToDishInformation(dishInformationDictionary: docSnapShot.data())
+                    dish.documentID = docSnapShot.documentID
+                    self.currentDishesList.append(dish)
+                })
+                
+                DispatchQueue.main.async {
+                    self.currentDishesTableView.reloadData()
+                }
+            }
+        }
     }
-    */
-
+    
+    
+    //MARK:- Converting to HomeKitchen type
+    func convertToDishInformation(dishInformationDictionary:[String:Any]) -> DishInformation{
+        var data:DishInformation?
+        do {
+            let jsonData = try  JSONSerialization.data(withJSONObject: dishInformationDictionary, options: [])
+            let jsonDecorer = JSONDecoder()
+            data = try jsonDecorer.decode(DishInformation.self, from: jsonData)
+            return data!
+        }catch let error{
+            print("error fetching data\(error)")
+        }
+        return data!
+    }
+    
+    //MARK:- Deleting a Dish from Firestore
+    func deleteDish(documentId:String?){
+        guard let documentId = documentId else {return}
+        fireStore.collection(UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE)!).document(documentId).delete()
+    }
+    
+    
+    
+    //    //MARK:- Adding an Listner for change in database
+    //    func addDishUpdateListner(){
+    //        fireStore.collection(UserDefaults.standard.string(forKey:Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE)!).addSnapshotListener { (queryShanpshot, error) in
+    //            guard let querySnapshot = queryShanpshot else {return}
+    //
+    //            querySnapshot.documentChanges.forEach { (documenChange) in
+    //                if documenChange.type == .added{
+    //                    self.currentDishesList.append(self.convertToDishInformation(dishInformationDictionary: documenChange.document.data()))
+    //                }
+    //
+    //
+    //                DispatchQueue.main.async {
+    //                    self.currentDishesTableView.reloadData()
+    //                }
+    //            }
+    //        }
+    //    }
 }
 
+
+//MARK:- Handling the TableView
 extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSource{
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 30
+        return currentDishesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return UITableViewCell()
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrentDishesTableViewCell.CELL_IDENTIFIER, for: indexPath) as! CurrentDishesTableViewCell
+        cell.textLabel?.text = currentDishesList[indexPath.row].title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            print("delete")
+            deleteDish(documentId: currentDishesList[indexPath.row].documentID)
+            
+            self.currentDishesList.remove(at: indexPath.row)
+            self.currentDishesTableView.deleteRows(at: [indexPath], with: .left)
+            
+        }
     }
     
     

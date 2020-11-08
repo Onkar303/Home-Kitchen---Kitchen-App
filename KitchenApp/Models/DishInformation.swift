@@ -9,25 +9,26 @@ import Foundation
 
 
 class DishInformation:NSObject,Decodable{
-    var dishId:Int?
-    var dishTitle:String?
+    var id:Int?
+    var title:String?
     var servings:Int?
-    var dishImage:String? //original name "image"
-    var dishSummary:String? //original name "summary"
+    var image:String? //original name "image"
+    var summary:String? //original name "summary"
     var readyInMinutes:Int?
     var healthScore:Int?
     var vegetarian:Bool?
     var vegan:Bool?
     var dairyFree:Bool?
     var veryPopular:Bool?
+    var documentID:String?
     
     
     enum Keys:String,CodingKey {
-        case dishId = "id"
-        case dishTitle = "title"
+        case id
+        case title
         case servings
-        case dishImage = "image"
-        case dishSummary = "summary"
+        case image
+        case summary
         case readyInMinutes
         case healthScore
         case vegetarian
@@ -38,30 +39,29 @@ class DishInformation:NSObject,Decodable{
     
     required init(from decoder: Decoder) throws {
         let dishContainer = try decoder.container(keyedBy:Keys.self)
-        
-        dishId = try? dishContainer.decode(Int.self, forKey: .dishId)
-        dishTitle = try? dishContainer.decode(String.self, forKey: .dishTitle)
+
+        id = try? dishContainer.decode(Int.self, forKey: .id)
+        title = try? dishContainer.decode(String.self, forKey: .title)
         servings = try? dishContainer.decode(Int.self, forKey: .servings)
-        dishImage = try? dishContainer.decode(String.self, forKey: .dishImage)
-        dishSummary = try? dishContainer.decode(String.self, forKey: .dishSummary)
+        image = try? dishContainer.decode(String.self, forKey: .image)
+        summary = try? dishContainer.decode(String.self, forKey: .summary)
         readyInMinutes = try? dishContainer.decode(Int.self, forKey: .readyInMinutes)
         healthScore = try? dishContainer.decode(Int.self, forKey: .healthScore)
         vegetarian = try? dishContainer.decode(Bool.self, forKey: .vegetarian)
         vegan = try? dishContainer.decode(Bool.self, forKey: .vegan)
         dairyFree = try? dishContainer.decode(Bool.self, forKey: .dairyFree)
         veryPopular = try? dishContainer.decode(Bool.self, forKey: .veryPopular)
-        
+
     }
-    
     
     func converToDictionary() -> [String:Any] {
         
         var dictionary = [String:Any]()
-        dictionary["dishId"] = dishId
-        dictionary["dishTitle"] = dishTitle
+        dictionary["id"] = id
+        dictionary["title"] = title
         dictionary["servings"] = servings
-        dictionary["dishImage"] = dishImage
-        dictionary["dishSummary"] = dishSummary
+        dictionary["image"] = image
+        dictionary["summary"] = summary
         dictionary["readyInMinutes"] = readyInMinutes
         dictionary["healthScore"] = healthScore
         dictionary["vegetarian"] = vegetarian
