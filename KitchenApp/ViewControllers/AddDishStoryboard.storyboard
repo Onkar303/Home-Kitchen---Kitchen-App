@@ -88,6 +88,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addDishButton" destination="iLX-3E-eA1" id="hNg-Jl-sjb"/>
                         <outlet property="dishImageView" destination="03t-rX-kja" id="LyI-F8-XwU"/>
                         <outlet property="dishSummaryTextField" destination="oqB-vT-jff" id="BpS-Sr-y50"/>
                     </connections>

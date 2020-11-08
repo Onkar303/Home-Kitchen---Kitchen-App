@@ -7,12 +7,13 @@
 
 import UIKit
 
-class NewDishViewController: UIViewController {
+class NewDishViewController: UIViewController{
     
     @IBOutlet weak var newDishesCategoryCollectionView: UICollectionView!
     @IBOutlet weak var newDishesTableView: UITableView!
     
     var cuisines = Constants.SPPONOCULAR_CUISINE_CATEGORY
+    var searchController:UISearchController!
     var dishes:[Dishes] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +27,13 @@ class NewDishViewController: UIViewController {
     
     //MARK:- Configure UI
     func configureUI(){
-        let searchController = UISearchController(searchResultsController: nil)
+        searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
         self.navigationItem.searchController = searchController
         self.navigationController?.navigationBar.prefersLargeTitles = false
         	
         newDishesCategoryCollectionView.showsHorizontalScrollIndicator = false
-        
- 
-        
     }
     
     //MARK:- Attach Delegates
@@ -44,6 +43,8 @@ class NewDishViewController: UIViewController {
         
         newDishesCategoryCollectionView.delegate = self
         newDishesCategoryCollectionView.dataSource = self
+        
+       
     }
     
     
@@ -73,11 +74,12 @@ class NewDishViewController: UIViewController {
         }.resume()
     }
     
-    //MARK:- Segue To Add Dish Screen
+    //MARK:- Segue To Add Dish Screen To Add New Dish
     func segueToAddDishScreen(dishId:Int?){
         let storyBoard = UIStoryboard(name: "AddDishStoryboard", bundle: .main)
         let addDishViewController = storyBoard.instantiateViewController(withIdentifier: AddDishViewController.SCREEN_IDENTIFIER) as! AddDishViewController
         addDishViewController.dishId = dishId
+        addDishViewController.willAddDish = true
         self.navigationController?.pushViewController(addDishViewController, animated: true)
     }
     
@@ -133,4 +135,15 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
         
         fetchDishes(cuisineParam: cuisines[indexPath.row])
     }
+}
+
+
+//MARK:- Handling Search
+extension NewDishViewController:UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text,!searchText.isEmpty else {return}
+        print(searchText)
+        
+    }
+    
 }

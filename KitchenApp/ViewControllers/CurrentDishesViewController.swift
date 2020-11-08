@@ -12,11 +12,12 @@ class CurrentDishesViewController: UIViewController {
     
     var fireStore:Firestore!
     @IBOutlet weak var currentDishesTableView: UITableView!
-    var currentDishesList = [DishInformation]()
+    var currentDishes = [DishInformation]()
+    var filteredCurrentDishes = [DishInformation]()
     
     
     
-    
+    var searchController:UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class CurrentDishesViewController: UIViewController {
     //MARK:- Configure the UI
     func configureUI(){
         
-        let searchController = UISearchController(searchResultsController: nil)
+        searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         
         self.navigationItem.searchController = searchController
@@ -59,12 +60,15 @@ class CurrentDishesViewController: UIViewController {
     func attachDelegates(){
         currentDishesTableView.delegate = self
         currentDishesTableView.dataSource = self
+        
+        searchController.searchResultsUpdater = self
     }
     
     
     //MARK:- Check if document Exists
     func getDishesForList(){
-        currentDishesList.removeAll()
+        currentDishes.removeAll()
+        filteredCurrentDishes.removeAll()
         guard let hash = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE) else {return}
         let docReference = fireStore.collection(hash)
         docReference.getDocuments { (querySnapShot, error) in
@@ -74,7 +78,8 @@ class CurrentDishesViewController: UIViewController {
                 querySnapShot?.documents.forEach({ (docSnapShot) in
                     let dish = self.convertToDishInformation(dishInformationDictionary: docSnapShot.data())
                     dish.documentID = docSnapShot.documentID
-                    self.currentDishesList.append(dish)
+                    self.currentDishes.append(dish)
+                    self.filteredCurrentDishes.append(dish)
                 })
                 
                 DispatchQueue.main.async {
@@ -106,6 +111,26 @@ class CurrentDishesViewController: UIViewController {
     }
     
     
+    //MARK:- Seqgue To Add Dish View Controller to show details
+    func segueToAddDishViewController(dishId:Int?){
+        
+        guard let dishId=dishId else {return}
+        
+        let storyBoard = UIStoryboard(name:"AddDishStoryboard", bundle: .main)
+        
+        let addDishViewController = storyBoard.instantiateViewController(identifier: AddDishViewController.SCREEN_IDENTIFIER) as! AddDishViewController
+        
+        addDishViewController.dishId = dishId
+        addDishViewController.willAddDish = false
+        
+        self.navigationController?.present(addDishViewController, animated: true, completion: nil)
+        
+    }
+    
+    
+   
+    
+    
     
     //    //MARK:- Adding an Listner for change in database
     //    func addDishUpdateListner(){
@@ -130,25 +155,50 @@ class CurrentDishesViewController: UIViewController {
 //MARK:- Handling the TableView
 extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentDishesList.count
+        return filteredCurrentDishes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrentDishesTableViewCell.CELL_IDENTIFIER, for: indexPath) as! CurrentDishesTableViewCell
-        cell.textLabel?.text = currentDishesList[indexPath.row].title
+        cell.textLabel?.text = filteredCurrentDishes[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             print("delete")
-            deleteDish(documentId: currentDishesList[indexPath.row].documentID)
+            deleteDish(documentId: filteredCurrentDishes[indexPath.row].documentID)
             
-            self.currentDishesList.remove(at: indexPath.row)
+            self.currentDishes.remove(at: indexPath.row)
             self.currentDishesTableView.deleteRows(at: [indexPath], with: .left)
             
         }
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        segueToAddDishViewController(dishId: currentDishes[indexPath.row].id)
+    }
+    
+    
+}
+
+//MARK:-Handling search
+extension CurrentDishesViewController:UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {return}
+        print(searchText)
+    }
+    
+
+    func searchDish(searchText:String){
+        filteredCurrentDishes = currentDishes.filter({ (dishInformation) -> Bool in
+            guard let title = dishInformation.title, !title.isEmpty else {return false}
+            if title.contains(searchText){
+                return true
+            }
+            return false
+        })
+        currentDishesTableView.reloadData()
+    }
 }

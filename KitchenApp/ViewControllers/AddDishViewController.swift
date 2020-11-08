@@ -15,10 +15,12 @@ class AddDishViewController: UIViewController {
     
     @IBOutlet weak var dishSummaryTextField: UILabel!
     @IBOutlet weak var dishImageView: UIImageView!
+    @IBOutlet weak var addDishButton: UIButton!
     
     var documentReference:DocumentReference?
     var fireStore:Firestore?
     var dishId:Int?
+    var willAddDish:Bool?
     var dishInformation:DishInformation?
     
     
@@ -37,7 +39,10 @@ class AddDishViewController: UIViewController {
     
     //MARK:- Cofigure UI
     func configureUI(){
-    
+        guard let willAddDish = willAddDish else {return}
+        if !willAddDish {
+            addDishButton.isHidden = true
+        }
     }
     
     
