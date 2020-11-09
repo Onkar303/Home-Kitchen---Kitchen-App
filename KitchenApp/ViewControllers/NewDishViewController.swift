@@ -138,6 +138,7 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
             
             Utilities.getImage(url:filteredDishes[indexPath.row].image, imageView: cell.newDishImageView)
             cell.newDishImageView.clipsToBounds = true
+            cell.dishNameLabel.text = filteredDishes[indexPath.row].title
             //cell.newDishImageView.layer.cornerRadius = CGFloat(Constants.CORNER_RADIUS)
             
             return cell
@@ -155,7 +156,7 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == newDishesCollectionView {
-          
+            segueToAddDishScreen(dishId: filteredDishes[indexPath.row].id)
             return
         }
         fetchDishes(cuisineParam: cuisines[indexPath.row])
@@ -163,7 +164,7 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == newDishesCollectionView {
-            return CGSize(width: 300, height: 300)
+            return CGSize(width: 500, height: 300)
         }
         return CGSize()
     }

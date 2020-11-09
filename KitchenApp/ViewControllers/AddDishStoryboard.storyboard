@@ -20,13 +20,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXX-MJ-t69">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="738.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03t-rX-kja">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="221.5"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLX-3E-eA1">
-                                                <rect key="frame" x="20" y="269.5" width="280" height="30"/>
+                                                <rect key="frame" x="20" y="294.5" width="280" height="30"/>
                                                 <color key="backgroundColor" systemColor="linkColor"/>
                                                 <state key="normal" title="Add Dish">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,14 +36,14 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvx-ZD-BEt">
-                                                <rect key="frame" x="20" y="204" width="280" height="21"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <rect key="frame" x="20" y="231.5" width="280" height="27"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-vT-jff">
-                                                <rect key="frame" x="20" y="232.5" width="280" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-vT-jff">
+                                                <rect key="frame" x="20" y="263.5" width="280" height="23"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -55,21 +55,21 @@
                                             <constraint firstAttribute="trailing" secondItem="03t-rX-kja" secondAttribute="trailing" id="DSG-6G-txV"/>
                                             <constraint firstItem="iLX-3E-eA1" firstAttribute="leading" secondItem="oqB-vT-jff" secondAttribute="leading" id="OfX-y0-xBB"/>
                                             <constraint firstItem="oqB-vT-jff" firstAttribute="trailing" secondItem="Hvx-ZD-BEt" secondAttribute="trailing" id="SDD-yq-41k"/>
-                                            <constraint firstItem="03t-rX-kja" firstAttribute="height" secondItem="LXX-MJ-t69" secondAttribute="height" multiplier="0.23" id="UUr-td-kgk"/>
-                                            <constraint firstItem="oqB-vT-jff" firstAttribute="top" secondItem="Hvx-ZD-BEt" secondAttribute="bottom" constant="7.5" id="WFf-QJ-Pgu"/>
+                                            <constraint firstItem="03t-rX-kja" firstAttribute="height" secondItem="LXX-MJ-t69" secondAttribute="height" multiplier="0.3" id="UUr-td-kgk"/>
+                                            <constraint firstItem="oqB-vT-jff" firstAttribute="top" secondItem="Hvx-ZD-BEt" secondAttribute="bottom" constant="5" id="WFf-QJ-Pgu"/>
                                             <constraint firstAttribute="trailing" secondItem="Hvx-ZD-BEt" secondAttribute="trailing" constant="20" symbolic="YES" id="XEB-Ml-fZJ"/>
                                             <constraint firstItem="oqB-vT-jff" firstAttribute="leading" secondItem="Hvx-ZD-BEt" secondAttribute="leading" id="bLr-s2-dyX"/>
                                             <constraint firstItem="iLX-3E-eA1" firstAttribute="trailing" secondItem="oqB-vT-jff" secondAttribute="trailing" id="itp-4W-VG2"/>
-                                            <constraint firstItem="Hvx-ZD-BEt" firstAttribute="top" secondItem="03t-rX-kja" secondAttribute="bottom" constant="8" symbolic="YES" id="rlT-7a-A9T"/>
+                                            <constraint firstItem="Hvx-ZD-BEt" firstAttribute="top" secondItem="03t-rX-kja" secondAttribute="bottom" constant="10" id="rlT-7a-A9T"/>
+                                            <constraint firstItem="iLX-3E-eA1" firstAttribute="top" secondItem="oqB-vT-jff" secondAttribute="bottom" constant="8" symbolic="YES" id="sEp-RQ-Uhr"/>
                                             <constraint firstItem="03t-rX-kja" firstAttribute="leading" secondItem="LXX-MJ-t69" secondAttribute="leading" id="wnK-nm-MlH"/>
-                                            <constraint firstItem="iLX-3E-eA1" firstAttribute="top" secondItem="oqB-vT-jff" secondAttribute="bottom" constant="20" id="yJg-Bh-U4l"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="width" secondItem="g6d-jQ-hRK" secondAttribute="width" id="9ol-Z7-mdH"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="bottom" secondItem="QVW-TL-1P9" secondAttribute="bottom" id="9yr-w1-DfM"/>
-                                    <constraint firstItem="LXX-MJ-t69" firstAttribute="height" secondItem="g6d-jQ-hRK" secondAttribute="height" multiplier="1.5" id="Fqf-Me-esr"/>
+                                    <constraint firstItem="LXX-MJ-t69" firstAttribute="height" secondItem="g6d-jQ-hRK" secondAttribute="height" multiplier="1.3" id="Fqf-Me-esr"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="top" secondItem="QVW-TL-1P9" secondAttribute="top" id="K2Z-rF-shW"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="trailing" secondItem="QVW-TL-1P9" secondAttribute="trailing" id="WkJ-zg-ze0"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="leading" secondItem="QVW-TL-1P9" secondAttribute="leading" id="soi-Bl-PWq"/>

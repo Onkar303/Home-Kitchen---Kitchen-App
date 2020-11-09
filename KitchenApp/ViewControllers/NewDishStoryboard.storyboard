@@ -36,7 +36,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qn-Wa-82R">
                                                     <rect key="frame" x="20" y="7" width="51" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -59,29 +59,38 @@
                                 <rect key="frame" x="0.0" y="106.5" width="414" height="755.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T6W-kv-OGG">
-                                    <size key="itemSize" width="189" height="205"/>
+                                    <size key="itemSize" width="273" height="312"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newDishCell" id="owH-Yl-29I" customClass="NewDishCollectionViewCell" customModule="KitchenApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="189" height="205"/>
+                                        <rect key="frame" x="70.5" y="0.0" width="273" height="312"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3dr-Gn-EWk">
-                                            <rect key="frame" x="0.0" y="0.0" width="189" height="205"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="312"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wx0-fC-xlC" customClass="CardView" customModule="KitchenApp" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="5" width="179" height="195"/>
+                                                    <rect key="frame" x="5" y="5" width="263" height="302"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="64p-ze-dsM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="179" height="128"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="64p-ze-dsM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="263" height="198"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi4-AE-YP4">
+                                                            <rect key="frame" x="10" y="203" width="233" height="24.5"/>
+                                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstItem="pi4-AE-YP4" firstAttribute="top" secondItem="64p-ze-dsM" secondAttribute="bottom" constant="5" id="5Tw-kK-hWa"/>
                                                         <constraint firstItem="64p-ze-dsM" firstAttribute="top" secondItem="Wx0-fC-xlC" secondAttribute="top" id="5az-PB-XJA"/>
+                                                        <constraint firstItem="pi4-AE-YP4" firstAttribute="leading" secondItem="Wx0-fC-xlC" secondAttribute="leading" constant="10" id="BBi-Yg-mfa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="pi4-AE-YP4" secondAttribute="trailing" constant="20" symbolic="YES" id="ECL-Mg-coZ"/>
                                                         <constraint firstItem="64p-ze-dsM" firstAttribute="leading" secondItem="Wx0-fC-xlC" secondAttribute="leading" id="QrO-Dd-CKl"/>
                                                         <constraint firstItem="64p-ze-dsM" firstAttribute="height" secondItem="Wx0-fC-xlC" secondAttribute="height" multiplier="0.65641" id="Y3r-Gx-5Bl"/>
                                                         <constraint firstAttribute="trailing" secondItem="64p-ze-dsM" secondAttribute="trailing" id="est-LS-0h0"/>
@@ -95,8 +104,9 @@
                                                 <constraint firstItem="Wx0-fC-xlC" firstAttribute="top" secondItem="3dr-Gn-EWk" secondAttribute="top" constant="5" id="oFs-EF-3fl"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="189" height="205"/>
+                                        <size key="customSize" width="273" height="312"/>
                                         <connections>
+                                            <outlet property="dishNameLabel" destination="pi4-AE-YP4" id="OBZ-EV-KOV"/>
                                             <outlet property="newDishImageView" destination="64p-ze-dsM" id="Dlj-TI-cL3"/>
                                         </connections>
                                     </collectionViewCell>
