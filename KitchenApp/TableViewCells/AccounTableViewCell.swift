@@ -11,6 +11,11 @@ class AccounTableViewCell: UITableViewCell {
     
     static let CELL_IDENTIFIER = "accountCell"
 
+    @IBOutlet weak var accountDetailsLabel: UILabel!
+    @IBOutlet weak var accountDetailsValue: UILabel!
+    @IBOutlet weak var accountCellImageView: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

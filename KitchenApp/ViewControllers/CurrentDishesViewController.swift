@@ -175,7 +175,6 @@ extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSourc
         }
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         segueToAddDishViewController(dishId: currentDishes[indexPath.row].id)
     }
@@ -187,7 +186,7 @@ extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSourc
 extension CurrentDishesViewController:UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {return}
-        print(searchText)
+        searchDish(searchText:searchText)
     }
     
 
@@ -201,4 +200,12 @@ extension CurrentDishesViewController:UISearchResultsUpdating{
         })
         currentDishesTableView.reloadData()
     }
+}
+
+//MARK:- Handle Editing
+extension CurrentDishesViewController{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
 }

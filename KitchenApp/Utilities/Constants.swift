@@ -86,7 +86,7 @@ class Constants{
 extension Constants{
     static let USERDEFAULTS_USERNAME = "email"
     static let USERDEFAULTS_PASSOWRD = "password"
-    static let USERDEFAULTS_KITCHENID = "kitchenId"
+    static let USERDEFAULTS_KITCHENID = "kitchenID"
     static let USERDEFAULTS_KITCEHNNAME = "kitchenName"
     static let USERDEFAULTS_KITCHENOWNER = "kitchenOwner"
     static let USERDEFAULTS_KITCHENADDRESS="kitchenAddress"

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class AccountDetailsViewController: UIViewController {
 
@@ -78,6 +79,7 @@ class AccountDetailsViewController: UIViewController {
         present(formViewController, animated: true, completion: nil)
         
     }
+
     
 }
 
@@ -99,14 +101,16 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AccounTableViewCell.CELL_IDENTIFIER, for: indexPath) as! AccounTableViewCell
         if indexPath.section == ACCOUNT_PARAM_SECTION{
-            cell.textLabel?.text = accountParams[indexPath.row]
+            cell.accountDetailsLabel.text = accountParams[indexPath.row]
+            cell.accountDetailsValue.text = "details text label"
             cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = "details"
+        
             return cell
         }
         
-        cell.textLabel?.text = "SignOut"
-        cell.detailTextLabel?.text = ""
+     
+        cell.accountDetailsLabel.text = "SignOut"
+        cell.accountDetailsValue.text = ""
         return cell
     }
     
@@ -126,7 +130,10 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
             return Constants.ACCOUNT_PARAM_SECTION_HEADER
         }
         return Constants.ACCOUNT_SIGNOUT_SECTION_HEADER
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(100)
     }
 }
 

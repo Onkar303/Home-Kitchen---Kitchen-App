@@ -2,14 +2,12 @@
 //  NewDishCollectionViewCell.swift
 //  KitchenApp
 //
-//  Created by Techlocker on 1/11/20.
+//  Created by Techlocker on 10/11/20.
 //
 
 import UIKit
 
 class NewDishCollectionViewCell: UICollectionViewCell {
-    
-    static let CELL_IDENITIFIER = "DishCategoryCell"
-    @IBOutlet weak var categoryLabel: UILabel!
-    
+    static let CELL_IDENTIFIER = "newDishCell"
+    @IBOutlet weak var newDishImageView: UIImageView!
 }
