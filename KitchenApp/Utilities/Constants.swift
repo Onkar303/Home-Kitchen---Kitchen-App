@@ -60,10 +60,16 @@ class Constants{
     static let CANCEL = "Cancel"
     static let CONFIRM = "Confirm"
     static let SUCCESS = "SUCCESS"
+    static let ERROR = "ERROR"
     
     
     //MARK:- AccountDetailsViewController
-    static let ACCOUNT_INFO_PARAMS = ["Username","Password","Kitchen Name","Owner","Address"]
+    static let ACCOUNT_PASSWORD_PARAM = "Password"
+    static let ACCOUNT_KITCHEN_NAME_PARAM = "Kitchen Name"
+    static let ACCOUNT_KITCHEN_OWNER_PARAM = "Owner"
+    static let ACCOUNT_KITCHEN_ADDRESS_PARAM = "Address"
+    static let ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM = "Contact Number"
+    static let ACCOUNT_INFO_PARAMS = [ACCOUNT_PASSWORD_PARAM,ACCOUNT_KITCHEN_NAME_PARAM,ACCOUNT_KITCHEN_OWNER_PARAM,ACCOUNT_KITCHEN_ADDRESS_PARAM,ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM]
     static let ACCOUNT_PARAM_SECTION_HEADER = "Account"
     static let ACCOUNT_SIGNOUT_SECTION_HEADER = "Signout"
     
@@ -72,6 +78,7 @@ class Constants{
     
     //MARK:- Firestore Constants
     static let FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME = "HomeKitchens"
+    
     
     
  

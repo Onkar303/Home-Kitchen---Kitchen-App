@@ -19,7 +19,7 @@ class HomeKitchenFormViewController: UIViewController {
     @IBOutlet weak var foodHandlingCertificateTextField: UITextField!
     @IBOutlet weak var foodHygineCertificateTextField: UITextField!
     
-    var userMD5UniqueHash:String?
+    var kitchenId:String?
     var fireStore:Firestore?
     
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class HomeKitchenFormViewController: UIViewController {
     
     //MARK:- Handling tapped signup button
     @IBAction func createKitchenTapped(_ sender: Any) {
-        setData()
+        setHomeKitchen()
     }
     
     
@@ -42,14 +42,15 @@ class HomeKitchenFormViewController: UIViewController {
     
     
     //MARK:- Send data to FireStore
-    func setData(){
-        guard let hash = userMD5UniqueHash,!hash.isEmpty else {return }
+    func setHomeKitchen(){
+        guard let hash = kitchenId,!hash.isEmpty else {return }
         let docReference = fireStore?.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document(hash)
         if isFormFilled() {
             docReference?.setData(createFireStoreDict(), completion: { (error) in
                 if let error = error {
                     print("error in sending data to the firebase \(error)")
                 } else {
+                    self.getHomeKitchen()
                     self.segueToHomeContoller()
                 }
             })
@@ -79,7 +80,7 @@ class HomeKitchenFormViewController: UIViewController {
     //MARK:-- create dictionary for FireStore
     func createFireStoreDict() -> [String:Any]{
         let newHomeKitchen = HomeKitchen()
-        newHomeKitchen.kitchenId = userMD5UniqueHash
+        newHomeKitchen.kitchenId = kitchenId
         newHomeKitchen.kitchenName = kitchenNameTextField.text
         newHomeKitchen.kitchenOwner = kitchenOwnerTextField.text
         newHomeKitchen.kitchenAddress = KitchenAddressTextField.text
@@ -90,8 +91,21 @@ class HomeKitchenFormViewController: UIViewController {
         newHomeKitchen.userCredentials = newUser
         
         newHomeKitchen.kitchenDishesCollectionReference = Utilities.MD5(string:kitchenNameTextField.text! + String(Utilities.currentTimeInSeconds()))
-        newHomeKitchen.kitchenOrdersCollectionReference = Utilities.MD5(string:newUser.userName! + newUser.password! + userMD5UniqueHash!)
+        newHomeKitchen.kitchenOrdersCollectionReference = Utilities.MD5(string:newUser.userName! + newUser.password! + kitchenId!)
+    
         return newHomeKitchen.convertToDictionary()
+    }
+    
+    //MARK:- get Home Kkitchen
+    func getHomeKitchen(){
+        guard let kitchenId = kitchenId else {return}
+        fireStore?.collection(Constants.FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME).document(kitchenId).getDocument(completion: { (docSnapShot, error) in
+            if let error = error {
+                print("error is setting user defaults \(error)")
+                return
+            }
+            Utilities.setUserDefaults(homeKitchenDictionary:docSnapShot?.data())
+        })
     }
     
     

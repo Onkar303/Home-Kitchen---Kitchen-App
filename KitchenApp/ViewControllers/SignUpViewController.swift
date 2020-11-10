@@ -85,8 +85,7 @@ class SignUpViewController: UIViewController {
         let storyboard = UIStoryboard(name:"HomeKitchenFormStoryboard", bundle:.main)
         let homeKitchenFormViewController = storyboard.instantiateViewController(withIdentifier:HomeKitchenFormViewController.STORYBOARD_IDENTIFIER) as! HomeKitchenFormViewController
         
-        homeKitchenFormViewController.userMD5UniqueHash = userHash
-        
+        homeKitchenFormViewController.kitchenId = userHash
         self.navigationController?.pushViewController(homeKitchenFormViewController, animated: true)
     }
     

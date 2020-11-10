@@ -12,6 +12,12 @@ import CryptoKit
 class Utilities {
     
     
+    static let homeKitchenId = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENID)
+    static let homeKitchenName = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCEHNNAME)
+    static let homeKitchenOwner = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENOWNER)
+    static let homeKitchenAddress = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENADDRESS)
+    static let homeKitchenContactNumber = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)
+    
     //MARK:- Save the userid and password inside the app
     static func setUserDefaults(email:String?, password:String?){
         
@@ -35,6 +41,7 @@ class Utilities {
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_USERNAME], forKey: Constants.USERDEFAULTS_USERNAME)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_PASSOWRD], forKey: Constants.USERDEFAULTS_PASSOWRD)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENID], forKey: Constants.USERDEFAULTS_KITCHENID)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCEHNNAME], forKey: Constants.USERDEFAULTS_KITCEHNNAME)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENOWNER], forKey: Constants.USERDEFAULTS_KITCHENOWNER)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENADDRESS], forKey: Constants.USERDEFAULTS_KITCHENADDRESS)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENCONTACTNUMBER], forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)

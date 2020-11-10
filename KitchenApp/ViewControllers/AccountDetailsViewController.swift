@@ -24,7 +24,6 @@ class AccountDetailsViewController: UIViewController {
         instantiateAuth()
         attachDelegates()
         configureUI()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -76,7 +75,24 @@ class AccountDetailsViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "FromStoryboard", bundle: .main)
         let formViewController = storyBoard.instantiateViewController(identifier: FormViewController.STORYBOARD_IDENTIFIER) as! FormViewController
         formViewController.titleLabel = accountParams[indexPath.row]
+        formViewController.value = getUserInfo(titleLabel: accountParams[indexPath.row])
+        formViewController.responseDelegate = self
         present(formViewController, animated: true, completion: nil)
+        
+    }
+
+    func getUserInfo(titleLabel:String) -> String? {
+        if titleLabel == Constants.ACCOUNT_PASSWORD_PARAM{
+            return "*******"
+        }else if titleLabel == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
+            return Utilities.homeKitchenName
+        } else if titleLabel == Constants.ACCOUNT_KITCHEN_OWNER_PARAM {
+            return Utilities.homeKitchenOwner
+        } else if titleLabel == Constants.ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM {
+            return Utilities.homeKitchenContactNumber
+        } else {
+            return Utilities.homeKitchenAddress
+        }
         
     }
 
@@ -99,18 +115,29 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AccounTableViewCell.CELL_IDENTIFIER, for: indexPath) as! AccounTableViewCell
+      
         if indexPath.section == ACCOUNT_PARAM_SECTION{
+            let cell = tableView.dequeueReusableCell(withIdentifier: AccounTableViewCell.CELL_IDENTIFIER, for: indexPath) as! AccounTableViewCell
             cell.accountDetailsLabel.text = accountParams[indexPath.row]
-            cell.accountDetailsValue.text = "details text label"
+            
+            if accountParams[indexPath.row] == Constants.ACCOUNT_PASSWORD_PARAM{
+                cell.accountDetailsValue.text = "*******"
+            }else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
+                cell.accountDetailsValue.text = Utilities.homeKitchenName
+            } else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_OWNER_PARAM {
+                cell.accountDetailsValue.text = Utilities.homeKitchenOwner
+            } else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM {
+                cell.accountDetailsValue.text = Utilities.homeKitchenContactNumber
+            } else {
+                cell.accountDetailsValue.text = Utilities.homeKitchenAddress
+            }
             cell.accessoryType = .disclosureIndicator
         
             return cell
         }
-        
-     
-        cell.accountDetailsLabel.text = "SignOut"
-        cell.accountDetailsValue.text = ""
+            
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "SignOut"
         return cell
     }
     
@@ -121,8 +148,6 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
             return
         }
         showFormController(indexPath: indexPath)
-        
-        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -133,7 +158,25 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100)
+        if indexPath.section == ACCOUNT_PARAM_SECTION{
+            return CGFloat(88)
+        }
+        return CGFloat(44)
+    }
+}
+
+extension AccountDetailsViewController:ResponseDelegate{
+    
+    func onUpdateResponse(status: Bool,updateField:String?) {
+        if status {
+            guard let updateField = updateField else {return}
+            print(Utilities.homeKitchenName)
+            accountTableView.reloadData()
+            present(Utilities.showMessage(title: Constants.SUCCESS, message: "\(updateField) Update Successfull"), animated: true, completion: nil)
+        } else {
+            
+        }
+       
     }
 }
 
