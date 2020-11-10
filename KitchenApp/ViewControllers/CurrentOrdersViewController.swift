@@ -16,6 +16,7 @@ class CurrentOrdersViewController: UIViewController {
         super.viewDidLoad()
         
         attachDelegates()
+        configureUI()
 
         // Do any additional setup after loading the view.
     }
@@ -24,6 +25,17 @@ class CurrentOrdersViewController: UIViewController {
     func attachDelegates(){
         currentOrdersTableView.delegate = self
         currentOrdersTableView.dataSource = self
+    }
+    
+    func configureUI(){
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        self.navigationItem.searchController = searchController
+        self.navigationItem.searchController?.hidesBottomBarWhenPushed = false
+       
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
 
     /*

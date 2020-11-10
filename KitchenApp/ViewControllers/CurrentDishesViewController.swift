@@ -168,8 +168,8 @@ extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSourc
         if editingStyle == .delete{
             print("delete")
             deleteDish(documentId: filteredCurrentDishes[indexPath.row].documentID)
-            
             self.currentDishes.remove(at: indexPath.row)
+            self.filteredCurrentDishes.remove(at: indexPath.row)
             self.currentDishesTableView.deleteRows(at: [indexPath], with: .left)
             
         }
