@@ -11,6 +11,8 @@ class CurrentDishesTableViewCell: UITableViewCell {
 
     static let CELL_IDENTIFIER = "currentDishCell"
     
+    @IBOutlet weak var currentDIshesImageView: UIImageView!
+    @IBOutlet weak var currentDishesLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

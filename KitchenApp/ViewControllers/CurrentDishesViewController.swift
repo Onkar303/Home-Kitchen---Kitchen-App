@@ -14,10 +14,15 @@ class CurrentDishesViewController: UIViewController {
     @IBOutlet weak var currentDishesTableView: UITableView!
     var currentDishes = [DishInformation]()
     var filteredCurrentDishes = [DishInformation]()
-    
-    
+    var databaseController:DatabaseController?
+    var savedDishesFromDatabase = [DishesCoreDataEntity]()
+    var filteredSavedDishesFromDatabase = [DishesCoreDataEntity]()
     
     var searchController:UISearchController!
+    var areDishesFromDatabase = false
+    
+    let DATABASE_SECTION = 1
+    let FIRESTORE_SECTION = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +32,7 @@ class CurrentDishesViewController: UIViewController {
         configureFireStore()
         configureUI()
         attachDelegates()
-        
+        configureDatabaseController()
         
         
     }
@@ -35,6 +40,11 @@ class CurrentDishesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        if areDishesFromDatabase {
+          fetchSavedDishes()
+          return
+        }
         getDishesForList()
     }
     
@@ -44,14 +54,27 @@ class CurrentDishesViewController: UIViewController {
         fireStore = Firestore.firestore()
     }
     
+    //MARK:- Configure databae Controller
+    func configureDatabaseController(){
+        databaseController = (UIApplication.shared.delegate as! AppDelegate).databaseController
+        
+     }
+    
     //MARK:- Configure the UI
     func configureUI(){
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["Online","Saved"]
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.delegate = self
+        searchController.definesPresentationContext = true
+        
         
         self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = true
+    
         navigationController?.navigationBar.sizeToFit()
         
     }
@@ -113,18 +136,20 @@ class CurrentDishesViewController: UIViewController {
     
     //MARK:- Seqgue To Add Dish View Controller to show details
     func segueToAddDishViewController(dishId:Int?){
-        
         guard let dishId=dishId else {return}
-        
         let storyBoard = UIStoryboard(name:"AddDishStoryboard", bundle: .main)
-        
         let addDishViewController = storyBoard.instantiateViewController(identifier: AddDishViewController.SCREEN_IDENTIFIER) as! AddDishViewController
-        
         addDishViewController.dishId = dishId
         addDishViewController.willAddDish = false
-        
         self.navigationController?.present(addDishViewController, animated: true, completion: nil)
-        
+    }
+    
+    //MARK:- fetch All Saved Dishes
+    func fetchSavedDishes(){
+        savedDishesFromDatabase.removeAll()
+        filteredSavedDishesFromDatabase.removeAll()
+        savedDishesFromDatabase.append(contentsOf: (databaseController?.fetchAllDishes())!)
+        filteredSavedDishesFromDatabase.append(contentsOf:savedDishesFromDatabase)
     }
     
     
@@ -155,42 +180,75 @@ class CurrentDishesViewController: UIViewController {
 //MARK:- Handling the TableView
 extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if areDishesFromDatabase {
+            return filteredSavedDishesFromDatabase.count
+        }
         return filteredCurrentDishes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrentDishesTableViewCell.CELL_IDENTIFIER, for: indexPath) as! CurrentDishesTableViewCell
-        cell.textLabel?.text = filteredCurrentDishes[indexPath.row].title
+        if areDishesFromDatabase {
+            Utilities.getImage(url: filteredSavedDishesFromDatabase[indexPath.row].image, imageView: cell.currentDIshesImageView)
+            cell.currentDIshesImageView.clipsToBounds = true
+            cell.currentDIshesImageView.layer.cornerRadius = cell.currentDIshesImageView.layer.frame.width / 2
+            cell.currentDishesLabel.text = filteredSavedDishesFromDatabase[indexPath.row].title
+            return cell
+        }
+        
+        Utilities.getImage(url: filteredCurrentDishes[indexPath.row].image, imageView: cell.currentDIshesImageView)
+        cell.currentDIshesImageView.clipsToBounds = true
+        cell.currentDIshesImageView.layer.cornerRadius = cell.currentDIshesImageView.layer.frame.width / 2
+        cell.currentDishesLabel.text = filteredCurrentDishes[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete,!areDishesFromDatabase{
             print("delete")
             deleteDish(documentId: filteredCurrentDishes[indexPath.row].documentID)
             self.currentDishes.remove(at: indexPath.row)
             self.filteredCurrentDishes.remove(at: indexPath.row)
             self.currentDishesTableView.deleteRows(at: [indexPath], with: .left)
             
+        } else if editingStyle == .delete, areDishesFromDatabase {
+            databaseController?.deleteDish(dish: savedDishesFromDatabase[indexPath.row])
+            databaseController?.saveChanges()
+            savedDishesFromDatabase.remove(at: indexPath.row)
+            filteredSavedDishesFromDatabase.remove(at: indexPath.row)
+            currentDishesTableView.deleteRows(at: [indexPath], with: .left)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        segueToAddDishViewController(dishId: currentDishes[indexPath.row].id)
+        if areDishesFromDatabase {
+            segueToAddDishViewController(dishId:Int(filteredSavedDishesFromDatabase[indexPath.row].id))
+            return
+        }
+        segueToAddDishViewController(dishId: filteredCurrentDishes[indexPath.row].id)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(132)
     }
     
     
 }
 
 //MARK:-Handling search
-extension CurrentDishesViewController:UISearchResultsUpdating{
+extension CurrentDishesViewController:UISearchResultsUpdating,UISearchBarDelegate{
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {return}
-        searchDish(searchText:searchText)
+        if areDishesFromDatabase {
+            searchDishFromDatabase(searchText: searchText)
+            return
+        }
+       
+        searchDishFromFireStore(searchText:searchText)
     }
     
 
-    func searchDish(searchText:String){
+    func searchDishFromFireStore(searchText:String){
         filteredCurrentDishes = currentDishes.filter({ (dishInformation) -> Bool in
             guard let title = dishInformation.title, !title.isEmpty else {return false}
             if title.contains(searchText){
@@ -198,6 +256,46 @@ extension CurrentDishesViewController:UISearchResultsUpdating{
             }
             return false
         })
+        currentDishesTableView.reloadData()
+    }
+    
+    func searchDishFromDatabase(searchText:String){
+        if searchText == "" {
+            filteredSavedDishesFromDatabase.removeAll()
+            filteredSavedDishesFromDatabase.append(contentsOf: savedDishesFromDatabase)
+        } else {
+            filteredSavedDishesFromDatabase = savedDishesFromDatabase.filter({ (dishCoreData) -> Bool in
+                guard let title = dishCoreData.title else {return false}
+                if title.contains(searchText) {return true}
+                return false
+            })
+        }
+        currentDishesTableView.reloadData()
+    
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        if selectedScope == DATABASE_SECTION {
+            fetchSavedDishes()
+            areDishesFromDatabase = true
+        } else {
+            getDishesForList()
+            areDishesFromDatabase = false
+        }
+        
+        currentDishesTableView.reloadData()
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if areDishesFromDatabase {
+            filteredSavedDishesFromDatabase.removeAll()
+            filteredSavedDishesFromDatabase.append(contentsOf: savedDishesFromDatabase)
+        } else{
+            filteredCurrentDishes.removeAll()
+            filteredCurrentDishes.append(contentsOf: currentDishes)
+        }
         currentDishesTableView.reloadData()
     }
 }

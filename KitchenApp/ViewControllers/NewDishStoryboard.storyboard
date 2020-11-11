@@ -17,8 +17,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ACy-DX-koe">
+                                <rect key="frame" x="0.0" y="162.5" width="414" height="699.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T6W-kv-OGG">
+                                    <size key="itemSize" width="387" height="324"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newDishCell" id="owH-Yl-29I" customClass="NewDishCollectionViewCell" customModule="KitchenApp" customModuleProvider="target">
+                                        <rect key="frame" x="13.5" y="0.0" width="387" height="324"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3dr-Gn-EWk">
+                                            <rect key="frame" x="0.0" y="0.0" width="387" height="324"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="64p-ze-dsM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="387" height="259"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi4-AE-YP4">
+                                                    <rect key="frame" x="20" y="279" width="347" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="64p-ze-dsM" firstAttribute="height" secondItem="3dr-Gn-EWk" secondAttribute="height" multiplier="0.8" id="0U3-E4-346"/>
+                                                <constraint firstItem="pi4-AE-YP4" firstAttribute="top" secondItem="64p-ze-dsM" secondAttribute="bottom" constant="20" id="KkV-WF-72b"/>
+                                                <constraint firstAttribute="trailing" secondItem="pi4-AE-YP4" secondAttribute="trailing" constant="20" symbolic="YES" id="Rel-pf-D5F"/>
+                                                <constraint firstItem="64p-ze-dsM" firstAttribute="top" secondItem="3dr-Gn-EWk" secondAttribute="top" id="Uwy-rw-Tqd"/>
+                                                <constraint firstItem="64p-ze-dsM" firstAttribute="leading" secondItem="3dr-Gn-EWk" secondAttribute="leading" id="gPZ-Kn-AiQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="64p-ze-dsM" secondAttribute="trailing" id="qrK-eS-eCF"/>
+                                                <constraint firstItem="pi4-AE-YP4" firstAttribute="leading" secondItem="3dr-Gn-EWk" secondAttribute="leading" constant="20" symbolic="YES" id="wQc-P5-hJe"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="387" height="324"/>
+                                        <connections>
+                                            <outlet property="dishNameLabel" destination="pi4-AE-YP4" id="OBZ-EV-KOV"/>
+                                            <outlet property="newDishImageView" destination="64p-ze-dsM" id="Dlj-TI-cL3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="UtJ-Jf-Vzp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lFP-qL-a4P">
-                                <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="62.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Kr-91-ymp">
                                     <size key="itemSize" width="91" height="35"/>
@@ -55,59 +104,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ACy-DX-koe">
-                                <rect key="frame" x="0.0" y="106.5" width="414" height="755.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T6W-kv-OGG">
-                                    <size key="itemSize" width="400" height="200"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newDishCell" id="owH-Yl-29I" customClass="NewDishCollectionViewCell" customModule="KitchenApp" customModuleProvider="target">
-                                        <rect key="frame" x="7" y="0.0" width="400" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3dr-Gn-EWk">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="64p-ze-dsM">
-                                                    <rect key="frame" x="5" y="0.0" width="390" height="160"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi4-AE-YP4">
-                                                    <rect key="frame" x="5" y="167.5" width="390" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="64p-ze-dsM" firstAttribute="height" secondItem="3dr-Gn-EWk" secondAttribute="height" multiplier="0.8" id="0U3-E4-346"/>
-                                                <constraint firstItem="pi4-AE-YP4" firstAttribute="trailing" secondItem="64p-ze-dsM" secondAttribute="trailing" id="3FU-DJ-mRf"/>
-                                                <constraint firstItem="pi4-AE-YP4" firstAttribute="top" secondItem="64p-ze-dsM" secondAttribute="bottom" constant="7.5" id="KkV-WF-72b"/>
-                                                <constraint firstItem="64p-ze-dsM" firstAttribute="top" secondItem="3dr-Gn-EWk" secondAttribute="top" id="Uwy-rw-Tqd"/>
-                                                <constraint firstItem="64p-ze-dsM" firstAttribute="leading" secondItem="3dr-Gn-EWk" secondAttribute="leading" constant="5" id="gPZ-Kn-AiQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="64p-ze-dsM" secondAttribute="trailing" constant="5" id="qrK-eS-eCF"/>
-                                                <constraint firstItem="pi4-AE-YP4" firstAttribute="leading" secondItem="64p-ze-dsM" secondAttribute="leading" id="r1k-Tq-FXT"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="400" height="200"/>
-                                        <connections>
-                                            <outlet property="dishNameLabel" destination="pi4-AE-YP4" id="OBZ-EV-KOV"/>
-                                            <outlet property="newDishImageView" destination="64p-ze-dsM" id="Dlj-TI-cL3"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bHB-g5-AhL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bHB-g5-AhL" firstAttribute="trailing" secondItem="UtJ-Jf-Vzp" secondAttribute="trailing" id="0tx-E8-NgH"/>
+                            <constraint firstItem="lFP-qL-a4P" firstAttribute="top" secondItem="UtJ-Jf-Vzp" secondAttribute="bottom" id="43R-iG-fIL"/>
                             <constraint firstItem="lFP-qL-a4P" firstAttribute="leading" secondItem="bHB-g5-AhL" secondAttribute="leading" id="AS3-r1-XJN"/>
                             <constraint firstItem="bHB-g5-AhL" firstAttribute="trailing" secondItem="ACy-DX-koe" secondAttribute="trailing" id="DJX-aK-ISr"/>
+                            <constraint firstItem="UtJ-Jf-Vzp" firstAttribute="top" secondItem="bHB-g5-AhL" secondAttribute="top" id="ISb-A6-sgB"/>
+                            <constraint firstItem="UtJ-Jf-Vzp" firstAttribute="leading" secondItem="bHB-g5-AhL" secondAttribute="leading" id="OOS-gA-122"/>
                             <constraint firstItem="ACy-DX-koe" firstAttribute="top" secondItem="lFP-qL-a4P" secondAttribute="bottom" id="Q5G-9C-zGi"/>
-                            <constraint firstItem="lFP-qL-a4P" firstAttribute="top" secondItem="bHB-g5-AhL" secondAttribute="top" id="X9D-Fg-Kgm"/>
                             <constraint firstItem="lFP-qL-a4P" firstAttribute="height" secondItem="nE5-3q-Zsa" secondAttribute="height" multiplier="0.0697545" id="aUH-uM-h4o"/>
                             <constraint firstItem="lFP-qL-a4P" firstAttribute="trailing" secondItem="bHB-g5-AhL" secondAttribute="trailing" id="b6o-28-s76"/>
                             <constraint firstItem="ACy-DX-koe" firstAttribute="leading" secondItem="bHB-g5-AhL" secondAttribute="leading" id="jeu-I4-kSv"/>
@@ -117,6 +124,7 @@
                     <connections>
                         <outlet property="newDishesCategoryCollectionView" destination="lFP-qL-a4P" id="S4Z-M1-3pe"/>
                         <outlet property="newDishesCollectionView" destination="ACy-DX-koe" id="Bqg-4C-ugu"/>
+                        <outlet property="newDishesSearchBar" destination="UtJ-Jf-Vzp" id="JEl-dL-SOw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJj-PU-8Qu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -81,7 +81,9 @@ class Constants{
     
     
     
- 
+    //MARK:- Saved Information
+    static let SAVED_INFO_TITLE = "Info"
+    static let SAVED_INFO_MESSAGE = "These Dishes are added locally and will be lost if you delete the app."
     
     
     

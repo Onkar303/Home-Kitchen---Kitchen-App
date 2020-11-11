@@ -20,13 +20,39 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currentDishCell" id="yL4-6V-jRZ" customClass="CurrentDishesTableViewCell" customModule="KitchenApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currentDishCell" rowHeight="142" id="yL4-6V-jRZ" customClass="CurrentDishesTableViewCell" customModule="KitchenApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yL4-6V-jRZ" id="s4T-hn-hKF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1P-ws-jw0">
+                                                    <rect key="frame" x="133" y="48" width="261" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opi-Wf-gKP">
+                                                    <rect key="frame" x="20" y="10" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="L0d-zg-caP"/>
+                                                        <constraint firstAttribute="height" constant="100" id="UuD-a1-Hh4"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="m1P-ws-jw0" firstAttribute="centerY" secondItem="opi-Wf-gKP" secondAttribute="centerY" id="06v-2T-x54"/>
+                                                <constraint firstItem="opi-Wf-gKP" firstAttribute="top" secondItem="s4T-hn-hKF" secondAttribute="top" constant="10" id="1a4-st-5hl"/>
+                                                <constraint firstAttribute="trailing" secondItem="m1P-ws-jw0" secondAttribute="trailing" constant="20" symbolic="YES" id="9kd-Kn-BUI"/>
+                                                <constraint firstItem="m1P-ws-jw0" firstAttribute="leading" secondItem="opi-Wf-gKP" secondAttribute="trailing" constant="13" id="dvW-0s-PTA"/>
+                                                <constraint firstItem="opi-Wf-gKP" firstAttribute="leading" secondItem="s4T-hn-hKF" secondAttribute="leading" constant="20" symbolic="YES" id="kIk-cL-JQ8"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="currentDIshesImageView" destination="opi-Wf-gKP" id="mvX-cU-iGq"/>
+                                            <outlet property="currentDishesLabel" destination="m1P-ws-jw0" id="KIq-O9-tk5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -53,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyG-RY-9ZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4894" y="-283"/>
+            <point key="canvasLocation" x="4892.753623188406" y="-283.25892857142856"/>
         </scene>
         <!--NewDishStoryboard-->
         <scene sceneID="SMJ-8C-xib">

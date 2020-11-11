@@ -11,11 +11,13 @@ class NewDishViewController: UIViewController{
     
     @IBOutlet weak var newDishesCategoryCollectionView: UICollectionView!
     @IBOutlet weak var newDishesCollectionView: UICollectionView!
+    @IBOutlet weak var newDishesSearchBar: UISearchBar!
     
     var cuisines = Constants.SPPONOCULAR_CUISINE_CATEGORY
-    var searchController:UISearchController!
     var dishes:[Dishes] = []
     var filteredDishes = [Dishes]()
+    var databaseController:DatabaseController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,15 +30,15 @@ class NewDishViewController: UIViewController{
     
     //MARK:- Configure UI
     func configureUI(){
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = false
-        
-        self.navigationItem.searchController = searchController
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        	
+        newDishesSearchBar.showsCancelButton = true
+        self.navigationItem.largeTitleDisplayMode = .never
         newDishesCategoryCollectionView.showsHorizontalScrollIndicator = false
-        
-        
+    }
+    
+    
+    //MARK:- configure Database Controller
+    func configureDatabaseController(){
+        databaseController = (UIApplication.shared.delegate as! AppDelegate).databaseController
     }
     
     //MARK:- Attach Delegates
@@ -47,7 +49,9 @@ class NewDishViewController: UIViewController{
         newDishesCategoryCollectionView.delegate = self
         newDishesCategoryCollectionView.dataSource = self
         
-        searchController.searchResultsUpdater = self
+        
+        newDishesSearchBar.delegate = self
+        
        
     }
     
@@ -138,15 +142,15 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
             
             Utilities.getImage(url:filteredDishes[indexPath.row].image, imageView: cell.newDishImageView)
             cell.newDishImageView.clipsToBounds = true
-            cell.newDishImageView.layer.cornerRadius = 10
-            cell.newDishImageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+//            cell.newDishImageView.layer.cornerRadius = 10
+//            cell.newDishImageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             cell.dishNameLabel.text = filteredDishes[indexPath.row].title
             //cell.newDishImageView.layer.cornerRadius = CGFloat(Constants.CORNER_RADIUS)
             
             
          
-            cell.layer.cornerRadius = 10
-            cell.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+//            cell.layer.cornerRadius = 10
+//            cell.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             return cell
         }
         
@@ -164,6 +168,7 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == newDishesCollectionView {
+           
             segueToAddDishScreen(dishId: filteredDishes[indexPath.row].id)
             return
         }
@@ -172,22 +177,36 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == newDishesCollectionView {
-            return CGSize(width: 400, height:200)
+            let height = view.frame.size.height
+            let width = view.frame.size.width
+                // in case you you want the cell to be 40% of your controllers view
+            return CGSize(width: width, height: height * 0.35)
         }
         return CGSize()
+    }
+   
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+            let save = UIAction { (action) in
+                //self.databaseController?.addDish(dishInformation: <#T##DishInformation?#>)
+            }
+            
+            save.image = UIImage(systemName: "plus.rectangle.on.rectangle")
+            save.title = "Save Offline"
+            return UIMenu(title: "Options", image: nil, identifier: nil, options:.displayInline, children: [save])
+        }
+        
+        return configuration
     }
 }
 
 
 //MARK:- Handling Search
-extension NewDishViewController:UISearchResultsUpdating{
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text,!searchText.isEmpty else {return}
-        searchDishes(searchText: searchText)
-    }
+extension NewDishViewController:UISearchBarDelegate{
+
 
     func searchDishes(searchText:String){
-        
         if searchText.isEmpty{
             filteredDishes.removeAll()
             filteredDishes.append(contentsOf:dishes)
@@ -202,6 +221,16 @@ extension NewDishViewController:UISearchResultsUpdating{
         }
         newDishesCollectionView.reloadData()
     }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDishes(searchText: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        view.endEditing(true)
+    }
+    
+    
 }
 
 //MARK:- HAndling keyboard
@@ -210,3 +239,5 @@ extension NewDishViewController{
         view.endEditing(true)
     }
 }
+
+

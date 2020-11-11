@@ -16,13 +16,14 @@ class AddDishViewController: UIViewController {
     @IBOutlet weak var dishSummaryTextField: UILabel!
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var addDishButton: UIButton!
+    @IBOutlet weak var dishNameLabel: UILabel!
     
     var documentReference:DocumentReference?
     var fireStore:Firestore?
     var dishId:Int?
     var willAddDish:Bool?
     var dishInformation:DishInformation?
-    
+    var databaseController:DatabaseController?
     
     
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class AddDishViewController: UIViewController {
         configureUI()
         configureFireStore()
         fetchDish()
+        configureDatabaseController()
         
         
     }
@@ -43,6 +45,8 @@ class AddDishViewController: UIViewController {
         if !willAddDish {
             addDishButton.isHidden = true
         }
+        
+        //dishImageView.setRounded()
     }
     
     
@@ -50,6 +54,11 @@ class AddDishViewController: UIViewController {
     //Successfully added initial data
     func configureFireStore(){
         fireStore = Firestore.firestore()
+    }
+    
+    //MARK:- Configure Database Controller
+    func configureDatabaseController(){
+        databaseController = (UIApplication.shared.delegate as! AppDelegate).databaseController
     }
     
     //MARK:-Adding New Dish to FireStore
@@ -73,8 +82,10 @@ class AddDishViewController: UIViewController {
     //        })
     //    }
     
+    //MARK:- Fetching
     @IBAction func AddDish(_ sender: Any) {
-        addDishConfirmation()
+        //addDishConfirmation()
+        addDishOffline()
     }
     
  
@@ -96,7 +107,7 @@ class AddDishViewController: UIViewController {
                 let jsonDecoder = JSONDecoder()
                 self.dishInformation = try jsonDecoder.decode(DishInformation.self, from: data)
                 DispatchQueue.main.async {
-                    self.title = self.dishInformation?.title
+                    self.dishNameLabel.text = self.dishInformation?.title
                     self.dishSummaryTextField.text = Utilities.removeHtmlTags(text: self.dishInformation?.summary)
                     Utilities.getImage(url:self.dishInformation?.image, imageView: self.dishImageView)
                 }
@@ -106,6 +117,8 @@ class AddDishViewController: UIViewController {
             }
         }.resume()
     }
+    
+    
     
     
     
@@ -140,11 +153,20 @@ class AddDishViewController: UIViewController {
         })
     }
     
+    //MARK:- Adding dish to Local Database
+    func addDishOffline() {
+        databaseController?.addDish(dishInformation: dishInformation)
+        databaseController?.saveChanges()
+    }
     
     
-    
-    
-    
-    
+//
+//    //MARK:- Making the image rounded
+//    override func viewWillLayoutSubviews() {
+//      super.viewWillLayoutSubviews()
+//      print("viewWillLayoutSubviews")
+//      //dishImageView.layer.cornerRadius = dishImageView.frame.height / 2.0
+//    }
+//    
     
 }

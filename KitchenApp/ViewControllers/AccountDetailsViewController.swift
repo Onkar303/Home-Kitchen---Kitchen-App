@@ -36,7 +36,7 @@ class AccountDetailsViewController: UIViewController {
     //MARK:- Configure UI
     func configureUI(){
         self.navigationController?.navigationBar.prefersLargeTitles = true
-      
+        self.navigationItem.largeTitleDisplayMode = .automatic
     }
     
     //MARK:- Attach Delegates
