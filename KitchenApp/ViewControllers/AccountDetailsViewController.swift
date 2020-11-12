@@ -123,13 +123,13 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
             if accountParams[indexPath.row] == Constants.ACCOUNT_PASSWORD_PARAM{
                 cell.accountDetailsValue.text = "*******"
             }else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
-                cell.accountDetailsValue.text = Utilities.homeKitchenName
+                cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCEHNNAME)
             } else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_OWNER_PARAM {
-                cell.accountDetailsValue.text = Utilities.homeKitchenOwner
+                cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENOWNER)
             } else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM {
-                cell.accountDetailsValue.text = Utilities.homeKitchenContactNumber
+                cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)
             } else {
-                cell.accountDetailsValue.text = Utilities.homeKitchenAddress
+                cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENADDRESS)
             }
             cell.accessoryType = .disclosureIndicator
         

@@ -17,6 +17,8 @@ class AddDishViewController: UIViewController {
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var addDishButton: UIButton!
     @IBOutlet weak var dishNameLabel: UILabel!
+    @IBOutlet weak var healthScoreLabel: UILabel!
+    @IBOutlet weak var servingsLabel: UILabel!
     
     var documentReference:DocumentReference?
     var fireStore:Firestore?
@@ -46,7 +48,8 @@ class AddDishViewController: UIViewController {
             addDishButton.isHidden = true
         }
         
-        //dishImageView.setRounded()
+     
+        
     }
     
     
@@ -110,6 +113,10 @@ class AddDishViewController: UIViewController {
                     self.dishNameLabel.text = self.dishInformation?.title
                     self.dishSummaryTextField.text = Utilities.removeHtmlTags(text: self.dishInformation?.summary)
                     Utilities.getImage(url:self.dishInformation?.image, imageView: self.dishImageView)
+                    self.dishImageView.clipsToBounds = true
+                    self.dishImageView.layer.cornerRadius = self.dishImageView.frame.width/2
+                    self.healthScoreLabel.text = String((self.dishInformation?.healthScore)!)
+                    self.servingsLabel.text = String((self.dishInformation?.servings)!)
                 }
               
             }catch let error{

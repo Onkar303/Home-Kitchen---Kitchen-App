@@ -14,8 +14,9 @@ extension UIImageView{
     
     func setRounded(){
         
-        self.layer.cornerRadius = self.frame.width/2
         self.clipsToBounds = true
+        self.layer.cornerRadius = self.frame.width/2
+        
     }
     
     
