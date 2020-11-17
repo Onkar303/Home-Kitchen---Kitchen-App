@@ -8,20 +8,28 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class AccountDetailsViewController: UIViewController {
 
-    var authController:Auth?
-    var accountParams:[String] = Constants.ACCOUNT_INFO_PARAMS
+
     @IBOutlet weak var accountTableView: UITableView!
     
-    let ACCOUNT_PARAM_SECTION = 0
-    let ACCOUNT_SIGNOUT_SECTION = 1
+    var imagePicker:UIImagePickerController?
+    var authController:Auth?
+    var kitcheImage:UIImage?
+    var accountParams:[String] = Constants.ACCOUNT_INFO_PARAMS
+    
+    let ACCOUNT_IMAGE_SECTION = 0
+    let ACCOUNT_PARAM_SECTION = 1
+    let ACCOUNT_SIGNOUT_SECTION = 2
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        instantiateAuth()
+        configureFirebase()
         attachDelegates()
         configureUI()
         // Do any additional setup after loading the view.
@@ -29,14 +37,18 @@ class AccountDetailsViewController: UIViewController {
     
     
     //MARK:- Instanitate Auth
-    func instantiateAuth(){
+    func configureFirebase(){
         authController = Auth.auth()
+        
     }
     
     //MARK:- Configure UI
     func configureUI(){
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .automatic
+        
+       
+        
     }
     
     //MARK:- Attach Delegates
@@ -82,6 +94,8 @@ class AccountDetailsViewController: UIViewController {
     }
 
     func getUserInfo(titleLabel:String) -> String? {
+        
+        
         if titleLabel == Constants.ACCOUNT_PASSWORD_PARAM{
             return "*******"
         }else if titleLabel == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
@@ -95,6 +109,14 @@ class AccountDetailsViewController: UIViewController {
         }
         
     }
+    
+    //MARK:- Showing ImagePicker
+    func showImagePicker(){
+        imagePicker = UIImagePickerController()
+        imagePicker?.delegate = self
+        imagePicker?.allowsEditing = true
+        present(imagePicker!, animated:true, completion: nil)
+    }
 
     
 }
@@ -103,23 +125,39 @@ class AccountDetailsViewController: UIViewController {
 extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == ACCOUNT_IMAGE_SECTION {
+            return 1
+        }
         if section == ACCOUNT_PARAM_SECTION {
             return accountParams.count
         }
+        
         return 1
    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == ACCOUNT_IMAGE_SECTION {
+            let cell = tableView.dequeueReusableCell(withIdentifier:AccountTableViewImageCell.CELL_IDENTIFIER , for: indexPath) as! AccountTableViewImageCell
+            
+            if kitcheImage != nil {
+                cell.kitchenImageView.image = kitcheImage
+            }
+            cell.kitchenImageView.setRounded()
+            return cell
+        }
       
         if indexPath.section == ACCOUNT_PARAM_SECTION{
             let cell = tableView.dequeueReusableCell(withIdentifier: AccounTableViewCell.CELL_IDENTIFIER, for: indexPath) as! AccounTableViewCell
             cell.accountDetailsLabel.text = accountParams[indexPath.row]
             
+
             if accountParams[indexPath.row] == Constants.ACCOUNT_PASSWORD_PARAM{
                 cell.accountDetailsValue.text = "*******"
             }else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
@@ -142,7 +180,14 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == ACCOUNT_IMAGE_SECTION {
+            showImagePicker()
+            return
+        }
+        
         if indexPath.section == ACCOUNT_SIGNOUT_SECTION {
             signOut()
             return
@@ -151,6 +196,11 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if section == ACCOUNT_IMAGE_SECTION {
+            return Constants.ACCOUNT_KITCHEN_IMAGE_SECTION_HEADER
+        }
+        
         if section == ACCOUNT_PARAM_SECTION {
             return Constants.ACCOUNT_PARAM_SECTION_HEADER
         }
@@ -158,6 +208,10 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == ACCOUNT_IMAGE_SECTION {
+            return CGFloat(160)
+        }
         if indexPath.section == ACCOUNT_PARAM_SECTION{
             return CGFloat(88)
         }
@@ -177,6 +231,15 @@ extension AccountDetailsViewController:ResponseDelegate{
             
         }
        
+    }
+}
+
+extension AccountDetailsViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        kitcheImage = info[.editedImage] as? UIImage
+        accountTableView.reloadData()
+        imagePicker?.dismiss(animated: true, completion: nil)
     }
 }
 

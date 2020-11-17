@@ -7,11 +7,13 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
 
-class HomeKitchenFormViewController: UIViewController {
+class HomeKitchenFormViewController: UIViewController{
 
     static let STORYBOARD_IDENTIFIER = "HomeKitchenFormViewController"
     
+    @IBOutlet weak var kitchenImageView: UIImageView!
     @IBOutlet weak var kitchenNameTextField: UITextField!
     @IBOutlet weak var KitchenAddressTextField: UITextField!
     @IBOutlet weak var kitchenOwnerTextField: UITextField!
@@ -21,11 +23,18 @@ class HomeKitchenFormViewController: UIViewController {
     
     var kitchenId:String?
     var fireStore:Firestore?
+    var fireStorage:Storage?
+    var fireStorageReference:StorageReference?
+    var imagePicker:UIImagePickerController!
+    var imageUrl:Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureFireBase()
+        addTapGesture()
+        configureUI()
+        attachDelegates()
         // Do any additional setup after loading the view.
     }
     
@@ -34,12 +43,44 @@ class HomeKitchenFormViewController: UIViewController {
         setHomeKitchen()
     }
     
+    //MARK:- attaching Delegates
+    func attachDelegates(){
+        kitchenNameTextField.delegate = self
+        KitchenAddressTextField.delegate = self
+        kitchenOwnerTextField.delegate = self
+        kitchenContactNumberTextField.delegate = self
+        foodHandlingCertificateTextField.delegate = self
+        foodHygineCertificateTextField.delegate = self
+    }
     
     //MARK:- Configuring FireStore
     func configureFireBase(){
         fireStore = Firestore.firestore()
+        fireStorage = Storage.storage()
+        fireStorageReference = fireStorage?.reference(withPath:"HomeKitchensImage")
+        
     }
     
+    
+    //MARK:- Adding tap Gesture
+    func addTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectImageFromStorage))
+        kitchenImageView.addGestureRecognizer(tapGesture)
+        kitchenImageView.isUserInteractionEnabled = true
+    }
+    
+    //MARK:- selecting imageFromStorage
+    @objc func selectImageFromStorage(){
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //MARK:- ConfigureUI
+    func configureUI(){
+        kitchenImageView.setRounded()
+    }
     
     //MARK:- Send data to FireStore
     func setHomeKitchen(){
@@ -76,10 +117,21 @@ class HomeKitchenFormViewController: UIViewController {
         return true
     }
     
+    //MARK:- Uploading image To firebase
+    func uploadImageToFirebase(url:String?){
+        guard let url = url  else { return }
+        fireStorageReference?.putFile(from: URL(string: url)!, metadata: nil, completion: { (storageMetaData, error) in
+            guard let metaData = storageMetaData else {
+                return
+            }
+        })
+    }
+    
     
     //MARK:-- create dictionary for FireStore
     func createFireStoreDict() -> [String:Any]{
         let newHomeKitchen = HomeKitchen()
+        uploadImageToFirebase(url: imageUrl as? String)
         newHomeKitchen.kitchenId = kitchenId
         newHomeKitchen.kitchenName = kitchenNameTextField.text
         newHomeKitchen.kitchenOwner = kitchenOwnerTextField.text
@@ -147,5 +199,16 @@ extension HomeKitchenFormViewController:UITextFieldDelegate{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+
+extension HomeKitchenFormViewController:UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imageUrl = info[.imageURL]
+        guard let image = info[.editedImage] as? UIImage else {return}
+        kitchenImageView.image = image
+        kitchenImageView.setRounded()
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }
