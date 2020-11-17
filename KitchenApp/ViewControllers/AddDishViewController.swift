@@ -19,6 +19,7 @@ class AddDishViewController: UIViewController {
     @IBOutlet weak var dishNameLabel: UILabel!
     @IBOutlet weak var healthScoreLabel: UILabel!
     @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var topHandleView: UIView!
     
     var documentReference:DocumentReference?
     var fireStore:Firestore?
@@ -46,7 +47,10 @@ class AddDishViewController: UIViewController {
         guard let willAddDish = willAddDish else {return}
         if !willAddDish {
             addDishButton.isHidden = true
+        } else {
+            
         }
+        
         
      
         
