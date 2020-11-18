@@ -118,12 +118,19 @@ class HomeKitchenFormViewController: UIViewController{
     }
     
     //MARK:- Uploading image To firebase
-    func uploadImageToFirebase(url:String?){
-        guard let url = url  else { return }
-        fireStorageReference?.putFile(from: URL(string: url)!, metadata: nil, completion: { (storageMetaData, error) in
+    func uploadImageToFirebase(imageData:Data?,completion: @escaping (String)->Void){
+        guard let data = imageData  else { return }
+        let path = Constants.FIRE_STORAGE_IMAGE_FOLDER_NAME+"/"+UUID().uuidString+".png"
+        fireStorageReference?.child(path).putData(data, metadata: nil, completion: { (storageMetaData, error) in
             guard let metaData = storageMetaData else {
                 return
             }
+            self.fireStorageReference?.child(path).downloadURL(completion: { (url, error) in
+                guard let url = url  else {return}
+                //UserDefaults.standard.setValue(url, forKey: Constants.USERDEFAULTS_KITCHENIMAGEURL)
+                completion(url.absoluteString)
+            })
+            
         })
     }
     
@@ -131,20 +138,24 @@ class HomeKitchenFormViewController: UIViewController{
     //MARK:-- create dictionary for FireStore
     func createFireStoreDict() -> [String:Any]{
         let newHomeKitchen = HomeKitchen()
-        uploadImageToFirebase(url: imageUrl as? String)
+        
         newHomeKitchen.kitchenId = kitchenId
         newHomeKitchen.kitchenName = kitchenNameTextField.text
         newHomeKitchen.kitchenOwner = kitchenOwnerTextField.text
         newHomeKitchen.kitchenAddress = KitchenAddressTextField.text
         newHomeKitchen.kitchenContactNumber = kitchenContactNumberTextField.text
-        
         let newUser = User(userName:UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_USERNAME) , password:UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_PASSOWRD))
-        
         newHomeKitchen.userCredentials = newUser
-        
         newHomeKitchen.kitchenDishesCollectionReference = Utilities.MD5(string:kitchenNameTextField.text! + String(Utilities.currentTimeInSeconds()))
         newHomeKitchen.kitchenOrdersCollectionReference = Utilities.MD5(string:newUser.userName! + newUser.password! + kitchenId!)
-    
+        let semaphore = DispatchSemaphore.init(value:1)
+        
+        uploadImageToFirebase(imageData: kitchenImageView.image?.pngData(), completion: { (url) in
+            newHomeKitchen.kitchenImageURL = url
+            semaphore.signal()
+        })
+        semaphore.wait()
+        
         return newHomeKitchen.convertToDictionary()
     }
     

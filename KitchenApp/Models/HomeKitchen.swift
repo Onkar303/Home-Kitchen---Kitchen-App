@@ -23,6 +23,7 @@ class HomeKitchen:NSObject,Decodable {
     var kitchenId:String?
     var kitchenDishesCollectionReference:String?
     var kitchenOrdersCollectionReference:String?
+    var kitchenImageURL:String?
     
     
     enum Keys:String,CodingKey {
@@ -37,6 +38,7 @@ class HomeKitchen:NSObject,Decodable {
         case kitchenId
         case kitchenDishesCollectionReference
         case kitchenOrdersCollectionReference
+        case kitchenImageURL
     }
     
     
@@ -55,7 +57,7 @@ class HomeKitchen:NSObject,Decodable {
         dictionary["kitchenID"] = kitchenId
         dictionary["kitchenDishesCollectionReference"] = kitchenDishesCollectionReference
         dictionary["kitchenOrdersCollectionReference"] = kitchenOrdersCollectionReference
-        
+        dictionary["kitchenImageURL"] = kitchenImageURL
         return dictionary
     }
     

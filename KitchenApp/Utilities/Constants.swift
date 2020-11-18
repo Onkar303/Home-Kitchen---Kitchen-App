@@ -78,6 +78,7 @@ class Constants{
     
     //MARK:- Firestore Constants
     static let FIRE_STORE_HOME_KITCHEN_COLLECTION_NAME = "HomeKitchens"
+    static let FIRE_STORAGE_IMAGE_FOLDER_NAME = "HomeKitchenImages"
     
     
     
@@ -102,5 +103,6 @@ extension Constants{
     static let USERDEFAULTS_KITCHENCONTACTNUMBER="kitchenContactNumber"
     static let USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE = "kitchenDishesCollectionReference"
     static let USERDEFAULTS_KITCHENORDERSCOLLECTIONREFERENCE = "kitchenOrdersCollectionReference"
+    static let USERDEFAULTS_KITCHENIMAGEURL = "kitchenImageURL"
 }
 

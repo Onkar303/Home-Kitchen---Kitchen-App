@@ -47,6 +47,7 @@ class Utilities {
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENCONTACTNUMBER], forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE], forKey: Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE)
         userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENORDERSCOLLECTIONREFERENCE], forKey: Constants.USERDEFAULTS_KITCHENORDERSCOLLECTIONREFERENCE)
+        userDefaults.setValue(homeKitchenDictionary[Constants.USERDEFAULTS_KITCHENIMAGEURL], forKey: Constants.USERDEFAULTS_KITCHENIMAGEURL)
         
     }
     

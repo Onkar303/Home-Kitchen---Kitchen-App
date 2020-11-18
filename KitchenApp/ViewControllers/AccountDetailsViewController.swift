@@ -19,6 +19,8 @@ class AccountDetailsViewController: UIViewController {
     var authController:Auth?
     var kitcheImage:UIImage?
     var accountParams:[String] = Constants.ACCOUNT_INFO_PARAMS
+    var fireStorage:Storage?
+    var firebaseStorageReference:StorageReference?
     
     let ACCOUNT_IMAGE_SECTION = 0
     let ACCOUNT_PARAM_SECTION = 1
@@ -39,16 +41,19 @@ class AccountDetailsViewController: UIViewController {
     //MARK:- Instanitate Auth
     func configureFirebase(){
         authController = Auth.auth()
+        fireStorage = Storage.storage()
+      
         
+    }
+    
+    func generateRandomString()->String{
+        return UUID().uuidString
     }
     
     //MARK:- Configure UI
     func configureUI(){
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .automatic
-        
-       
-        
     }
     
     //MARK:- Attach Delegates
@@ -74,6 +79,25 @@ class AccountDetailsViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: .main)
         let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginNavigationController")
         UIApplication.shared.windows.first?.rootViewController = loginViewController
+    }
+    
+    //MARK:- Uploading Image to FireBase
+    func uploadImage(){
+        firebaseStorageReference = fireStorage?.reference()
+        let imageName = generateRandomString()
+        guard let data = kitcheImage?.pngData() else {return}
+        firebaseStorageReference?.child("HomeKitchenImages/"+imageName+".png").putData(data, metadata: nil, completion: { (storageMetaData, error) in
+            if let error = error {
+                print("error upload file \(error)")
+            }
+            
+            self.firebaseStorageReference?.child("HomeKitchenImages/"+imageName+".png").downloadURL(completion: { (url, error) in
+                let url = url!.absoluteURL
+                print(url)
+            })
+        })
+        
+      
     }
     
     
@@ -145,7 +169,6 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
         
         if indexPath.section == ACCOUNT_IMAGE_SECTION {
             let cell = tableView.dequeueReusableCell(withIdentifier:AccountTableViewImageCell.CELL_IDENTIFIER , for: indexPath) as! AccountTableViewImageCell
-            
             if kitcheImage != nil {
                 cell.kitchenImageView.image = kitcheImage
             }
@@ -239,7 +262,10 @@ extension AccountDetailsViewController:UIImagePickerControllerDelegate,UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         kitcheImage = info[.editedImage] as? UIImage
         accountTableView.reloadData()
-        imagePicker?.dismiss(animated: true, completion: nil)
+        imagePicker?.dismiss(animated: true, completion: {
+            self.uploadImage()
+        })
+        
     }
 }
 
