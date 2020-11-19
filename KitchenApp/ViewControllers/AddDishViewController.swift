@@ -91,8 +91,8 @@ class AddDishViewController: UIViewController {
     
     //MARK:- Fetching
     @IBAction func AddDish(_ sender: Any) {
-        //addDishConfirmation()
-        addDishOffline()
+        addDishConfirmation()
+        //0addDishOffline()
     }
     
  

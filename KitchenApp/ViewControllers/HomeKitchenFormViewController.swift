@@ -148,6 +148,9 @@ class HomeKitchenFormViewController: UIViewController{
         newHomeKitchen.userCredentials = newUser
         newHomeKitchen.kitchenDishesCollectionReference = Utilities.MD5(string:kitchenNameTextField.text! + String(Utilities.currentTimeInSeconds()))
         newHomeKitchen.kitchenOrdersCollectionReference = Utilities.MD5(string:newUser.userName! + newUser.password! + kitchenId!)
+        newHomeKitchen.foodHandlingCertificate = foodHandlingCertificateTextField.text
+        newHomeKitchen.foodAndHygineCertificate = foodHygineCertificateTextField.text
+        
         let semaphore = DispatchSemaphore.init(value:1)
         
         uploadImageToFirebase(imageData: kitchenImageView.image?.pngData(), completion: { (url) in

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lRH-YM-P2O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lRH-YM-P2O">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXX-MJ-t69">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1022.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03t-rX-kja">
                                                 <rect key="frame" x="20" y="32" width="116" height="116"/>
@@ -134,7 +134,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="LXX-MJ-t69" firstAttribute="height" secondItem="g6d-jQ-hRK" secondAttribute="height" constant="50" id="6gw-OQ-lEY"/>
+                                    <constraint firstItem="LXX-MJ-t69" firstAttribute="height" secondItem="g6d-jQ-hRK" secondAttribute="height" multiplier="1.8" id="6gw-OQ-lEY"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="bottom" secondItem="QVW-TL-1P9" secondAttribute="bottom" id="OUd-tr-dqL"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="width" secondItem="g6d-jQ-hRK" secondAttribute="width" id="VU8-uR-YcZ"/>
                                     <constraint firstItem="LXX-MJ-t69" firstAttribute="trailing" secondItem="QVW-TL-1P9" secondAttribute="trailing" id="iu9-BF-FIX"/>
