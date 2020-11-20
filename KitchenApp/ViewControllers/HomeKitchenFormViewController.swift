@@ -4,15 +4,20 @@
 //
 //  Created by Techlocker on 6/11/20.
 //
+// Dropdown library retrived from :- https://www.youtube.com/watch?v=-tpJMQRSl_o&ab_channel=iOSAcademy
+
+
 
 import UIKit
 import FirebaseFirestore
 import FirebaseStorage
+import DropDown
 
 class HomeKitchenFormViewController: UIViewController{
 
     static let STORYBOARD_IDENTIFIER = "HomeKitchenFormViewController"
     
+    @IBOutlet weak var kitchenCuisineTextField: UITextField!
     @IBOutlet weak var kitchenImageView: UIImageView!
     @IBOutlet weak var kitchenNameTextField: UITextField!
     @IBOutlet weak var KitchenAddressTextField: UITextField!
@@ -27,6 +32,7 @@ class HomeKitchenFormViewController: UIViewController{
     var fireStorageReference:StorageReference?
     var imagePicker:UIImagePickerController!
     var imageUrl:Any?
+    var menuDropDown:DropDown!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +70,16 @@ class HomeKitchenFormViewController: UIViewController{
     
     //MARK:- Adding tap Gesture
     func addTapGesture(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectImageFromStorage))
-        kitchenImageView.addGestureRecognizer(tapGesture)
+        let tapGestureForImageView = UITapGestureRecognizer(target: self, action: #selector(selectImageFromStorage))
+        kitchenImageView.addGestureRecognizer(tapGestureForImageView)
         kitchenImageView.isUserInteractionEnabled = true
+        
+        let tapGestureForCusine = UITapGestureRecognizer(target: self, action: #selector(showDropDown))
+        kitchenCuisineTextField.addGestureRecognizer(tapGestureForCusine)
+        kitchenCuisineTextField.isUserInteractionEnabled = true
     }
+    
+    
     
     //MARK:- selecting imageFromStorage
     @objc func selectImageFromStorage(){
@@ -77,9 +89,20 @@ class HomeKitchenFormViewController: UIViewController{
         present(imagePicker, animated: true, completion: nil)
     }
     
+    //MARK:- showing the drop down menu
+    @objc func showDropDown(){
+        menuDropDown.show()
+    }
+    
     //MARK:- ConfigureUI
     func configureUI(){
         kitchenImageView.setRounded()
+        menuDropDown = DropDown()
+        menuDropDown.dataSource = Constants.SPPONOCULAR_CUISINE_CATEGORY
+        menuDropDown.anchorView = kitchenCuisineTextField
+        menuDropDown.selectionAction = {index,title in
+            self.kitchenCuisineTextField.text = title
+        }
     }
     
     //MARK:- Send data to FireStore
@@ -150,14 +173,15 @@ class HomeKitchenFormViewController: UIViewController{
         newHomeKitchen.kitchenOrdersCollectionReference = Utilities.MD5(string:newUser.userName! + newUser.password! + kitchenId!)
         newHomeKitchen.foodHandlingCertificate = foodHandlingCertificateTextField.text
         newHomeKitchen.foodAndHygineCertificate = foodHygineCertificateTextField.text
+        newHomeKitchen.kitchenCuisine = kitchenCuisineTextField.text
         
-        let semaphore = DispatchSemaphore.init(value:1)
-        
-        uploadImageToFirebase(imageData: kitchenImageView.image?.pngData(), completion: { (url) in
-            newHomeKitchen.kitchenImageURL = url
-            semaphore.signal()
-        })
-        semaphore.wait()
+//        let semaphore = DispatchSemaphore.init(value:1)
+//        
+//        uploadImageToFirebase(imageData: kitchenImageView.image?.pngData(), completion: { (url) in
+//            newHomeKitchen.kitchenImageURL = url
+//            semaphore.signal()
+//        })
+//        semaphore.wait()
         
         return newHomeKitchen.convertToDictionary()
     }

@@ -107,29 +107,34 @@ class AccountDetailsViewController: UIViewController {
     }
     
     //MARK:- Presenting FormController Modally
-    func showFormController(indexPath:IndexPath){
+    func showFormController(indexPath:IndexPath,enableDropDown:Bool){
         let storyBoard = UIStoryboard(name: "FromStoryboard", bundle: .main)
         let formViewController = storyBoard.instantiateViewController(identifier: FormViewController.STORYBOARD_IDENTIFIER) as! FormViewController
         formViewController.titleLabel = accountParams[indexPath.row]
+        formViewController.enableDropDown = enableDropDown
         formViewController.value = getUserInfo(titleLabel: accountParams[indexPath.row])
         formViewController.responseDelegate = self
         present(formViewController, animated: true, completion: nil)
         
     }
 
+    //MARK:- Fetching User Defaults Data
     func getUserInfo(titleLabel:String) -> String? {
         
         
         if titleLabel == Constants.ACCOUNT_PASSWORD_PARAM{
             return "*******"
         }else if titleLabel == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
-            return Utilities.homeKitchenName
+            return UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCEHNNAME)
         } else if titleLabel == Constants.ACCOUNT_KITCHEN_OWNER_PARAM {
-            return Utilities.homeKitchenOwner
+            return UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENOWNER)
         } else if titleLabel == Constants.ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM {
-            return Utilities.homeKitchenContactNumber
-        } else {
-            return Utilities.homeKitchenAddress
+            return UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)
+        } else if titleLabel == Constants.ACCOUNT_KITCHEN_CUISINE_PARAM{
+            return UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENCUISINE)
+        }
+        else {
+            return UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENADDRESS)
         }
         
     }
@@ -189,7 +194,9 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
                 cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENOWNER)
             } else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_CONTACT_NUMBER_PARAM {
                 cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENCONTACTNUMBER)
-            } else {
+            }else if accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_CUISINE_PARAM {
+                cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENCUISINE)
+            }else {
                 cell.accountDetailsValue.text = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KITCHENADDRESS)
             }
             cell.accessoryType = .disclosureIndicator
@@ -211,11 +218,15 @@ extension AccountDetailsViewController:UITableViewDelegate,UITableViewDataSource
             return
         }
         
+        if indexPath.section == ACCOUNT_PARAM_SECTION , accountParams[indexPath.row] == Constants.ACCOUNT_KITCHEN_CUISINE_PARAM{
+            showFormController(indexPath: indexPath,enableDropDown: true)
+        }
+        
         if indexPath.section == ACCOUNT_SIGNOUT_SECTION {
             signOut()
             return
         }
-        showFormController(indexPath: indexPath)
+        showFormController(indexPath: indexPath,enableDropDown: false)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -20,80 +20,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoU-xJ-TUD">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="767"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="823.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xaz-oF-52b">
-                                                <rect key="frame" x="20" y="204.5" width="280" height="34"/>
+                                                <rect key="frame" x="20" y="199.5" width="280" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRL-WI-GOP">
-                                                <rect key="frame" x="20" y="263.5" width="280" height="24.5"/>
+                                                <rect key="frame" x="20" y="253.5" width="280" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVx-MT-8LU">
-                                                <rect key="frame" x="20" y="296" width="280" height="34"/>
+                                                <rect key="frame" x="20" y="281" width="280" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1M-Ub-ykX">
-                                                <rect key="frame" x="20" y="387.5" width="280" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGa-pz-hSb">
-                                                <rect key="frame" x="20" y="355" width="280" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3O-9B-yrk">
-                                                <rect key="frame" x="20" y="446.5" width="280" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dh-tq-AOr">
-                                                <rect key="frame" x="20" y="479" width="280" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food &amp; Hygine Certificate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U65-CR-68J">
-                                                <rect key="frame" x="20" y="624.5" width="280" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oee-a1-v0D">
-                                                <rect key="frame" x="20" y="657" width="280" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Handling Certificate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qel-WM-IcH">
-                                                <rect key="frame" x="20" y="538" width="280" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P1-oT-Y5Y">
-                                                <rect key="frame" x="20" y="721" width="280" height="30"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                                <state key="normal" title="Create Kitchen">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="createKitchenTapped:" destination="6QV-Pr-KVi" eventType="touchUpInside" id="Fhk-Nb-45h"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ku6-LS-o8c">
-                                                <rect key="frame" x="20" y="565.5" width="280" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6FW-Hj-Mdl">
-                                                <rect key="frame" x="20" y="25" width="122" height="122"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill.on.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6FW-Hj-Mdl">
+                                                <rect key="frame" x="20" y="25.5" width="122" height="121.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="6FW-Hj-Mdl" secondAttribute="height" multiplier="1:1" id="XEM-Po-WKG"/>
                                                 </constraints>
@@ -113,25 +59,93 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Cuisine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5k-eK-87s">
+                                                <rect key="frame" x="20" y="331" width="280" height="25"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5bV-yO-h0X">
+                                                <rect key="frame" x="20" y="359" width="280" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1M-Ub-ykX">
+                                                <rect key="frame" x="20" y="440.5" width="280" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGa-pz-hSb">
+                                                <rect key="frame" x="20" y="413" width="280" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3O-9B-yrk">
+                                                <rect key="frame" x="20" y="494.5" width="280" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dh-tq-AOr">
+                                                <rect key="frame" x="20" y="522" width="280" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food &amp; Hygine Certificate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U65-CR-68J">
+                                                <rect key="frame" x="20" y="657.5" width="280" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oee-a1-v0D">
+                                                <rect key="frame" x="20" y="685" width="280" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Handling Certificate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qel-WM-IcH">
+                                                <rect key="frame" x="20" y="576" width="280" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P1-oT-Y5Y">
+                                                <rect key="frame" x="20" y="749" width="280" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <state key="normal" title="Create Kitchen">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="createKitchenTapped:" destination="6QV-Pr-KVi" eventType="touchUpInside" id="Fhk-Nb-45h"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ku6-LS-o8c">
+                                                <rect key="frame" x="20" y="603.5" width="280" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="5bV-yO-h0X" firstAttribute="top" secondItem="P5k-eK-87s" secondAttribute="bottom" constant="3" id="1BA-ca-u1r"/>
                                             <constraint firstItem="qel-WM-IcH" firstAttribute="leading" secondItem="9dh-tq-AOr" secondAttribute="leading" id="1vD-Hc-YGZ"/>
-                                            <constraint firstItem="9dh-tq-AOr" firstAttribute="top" secondItem="k3O-9B-yrk" secondAttribute="bottom" constant="8" symbolic="YES" id="5gJ-K3-XKl"/>
+                                            <constraint firstItem="5bV-yO-h0X" firstAttribute="trailing" secondItem="P5k-eK-87s" secondAttribute="trailing" id="5dn-TR-ZiA"/>
+                                            <constraint firstItem="9dh-tq-AOr" firstAttribute="top" secondItem="k3O-9B-yrk" secondAttribute="bottom" constant="3" id="5gJ-K3-XKl"/>
                                             <constraint firstItem="Ku6-LS-o8c" firstAttribute="top" secondItem="qel-WM-IcH" secondAttribute="bottom" constant="3" id="C9v-u4-vNw"/>
                                             <constraint firstItem="6FW-Hj-Mdl" firstAttribute="top" secondItem="VoU-xJ-TUD" secondAttribute="top" constant="25" id="CLI-9L-dn8"/>
-                                            <constraint firstItem="k3O-9B-yrk" firstAttribute="top" secondItem="c1M-Ub-ykX" secondAttribute="bottom" constant="25" id="Ceg-Z7-mVk"/>
+                                            <constraint firstItem="k3O-9B-yrk" firstAttribute="top" secondItem="c1M-Ub-ykX" secondAttribute="bottom" constant="20" id="Ceg-Z7-mVk"/>
                                             <constraint firstItem="4P1-oT-Y5Y" firstAttribute="trailing" secondItem="oee-a1-v0D" secondAttribute="trailing" id="ENr-DX-Ipo"/>
                                             <constraint firstItem="DRL-WI-GOP" firstAttribute="leading" secondItem="Xaz-oF-52b" secondAttribute="leading" id="FIG-wl-Bai"/>
                                             <constraint firstItem="oee-a1-v0D" firstAttribute="leading" secondItem="U65-CR-68J" secondAttribute="leading" id="FQx-Ns-RYg"/>
                                             <constraint firstItem="DVx-MT-8LU" firstAttribute="trailing" secondItem="DRL-WI-GOP" secondAttribute="trailing" id="FWX-mt-SP5"/>
-                                            <constraint firstItem="Xaz-oF-52b" firstAttribute="top" secondItem="aL7-mW-DcR" secondAttribute="bottom" constant="8" symbolic="YES" id="IhL-0s-Bkv"/>
+                                            <constraint firstItem="Xaz-oF-52b" firstAttribute="top" secondItem="aL7-mW-DcR" secondAttribute="bottom" constant="3" id="IhL-0s-Bkv"/>
                                             <constraint firstItem="Xaz-oF-52b" firstAttribute="trailing" secondItem="aL7-mW-DcR" secondAttribute="trailing" id="JwL-qi-5Oa"/>
-                                            <constraint firstItem="rGa-pz-hSb" firstAttribute="leading" secondItem="DVx-MT-8LU" secondAttribute="leading" id="MKi-51-gra"/>
                                             <constraint firstItem="LJR-Cc-vQn" firstAttribute="centerY" secondItem="6FW-Hj-Mdl" secondAttribute="centerY" id="OCt-qN-epO"/>
+                                            <constraint firstItem="rGa-pz-hSb" firstAttribute="trailing" secondItem="5bV-yO-h0X" secondAttribute="trailing" id="PMY-w7-OJO"/>
                                             <constraint firstItem="4P1-oT-Y5Y" firstAttribute="top" secondItem="oee-a1-v0D" secondAttribute="bottom" constant="30" id="RKx-P4-Rxh"/>
                                             <constraint firstItem="4P1-oT-Y5Y" firstAttribute="leading" secondItem="oee-a1-v0D" secondAttribute="leading" id="SFj-ku-sm9"/>
                                             <constraint firstItem="6FW-Hj-Mdl" firstAttribute="leading" secondItem="VoU-xJ-TUD" secondAttribute="leading" constant="20" symbolic="YES" id="TT2-AA-d7w"/>
+                                            <constraint firstItem="rGa-pz-hSb" firstAttribute="top" secondItem="5bV-yO-h0X" secondAttribute="bottom" constant="20" id="Twl-RO-VHL"/>
                                             <constraint firstItem="9dh-tq-AOr" firstAttribute="trailing" secondItem="k3O-9B-yrk" secondAttribute="trailing" id="TzY-ID-9Qx"/>
                                             <constraint firstItem="aL7-mW-DcR" firstAttribute="top" secondItem="6FW-Hj-Mdl" secondAttribute="bottom" constant="25" id="U6Z-Sy-URL"/>
                                             <constraint firstItem="U65-CR-68J" firstAttribute="trailing" secondItem="Ku6-LS-o8c" secondAttribute="trailing" id="VNF-B6-gTa"/>
@@ -141,23 +155,26 @@
                                             <constraint firstItem="qel-WM-IcH" firstAttribute="trailing" secondItem="9dh-tq-AOr" secondAttribute="trailing" id="YC2-Bx-NB7"/>
                                             <constraint firstItem="LJR-Cc-vQn" firstAttribute="trailing" secondItem="aL7-mW-DcR" secondAttribute="trailing" id="YK1-TL-wl2"/>
                                             <constraint firstItem="9dh-tq-AOr" firstAttribute="leading" secondItem="k3O-9B-yrk" secondAttribute="leading" id="Zoi-6r-sum"/>
+                                            <constraint firstItem="5bV-yO-h0X" firstAttribute="leading" secondItem="P5k-eK-87s" secondAttribute="leading" id="a7u-Tw-Y1Y"/>
                                             <constraint firstItem="DRL-WI-GOP" firstAttribute="trailing" secondItem="Xaz-oF-52b" secondAttribute="trailing" id="aMI-W3-fHx"/>
-                                            <constraint firstItem="U65-CR-68J" firstAttribute="top" secondItem="Ku6-LS-o8c" secondAttribute="bottom" constant="25" id="b2b-m2-yz3"/>
+                                            <constraint firstItem="U65-CR-68J" firstAttribute="top" secondItem="Ku6-LS-o8c" secondAttribute="bottom" constant="20" id="b2b-m2-yz3"/>
                                             <constraint firstItem="aL7-mW-DcR" firstAttribute="leading" secondItem="VoU-xJ-TUD" secondAttribute="leading" constant="20" symbolic="YES" id="bSc-g1-2CN"/>
                                             <constraint firstItem="Xaz-oF-52b" firstAttribute="leading" secondItem="aL7-mW-DcR" secondAttribute="leading" id="dKD-dY-JSt"/>
                                             <constraint firstItem="U65-CR-68J" firstAttribute="leading" secondItem="Ku6-LS-o8c" secondAttribute="leading" id="eZa-z6-2Kt"/>
-                                            <constraint firstItem="qel-WM-IcH" firstAttribute="top" secondItem="9dh-tq-AOr" secondAttribute="bottom" constant="25" id="evk-L1-sKH"/>
+                                            <constraint firstItem="qel-WM-IcH" firstAttribute="top" secondItem="9dh-tq-AOr" secondAttribute="bottom" constant="20" id="evk-L1-sKH"/>
+                                            <constraint firstItem="P5k-eK-87s" firstAttribute="top" secondItem="DVx-MT-8LU" secondAttribute="bottom" constant="16" id="hve-Tb-fl1"/>
                                             <constraint firstItem="k3O-9B-yrk" firstAttribute="leading" secondItem="c1M-Ub-ykX" secondAttribute="leading" id="hwy-fY-HBn"/>
+                                            <constraint firstItem="P5k-eK-87s" firstAttribute="leading" secondItem="DVx-MT-8LU" secondAttribute="leading" id="jIV-xz-ZMW"/>
                                             <constraint firstItem="k3O-9B-yrk" firstAttribute="trailing" secondItem="c1M-Ub-ykX" secondAttribute="trailing" id="jKk-Yy-qJA"/>
-                                            <constraint firstItem="rGa-pz-hSb" firstAttribute="trailing" secondItem="DVx-MT-8LU" secondAttribute="trailing" id="kgF-WZ-TTC"/>
                                             <constraint firstItem="Ku6-LS-o8c" firstAttribute="leading" secondItem="qel-WM-IcH" secondAttribute="leading" id="oUd-WO-bAl"/>
                                             <constraint firstItem="DVx-MT-8LU" firstAttribute="leading" secondItem="DRL-WI-GOP" secondAttribute="leading" id="ptk-jC-kFO"/>
-                                            <constraint firstItem="rGa-pz-hSb" firstAttribute="top" secondItem="DVx-MT-8LU" secondAttribute="bottom" constant="25" id="sgz-AJ-r9A"/>
-                                            <constraint firstItem="c1M-Ub-ykX" firstAttribute="top" secondItem="rGa-pz-hSb" secondAttribute="bottom" constant="8" symbolic="YES" id="tHJ-be-K20"/>
-                                            <constraint firstItem="DVx-MT-8LU" firstAttribute="top" secondItem="DRL-WI-GOP" secondAttribute="bottom" constant="8" symbolic="YES" id="we0-mt-WlI"/>
-                                            <constraint firstItem="DRL-WI-GOP" firstAttribute="top" secondItem="Xaz-oF-52b" secondAttribute="bottom" constant="25" id="ySs-Vd-LnC"/>
+                                            <constraint firstItem="c1M-Ub-ykX" firstAttribute="top" secondItem="rGa-pz-hSb" secondAttribute="bottom" constant="3" id="tHJ-be-K20"/>
+                                            <constraint firstItem="rGa-pz-hSb" firstAttribute="leading" secondItem="5bV-yO-h0X" secondAttribute="leading" id="td1-bw-y41"/>
+                                            <constraint firstItem="P5k-eK-87s" firstAttribute="trailing" secondItem="DVx-MT-8LU" secondAttribute="trailing" id="vv2-64-HhC"/>
+                                            <constraint firstItem="DVx-MT-8LU" firstAttribute="top" secondItem="DRL-WI-GOP" secondAttribute="bottom" constant="3" id="we0-mt-WlI"/>
+                                            <constraint firstItem="DRL-WI-GOP" firstAttribute="top" secondItem="Xaz-oF-52b" secondAttribute="bottom" constant="20" id="ySs-Vd-LnC"/>
                                             <constraint firstItem="c1M-Ub-ykX" firstAttribute="trailing" secondItem="rGa-pz-hSb" secondAttribute="trailing" id="yeW-lc-71K"/>
-                                            <constraint firstItem="oee-a1-v0D" firstAttribute="top" secondItem="U65-CR-68J" secondAttribute="bottom" constant="8" symbolic="YES" id="ynj-g0-CVd"/>
+                                            <constraint firstItem="oee-a1-v0D" firstAttribute="top" secondItem="U65-CR-68J" secondAttribute="bottom" constant="3" id="ynj-g0-CVd"/>
                                             <constraint firstAttribute="trailing" secondItem="aL7-mW-DcR" secondAttribute="trailing" constant="20" symbolic="YES" id="zJ9-nb-BRd"/>
                                             <constraint firstItem="LJR-Cc-vQn" firstAttribute="leading" secondItem="6FW-Hj-Mdl" secondAttribute="trailing" constant="8" symbolic="YES" id="zen-5S-wBl"/>
                                         </constraints>
@@ -165,7 +182,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="VoU-xJ-TUD" firstAttribute="width" secondItem="sKr-A0-zkt" secondAttribute="width" id="29B-ko-nga"/>
-                                    <constraint firstItem="VoU-xJ-TUD" firstAttribute="height" secondItem="sKr-A0-zkt" secondAttribute="height" multiplier="1.35" id="A3N-vT-yJd"/>
+                                    <constraint firstItem="VoU-xJ-TUD" firstAttribute="height" secondItem="sKr-A0-zkt" secondAttribute="height" multiplier="1.45" id="A3N-vT-yJd"/>
                                     <constraint firstItem="VoU-xJ-TUD" firstAttribute="trailing" secondItem="jeh-c3-cPb" secondAttribute="trailing" id="Td6-Hl-ptM"/>
                                     <constraint firstItem="VoU-xJ-TUD" firstAttribute="top" secondItem="jeh-c3-cPb" secondAttribute="top" id="mWW-bN-hSS"/>
                                     <constraint firstItem="VoU-xJ-TUD" firstAttribute="bottom" secondItem="jeh-c3-cPb" secondAttribute="bottom" id="nkD-Ql-4AS"/>
@@ -189,6 +206,7 @@
                         <outlet property="foodHandlingCertificateTextField" destination="Ku6-LS-o8c" id="1i8-Kh-3ei"/>
                         <outlet property="foodHygineCertificateTextField" destination="oee-a1-v0D" id="CVO-A1-K2J"/>
                         <outlet property="kitchenContactNumberTextField" destination="9dh-tq-AOr" id="6N6-9x-ZJs"/>
+                        <outlet property="kitchenCuisineTextField" destination="5bV-yO-h0X" id="won-SE-db7"/>
                         <outlet property="kitchenImageView" destination="6FW-Hj-Mdl" id="Unq-6v-mwU"/>
                         <outlet property="kitchenNameTextField" destination="Xaz-oF-52b" id="8TZ-ff-8uH"/>
                         <outlet property="kitchenOwnerTextField" destination="c1M-Ub-ykX" id="gdl-qt-0H1"/>
@@ -200,6 +218,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

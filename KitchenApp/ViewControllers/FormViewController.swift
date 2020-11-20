@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import DropDown
 
 class FormViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class FormViewController: UIViewController {
     var value:String?
     var firebaseAuth:Auth?
     var firesStore:Firestore?
+    var menuDropDown:DropDown?
+    var enableDropDown:Bool!
     var responseDelegate:ResponseDelegate?
     
     override func viewDidLoad() {
@@ -39,6 +42,28 @@ class FormViewController: UIViewController {
         if paramTitleLabel.text == Constants.ACCOUNT_PASSWORD_PARAM {
             commonTextField.isSecureTextEntry = true
         }
+        
+        if enableDropDown {
+            addTapGesture()
+            menuDropDown = DropDown()
+            menuDropDown?.dataSource = Constants.SPPONOCULAR_CUISINE_CATEGORY
+            menuDropDown?.anchorView = commonTextField
+            menuDropDown?.selectionAction = { index, title in
+                self.commonTextField.text = Constants.SPPONOCULAR_CUISINE_CATEGORY[index]
+            }
+        }
+    }
+    
+    //MARK:- Add Tap gesture for Textfield
+    func addTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDropDown))
+        commonTextField.addGestureRecognizer(tapGesture)
+        commonTextField.isUserInteractionEnabled = true
+    }
+    
+    //MARK:- showing dropDown
+    @objc func showDropDown(){
+        menuDropDown?.show()
     }
     
     //MARK:- Configure firebase
@@ -54,12 +79,14 @@ class FormViewController: UIViewController {
         
         if title == "Password"{
             changePassword(password: text)
-        }else if title == "Kitchen Name"{
+        }else if title == Constants.ACCOUNT_KITCHEN_NAME_PARAM{
             updateHomeKitchen(updateField:Constants.USERDEFAULTS_KITCEHNNAME , text: text)
-        }else if title == "Owner"{
+        }else if title == Constants.ACCOUNT_KITCHEN_OWNER_PARAM{
             updateHomeKitchen(updateField:Constants.USERDEFAULTS_KITCHENOWNER , text: text)
-        }else if title == "Address" {
+        }else if title == Constants.ACCOUNT_KITCHEN_ADDRESS_PARAM {
             updateHomeKitchen(updateField:Constants.USERDEFAULTS_KITCHENADDRESS , text: text)
+        } else if title == Constants.ACCOUNT_KITCHEN_CUISINE_PARAM {
+            updateHomeKitchen(updateField:Constants.USERDEFAULTS_KITCHENCUISINE , text: text)
         } else {
             updateHomeKitchen(updateField:Constants.USERDEFAULTS_KITCHENCONTACTNUMBER , text: text)
         }

@@ -81,18 +81,6 @@ class AddDishViewController: UIViewController, UITextFieldDelegate {
         databaseController = (UIApplication.shared.delegate as! AppDelegate).databaseController
     }
     
-    //MARK:-Adding New Dish to FireStore
-    func setDish(){
-        let reference = fireStore?.collection("/Sample").document("/FirstSampleData")
-        let dataToSave:[String:Any] = ["name":"aryan","surname":"kalpavriksha"]
-        reference?.setData(dataToSave) { (error) in
-            if let error = error {
-                print("an error occured while saving the data \(error)")
-            }
-        }
-        
-        
-    }
     
     // MARK:- Function for tap Gesture - Summary Label
     func addTapGesture(){
@@ -102,6 +90,7 @@ class AddDishViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //MARK:- Going to Summary Controller
     @objc func segueToSummaryController(){
         let storyboard = UIStoryboard(name:"SummaryLabel", bundle: .main)
         let summaryController = storyboard.instantiateViewController(identifier: SummaryViewController.STORYBOARD_IDENTIFIER) as! SummaryViewController
@@ -111,6 +100,7 @@ class AddDishViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //MARK:- Handling add Dish Button
     @IBAction func addDishButton(_ sender: Any) {
         priceValidation()
     }
@@ -154,7 +144,7 @@ class AddDishViewController: UIViewController, UITextFieldDelegate {
         let alert = UIAlertController(title:"Alert" , message: "Please Enter the Price", preferredStyle:.alert )
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         if inputStr.isEmpty{
-            alert.message = "Please Enter Dish Price value"
+            alert.message = "Please Enter Dish Price To Proceed"
             self.present(alert, animated: true, completion: nil)
         }else{
             let inputInt = Int(inputStr)

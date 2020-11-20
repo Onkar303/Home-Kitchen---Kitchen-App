@@ -41,7 +41,7 @@ class SignUpViewController: UIViewController {
     
     //MARK:-Configure UI
     func configureUI(){
-        passwordTextField.isSecureTextEntry = true
+        //passwordTextField.isSecureTextEntry = true
     }
     
     
