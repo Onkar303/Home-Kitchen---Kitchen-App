@@ -52,7 +52,7 @@ class DishInformation:NSObject,Decodable{
         vegan = try? dishContainer.decode(Bool.self, forKey: .vegan)
         dairyFree = try? dishContainer.decode(Bool.self, forKey: .dairyFree)
         veryPopular = try? dishContainer.decode(Bool.self, forKey: .veryPopular)
-       // price = try? dishContainer.decode(Int.self, forKey: .price)
+        price = try? dishContainer.decode(Int.self, forKey: .price)
     }
     
     func converToDictionary() -> [String:Any] {

@@ -138,10 +138,18 @@ class CurrentDishesViewController: UIViewController {
     func segueToAddDishViewController(dishId:Int?){
         guard let dishId=dishId else {return}
         let storyBoard = UIStoryboard(name:"AddDishStoryboard", bundle: .main)
-        let addDishViewController = storyBoard.instantiateViewController(identifier: AddDishViewController.SCREEN_IDENTIFIER) as! AddDishViewController
+        let addDishViewController = storyBoard.instantiateViewController(identifier: AddDishViewController.STORYBOARD_IDENTIFIER) as! AddDishViewController
         addDishViewController.dishId = dishId
-        addDishViewController.willAddDish = false
-        self.navigationController?.present(addDishViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addDishViewController, animated: true)
+    }
+
+    //MARK:- Segue To dishDetails View Controller
+    func segueToDishDetailsViewController(indexPath:IndexPath?){
+        guard let indexPath=indexPath else {return}
+        let storyBoard = UIStoryboard(name:"DishDetailsStoryboard", bundle: .main)
+        let dishDetailsViewController = storyBoard.instantiateViewController(identifier: DishDetailsViewController.STORYBOARD_IDENTIFIER) as! DishDetailsViewController
+        dishDetailsViewController.dishInformation = filteredCurrentDishes[indexPath.row]
+        self.navigationController?.present(dishDetailsViewController, animated: true, completion: nil)
     }
     
     //MARK:- fetch All Saved Dishes
@@ -225,7 +233,7 @@ extension CurrentDishesViewController : UITableViewDelegate,UITableViewDataSourc
             segueToAddDishViewController(dishId:Int(filteredSavedDishesFromDatabase[indexPath.row].id))
             return
         }
-        segueToAddDishViewController(dishId: filteredCurrentDishes[indexPath.row].id)
+        segueToDishDetailsViewController(indexPath:indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4200207F254E5D6F00C56392 /* CustomConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200207E254E5D6F00C56392 /* CustomConfiguration.swift */; };
+		421493482567F411002839C5 /* DishDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421493472567F411002839C5 /* DishDetailsViewController.swift */; };
+		4214934D2567F423002839C5 /* DishDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4214934C2567F423002839C5 /* DishDetailsStoryboard.storyboard */; };
 		42426A75254DB9EA00ADC3EA /* DishCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42426A74254DB9EA00ADC3EA /* DishCategoryCollectionViewCell.swift */; };
 		42486E44253C1AA900C3BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E43253C1AA900C3BD41 /* AppDelegate.swift */; };
 		42486E46253C1AA900C3BD41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42486E45253C1AA900C3BD41 /* SceneDelegate.swift */; };
@@ -81,6 +83,8 @@
 /* Begin PBXFileReference section */
 		2D74C0EE69946F789A2A77E4 /* Pods-KitchenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenAppTests.release.xcconfig"; path = "Target Support Files/Pods-KitchenAppTests/Pods-KitchenAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		4200207E254E5D6F00C56392 /* CustomConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfiguration.swift; sourceTree = "<group>"; };
+		421493472567F411002839C5 /* DishDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailsViewController.swift; sourceTree = "<group>"; };
+		4214934C2567F423002839C5 /* DishDetailsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DishDetailsStoryboard.storyboard; sourceTree = "<group>"; };
 		42426A74254DB9EA00ADC3EA /* DishCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		42486E40253C1AA900C3BD41 /* KitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42486E43253C1AA900C3BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				42BCEEEF2554464700DA7408 /* HomeKitchenFormStoryboard.storyboard */,
 				BEC07E1425679EFD009EC62E /* SummaryViewController.swift */,
 				BEC07E192567A133009EC62E /* SummaryLabel.storyboard */,
+				421493472567F411002839C5 /* DishDetailsViewController.swift */,
+				4214934C2567F423002839C5 /* DishDetailsStoryboard.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -481,6 +487,7 @@
 				4262F0732542DBE70065537B /* SignUpStoryboard.storyboard in Resources */,
 				BEC07E1A2567A133009EC62E /* SummaryLabel.storyboard in Resources */,
 				42BCEEF02554464700DA7408 /* HomeKitchenFormStoryboard.storyboard in Resources */,
+				4214934D2567F423002839C5 /* DishDetailsStoryboard.storyboard in Resources */,
 				4262F0252542BFCF0065537B /* GoogleService-Info.plist in Resources */,
 				42D713E025530C5600193A49 /* FromStoryboard.storyboard in Resources */,
 				4272F3BC254AA121008BFE61 /* NewDishStoryboard.storyboard in Resources */,
@@ -639,6 +646,7 @@
 				4262F0322542C3560065537B /* AccountDetailsViewController.swift in Sources */,
 				42D83C9025597A4A00C4D1F7 /* NewDishCollectionViewCell.swift in Sources */,
 				BEC07E1525679EFD009EC62E /* SummaryViewController.swift in Sources */,
+				421493482567F411002839C5 /* DishDetailsViewController.swift in Sources */,
 				42D189DE25583DFC003CAF5C /* CurrentDishesTableViewCell.swift in Sources */,
 				4272F3C9254AF739008BFE61 /* DishResults.swift in Sources */,
 				4200207F254E5D6F00C56392 /* CustomConfiguration.swift in Sources */,

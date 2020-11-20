@@ -25,6 +25,7 @@ class NewDishViewController: UIViewController{
         
         configureUI()
         attachDelegates()
+        configureDatabaseController()
         
     }
     
@@ -45,11 +46,8 @@ class NewDishViewController: UIViewController{
     func attachDelegates(){
         newDishesCollectionView.delegate = self
         newDishesCollectionView.dataSource = self
-        
         newDishesCategoryCollectionView.delegate = self
         newDishesCategoryCollectionView.dataSource = self
-        
-        
         newDishesSearchBar.delegate = self
         
        
@@ -85,10 +83,33 @@ class NewDishViewController: UIViewController{
         }.resume()
     }
     
+    
+    //MARK:- fetching dish for database
+    func fetchDish(dishId:Int?){
+        guard let dishId = dishId else{return}
+        let url = Constants.SPOONOCULAR_BASE + "\(dishId)/" + Constants.SPOONOCULAR_INFORMATIONPARAM  + Constants.SPOONOCULAR_KEYPARAM+Constants.SPOONOCULAR_KEY
+    
+        URLSession.shared.dataTask(with: URL(string: url)!) { [self](data, urlResponse, error) in
+            if let error = error {
+                print("error iun fetching Dish\(error)")
+                return
+            }
+            guard let data = data else {return}
+            do {
+                let jsonDecoder = JSONDecoder()
+                let dishInformation = try jsonDecoder.decode(DishInformation.self, from: data)
+                databaseController?.addDish(dishInformation:dishInformation)
+                databaseController?.saveChanges()
+            }catch let error{
+                print("error parsing data \(error)")
+            }
+        }.resume()
+    }
+    
     //MARK:- Segue To Add Dish Screen To Add New Dish
     func segueToAddDishScreen(dishId:Int?){
         let storyBoard = UIStoryboard(name: "AddDishStoryboard", bundle: .main)
-        let addDishViewController = storyBoard.instantiateViewController(withIdentifier: AddDishViewController.SCREEN_IDENTIFIER) as! AddDishViewController
+        let addDishViewController = storyBoard.instantiateViewController(withIdentifier: AddDishViewController.STORYBOARD_IDENTIFIER) as! AddDishViewController
         addDishViewController.dishId = dishId
         addDishViewController.willAddDish = true
         self.navigationController?.pushViewController(addDishViewController, animated: true)
@@ -189,9 +210,8 @@ extension NewDishViewController:UICollectionViewDelegate,UICollectionViewDataSou
         
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
             let save = UIAction { (action) in
-                //self.databaseController?.addDish(dishInformation: <#T##DishInformation?#>)
+                self.fetchDish(dishId: self.filteredDishes[indexPath.row].id)
             }
-            
             save.image = UIImage(systemName: "plus.rectangle.on.rectangle")
             save.title = "Save Offline"
             return UIMenu(title: "Options", image: nil, identifier: nil, options:.displayInline, children: [save])

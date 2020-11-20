@@ -12,11 +12,25 @@ class SummaryViewController: UIViewController {
     
     
     @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var handleView: UIView!
     var summaryText:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+        setData()
+    }
+    
+    //MARK:- Configuring UI
+    func configureUI(){
+        handleView.clipsToBounds = true
+        handleView.layer.cornerRadius = handleView.frame.width/10
         
+    }
+    
+    
+    //MARK:- Setting data
+    func setData(){
         guard let summaryText = summaryText else {return}
         summaryLabel.text = summaryText
     }

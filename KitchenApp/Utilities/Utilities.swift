@@ -119,5 +119,4 @@ class Utilities {
         let currentTime = Date()
         return currentTime.timeIntervalSinceReferenceDate
     }
-
 }
