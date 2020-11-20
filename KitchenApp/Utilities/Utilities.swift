@@ -66,6 +66,7 @@ class Utilities {
     }
     
     
+    
     static func getImage(url:String?,imageView:UIImageView){
         guard let stringUrl = url else {return}
         let url = URL(string:stringUrl)

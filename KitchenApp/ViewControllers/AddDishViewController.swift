@@ -9,17 +9,49 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class AddDishViewController: UIViewController {
+class AddDishViewController: UIViewController, UITextFieldDelegate {
     
     static let SCREEN_IDENTIFIER = "AddDishViewController"
     
-    @IBOutlet weak var dishSummaryTextField: UILabel!
-    @IBOutlet weak var dishImageView: UIImageView!
-    @IBOutlet weak var addDishButton: UIButton!
-    @IBOutlet weak var dishNameLabel: UILabel!
+//    @IBOutlet weak var dishSummaryTextField: UILabel!
+   
+//    @IBOutlet weak var dishNameLabel: UILabel!
+//    @IBOutlet weak var healthScoreLabel: UILabel!
+//    @IBOutlet weak var servingsLabel: UILabel!
+//    @IBOutlet weak var dishInformationLabel: UILabel!
+//
+    //New Labels
+    
+    @IBOutlet weak var dishImage: UIImageView!
+    @IBOutlet weak var dishLabel: UILabel!
+
+
+    @IBOutlet weak var dishInformationLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var priceValueLabel: UITextField!
+    
+    @IBOutlet weak var summaryLabel: UILabel!
+    
+    @IBOutlet weak var summaryInformationLabel: UILabel!
+    
+    
+    @IBOutlet weak var servingNameLabel: UILabel!
+    
+    @IBOutlet weak var servingInformationLabel: UILabel!
+    
+    @IBOutlet weak var readyIn: UILabel!
+    
+    @IBOutlet weak var readyInLabel: UILabel!
+    
+    @IBOutlet weak var healthScore: UILabel!
     @IBOutlet weak var healthScoreLabel: UILabel!
-    @IBOutlet weak var servingsLabel: UILabel!
-    @IBOutlet weak var topHandleView: UIView!
+    
+    @IBOutlet weak var vegetarian: UILabel!
+    
+    @IBOutlet weak var vegLabel: UILabel!
+    
+    @IBOutlet weak var addDishButton: UIButton!
     
     var documentReference:DocumentReference?
     var fireStore:Firestore?
@@ -37,10 +69,13 @@ class AddDishViewController: UIViewController {
         configureFireStore()
         fetchDish()
         configureDatabaseController()
-        
-        
+        addTapGesture()
+        attachDelegate()
     }
     
+    func attachDelegate()  {
+        priceValueLabel.delegate = self
+    }
     
     //MARK:- Cofigure UI
     func configureUI(){
@@ -81,6 +116,26 @@ class AddDishViewController: UIViewController {
         
     }
     
+    // Function for tap Gesture - Summary Label
+    func addTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(segueToSummaryController))
+        summaryInformationLabel.addGestureRecognizer(tapGesture)
+        summaryInformationLabel.isUserInteractionEnabled = true
+    }
+    
+    
+    //
+    
+    @objc func segueToSummaryController(){
+        let storyboard = UIStoryboard(name:"SummaryLabel", bundle: .main)
+        let summaryController = storyboard.instantiateViewController(identifier: SummaryViewController.STORYBOARD_IDENTIFIER) as! SummaryViewController
+        
+        summaryController.summaryText = summaryInformationLabel.text
+        
+        present(summaryController, animated: true, completion: nil)
+       
+    }
+    
     //    func fetchDish(){
     //
     //        fireStore?.collection("/Sample").document("/FirstSampleData").addSnapshotListener({ (documentL, error) in
@@ -90,12 +145,16 @@ class AddDishViewController: UIViewController {
     //    }
     
     //MARK:- Fetching
-    @IBAction func AddDish(_ sender: Any) {
-        addDishConfirmation()
-        //0addDishOffline()
+//    @IBAction func AddDish(_ sender: Any) {
+//        addDishConfirmation()
+//        //0addDishOffline()
+//    }
+    
+    @IBAction func addDishButton(_ sender: Any) {
+        //addDishConfirmation()
+        priceValidation()
     }
     
- 
     //MARK:- Fetch the Dish by Id
     func fetchDish(){
         guard let dishId = dishId else{return}
@@ -114,13 +173,15 @@ class AddDishViewController: UIViewController {
                 let jsonDecoder = JSONDecoder()
                 self.dishInformation = try jsonDecoder.decode(DishInformation.self, from: data)
                 DispatchQueue.main.async {
-                    self.dishNameLabel.text = self.dishInformation?.title
-                    self.dishSummaryTextField.text = Utilities.removeHtmlTags(text: self.dishInformation?.summary)
-                    Utilities.getImage(url:self.dishInformation?.image, imageView: self.dishImageView)
-                    self.dishImageView.clipsToBounds = true
-                    self.dishImageView.layer.cornerRadius = self.dishImageView.frame.width/2
+                    self.dishInformationLabel.text = self.dishInformation?.title
+                    self.summaryInformationLabel.text = Utilities.removeHtmlTags(text: self.dishInformation?.summary)
+                    Utilities.getImage(url:self.dishInformation?.image, imageView: self.dishImage)
+                    self.dishImage.clipsToBounds = true
+                    self.dishImage.layer.cornerRadius = self.dishImage.frame.width/2
                     self.healthScoreLabel.text = String((self.dishInformation?.healthScore)!)
-                    self.servingsLabel.text = String((self.dishInformation?.servings)!)
+                    self.servingInformationLabel.text = String((self.dishInformation?.servings)!)
+                    self.readyInLabel.text = String((self.dishInformation?.readyInMinutes)!)
+                    self.vegLabel.text = String((self.dishInformation?.vegetarian)!)
                 }
               
             }catch let error{
@@ -129,6 +190,38 @@ class AddDishViewController: UIViewController {
         }.resume()
     }
     
+    func priceValidation(){
+        
+        let inputStr:String = priceValueLabel.text ?? ""
+
+        let alert = UIAlertController(title:"Alert" , message: "Please Enter the Price", preferredStyle:.alert )
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+
+                    if inputStr.isEmpty
+                    {
+                        alert.message = "Please Enter Dish Price value"
+                        self.present(alert, animated: true, completion: nil)
+
+                    }
+                    else
+                    {
+                        let inputInt = Int(inputStr)
+
+                        if (inputInt)! < 1
+                        {
+                            alert.message = "Enter Valid price"
+                               self.present(alert, animated: true, completion: nil)
+
+                        }
+
+                        else
+                        {
+                            print("Valid Price amount")
+                           addDishConfirmation()
+                            
+                        }
+    }
+    }
     
     
     
@@ -136,6 +229,7 @@ class AddDishViewController: UIViewController {
     //MARK:- Adding Confirmation Alert Controller
     func addDishConfirmation(){
         guard let dishTitle = dishInformation?.title else {return}
+        
         let confirmationAlertContoller = UIAlertController(title:"Confirmation", message:"Are you sure you want to add '\(dishTitle)'", preferredStyle: .alert)
         let confirmationAlertActionConfirm = UIAlertAction(title: Constants.CONFIRM, style: .default) { (alertAction) in
             self.addDishForHomeKitchen()
@@ -153,7 +247,7 @@ class AddDishViewController: UIViewController {
             print("error sending data")
             return
         }
-        
+
         guard let homeKitchenDishCollection = UserDefaults.standard.string(forKey:Constants.USERDEFAULTS_KITCHENDISHESCOLLECTIONREFERENCE) else {return}
         fireStore?.collection(homeKitchenDishCollection).addDocument(data:dict, completion: { (error) in
             if let error = error {

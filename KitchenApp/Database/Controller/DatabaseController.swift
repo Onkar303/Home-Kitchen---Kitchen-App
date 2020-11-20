@@ -54,7 +54,7 @@ class DatabaseController {
         dish.vegeterian = dishInformation.vegetarian!
         dish.vegan = dishInformation.vegan!
         dish.dairyFree = dishInformation.veryPopular!
-        
+        //dish.price
     }
     
     
