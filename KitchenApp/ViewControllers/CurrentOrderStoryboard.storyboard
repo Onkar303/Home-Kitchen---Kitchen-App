@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mUN-Ql-IT4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mUN-Ql-IT4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,17 +16,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yYW-TI-q19">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="yYW-TI-q19">
                                 <rect key="frame" x="0.0" y="27" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AIa-CH-dKs">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currentOrderCell" rowHeight="212" id="AIa-CH-dKs" customClass="CurrentOrdersTableViewCell" customModule="KitchenApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AIa-CH-dKs" id="HPA-2C-T4k">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIV-Hy-4it">
+                                                    <rect key="frame" x="20" y="90.5" width="110" height="110.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNO-ee-B4z">
+                                                    <rect key="frame" x="157" y="13" width="2" height="186"/>
+                                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Order Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4e-aX-HiN">
+                                                    <rect key="frame" x="184" y="11" width="210" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Customer Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="769-bg-seM">
+                                                    <rect key="frame" x="184" y="96" width="210" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ies-7d-9bF">
+                                                    <rect key="frame" x="184" y="177" width="210" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Customer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mI-Jd-xdB">
+                                                    <rect key="frame" x="184" y="59.5" width="210" height="29"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trI-28-9n2">
+                                                    <rect key="frame" x="184" y="140.5" width="210" height="29"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dishes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J4-0W-3da">
+                                                    <rect key="frame" x="20" y="11" width="110" height="71.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0mI-Jd-xdB" firstAttribute="top" secondItem="C4e-aX-HiN" secondAttribute="bottom" constant="20" id="0T6-aO-Wng"/>
+                                                <constraint firstItem="cIV-Hy-4it" firstAttribute="leading" secondItem="1J4-0W-3da" secondAttribute="leading" id="1zp-aT-6ni"/>
+                                                <constraint firstItem="pNO-ee-B4z" firstAttribute="centerY" secondItem="HPA-2C-T4k" secondAttribute="centerY" id="3EK-MN-zr3"/>
+                                                <constraint firstItem="0mI-Jd-xdB" firstAttribute="leading" secondItem="C4e-aX-HiN" secondAttribute="leading" id="3oy-8r-jss"/>
+                                                <constraint firstItem="Ies-7d-9bF" firstAttribute="trailing" secondItem="trI-28-9n2" secondAttribute="trailing" id="EQk-Hg-iDZ"/>
+                                                <constraint firstItem="1J4-0W-3da" firstAttribute="width" secondItem="HPA-2C-T4k" secondAttribute="width" multiplier="0.2657" id="Fbr-cV-VhZ"/>
+                                                <constraint firstItem="pNO-ee-B4z" firstAttribute="leading" secondItem="1J4-0W-3da" secondAttribute="trailing" constant="27" id="HTa-c5-OsB"/>
+                                                <constraint firstItem="cIV-Hy-4it" firstAttribute="trailing" secondItem="1J4-0W-3da" secondAttribute="trailing" id="LDe-ha-xTL"/>
+                                                <constraint firstItem="cIV-Hy-4it" firstAttribute="bottom" secondItem="Ies-7d-9bF" secondAttribute="bottom" id="Myo-T5-zjl"/>
+                                                <constraint firstItem="1J4-0W-3da" firstAttribute="top" secondItem="HPA-2C-T4k" secondAttribute="top" constant="11" id="T9T-Hb-oS4"/>
+                                                <constraint firstItem="pNO-ee-B4z" firstAttribute="width" secondItem="HPA-2C-T4k" secondAttribute="width" multiplier="0.005" id="TOh-yM-Khk"/>
+                                                <constraint firstItem="Ies-7d-9bF" firstAttribute="leading" secondItem="trI-28-9n2" secondAttribute="leading" id="UKb-C3-pwT"/>
+                                                <constraint firstItem="Ies-7d-9bF" firstAttribute="top" secondItem="trI-28-9n2" secondAttribute="bottom" constant="8" symbolic="YES" id="WWQ-w7-37q"/>
+                                                <constraint firstItem="pNO-ee-B4z" firstAttribute="top" secondItem="HPA-2C-T4k" secondAttribute="topMargin" constant="2" id="bgd-wf-qrW"/>
+                                                <constraint firstItem="trI-28-9n2" firstAttribute="trailing" secondItem="769-bg-seM" secondAttribute="trailing" id="dG7-c9-GdT"/>
+                                                <constraint firstItem="1J4-0W-3da" firstAttribute="leading" secondItem="HPA-2C-T4k" secondAttribute="leading" constant="20" symbolic="YES" id="j73-2K-GGw"/>
+                                                <constraint firstItem="769-bg-seM" firstAttribute="leading" secondItem="0mI-Jd-xdB" secondAttribute="leading" id="jBb-UR-zpw"/>
+                                                <constraint firstItem="cIV-Hy-4it" firstAttribute="height" secondItem="HPA-2C-T4k" secondAttribute="height" multiplier="0.520325" id="jUn-bA-YCW"/>
+                                                <constraint firstItem="0mI-Jd-xdB" firstAttribute="trailing" secondItem="C4e-aX-HiN" secondAttribute="trailing" id="kBz-tD-UyY"/>
+                                                <constraint firstItem="769-bg-seM" firstAttribute="top" secondItem="0mI-Jd-xdB" secondAttribute="bottom" constant="8" symbolic="YES" id="nSC-qd-3TB"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ies-7d-9bF" secondAttribute="bottom" constant="11" id="pXh-H7-GnJ"/>
+                                                <constraint firstItem="cIV-Hy-4it" firstAttribute="top" secondItem="1J4-0W-3da" secondAttribute="bottom" constant="8" symbolic="YES" id="q2O-1o-6Kh"/>
+                                                <constraint firstItem="C4e-aX-HiN" firstAttribute="top" secondItem="1J4-0W-3da" secondAttribute="top" id="qmx-RD-1P4"/>
+                                                <constraint firstItem="C4e-aX-HiN" firstAttribute="leading" secondItem="pNO-ee-B4z" secondAttribute="trailing" constant="25" id="wYS-ea-tQ0"/>
+                                                <constraint firstAttribute="trailing" secondItem="C4e-aX-HiN" secondAttribute="trailing" constant="20" symbolic="YES" id="wbq-oz-0De"/>
+                                                <constraint firstItem="trI-28-9n2" firstAttribute="top" secondItem="769-bg-seM" secondAttribute="bottom" constant="20" id="wse-2m-Y4S"/>
+                                                <constraint firstItem="trI-28-9n2" firstAttribute="leading" secondItem="769-bg-seM" secondAttribute="leading" id="ymK-d2-w8W"/>
+                                                <constraint firstItem="769-bg-seM" firstAttribute="trailing" secondItem="0mI-Jd-xdB" secondAttribute="trailing" id="zAQ-EG-VY9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="customerName" destination="769-bg-seM" id="Nbk-4O-Ojm"/>
+                                            <outlet property="customerPhoneNumber" destination="Ies-7d-9bF" id="wMw-NU-Nzg"/>
+                                            <outlet property="numberOfDishes" destination="cIV-Hy-4it" id="dKA-vp-Mn3"/>
+                                            <outlet property="orderNumber" destination="C4e-aX-HiN" id="OHS-ja-CVL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -77,6 +161,9 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

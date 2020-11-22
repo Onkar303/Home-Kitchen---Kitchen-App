@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9LU-ic-tiu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Order Details View Controller-->
+        <scene sceneID="tTI-WW-lp2">
+            <objects>
+                <viewController storyboardIdentifier="OrderDetailsViewController" id="9LU-ic-tiu" customClass="OrderDetailsViewController" customModule="KitchenApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2ai-zU-vMZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7b-Yw-HsH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glw-Ip-Ibv">
+                                        <rect key="frame" x="176" y="20" width="62" height="4"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="glw-Ip-Ibv" firstAttribute="width" secondItem="U7b-Yw-HsH" secondAttribute="width" multiplier="0.15" id="GvN-rq-ikD"/>
+                                    <constraint firstItem="glw-Ip-Ibv" firstAttribute="height" secondItem="U7b-Yw-HsH" secondAttribute="height" multiplier="0.1" id="Hm0-I4-eJk"/>
+                                    <constraint firstItem="glw-Ip-Ibv" firstAttribute="centerX" secondItem="U7b-Yw-HsH" secondAttribute="centerX" id="MhG-Tx-ubO"/>
+                                    <constraint firstAttribute="height" constant="44" id="ZwW-gq-ql4"/>
+                                    <constraint firstItem="glw-Ip-Ibv" firstAttribute="centerY" secondItem="U7b-Yw-HsH" secondAttribute="centerY" id="zrD-2x-hU6"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a1a-dY-Cwv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customerDetailsCell" rowHeight="272" id="180-Hq-oQB" customClass="OrderCustomerDetailsTableViewCell" customModule="KitchenApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="272"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="180-Hq-oQB" id="pyT-QD-0rX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="272"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJx-5I-xNf">
+                                                    <rect key="frame" x="20" y="20" width="374" height="29"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvg-sl-0k8">
+                                                    <rect key="frame" x="20" y="56.5" width="374" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC9-XK-MWD">
+                                                    <rect key="frame" x="20" y="101" width="374" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOF-di-4o6">
+                                                    <rect key="frame" x="20" y="178" width="374" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="674-oX-820">
+                                                    <rect key="frame" x="20" y="130" width="374" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5f-bP-Mmr">
+                                                    <rect key="frame" x="20" y="214" width="374" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Zvg-sl-0k8" firstAttribute="top" secondItem="FJx-5I-xNf" secondAttribute="bottom" constant="7.5" id="4pX-Oa-WNE"/>
+                                                <constraint firstItem="674-oX-820" firstAttribute="trailing" secondItem="FC9-XK-MWD" secondAttribute="trailing" id="56Q-6b-65m"/>
+                                                <constraint firstItem="x5f-bP-Mmr" firstAttribute="trailing" secondItem="HOF-di-4o6" secondAttribute="trailing" id="5EE-bP-4Cg"/>
+                                                <constraint firstItem="Zvg-sl-0k8" firstAttribute="leading" secondItem="FJx-5I-xNf" secondAttribute="leading" id="7e4-n6-lsh"/>
+                                                <constraint firstItem="Zvg-sl-0k8" firstAttribute="trailing" secondItem="FJx-5I-xNf" secondAttribute="trailing" id="7wi-h8-EcM"/>
+                                                <constraint firstItem="FC9-XK-MWD" firstAttribute="top" secondItem="Zvg-sl-0k8" secondAttribute="bottom" constant="20" id="Ime-El-FFR"/>
+                                                <constraint firstItem="HOF-di-4o6" firstAttribute="leading" secondItem="FC9-XK-MWD" secondAttribute="leading" id="LS9-7b-71I"/>
+                                                <constraint firstItem="FC9-XK-MWD" firstAttribute="leading" secondItem="FJx-5I-xNf" secondAttribute="leading" id="NFm-XM-a5x"/>
+                                                <constraint firstItem="x5f-bP-Mmr" firstAttribute="top" secondItem="HOF-di-4o6" secondAttribute="bottom" constant="7.5" id="PF0-I5-Mul"/>
+                                                <constraint firstAttribute="trailing" secondItem="FJx-5I-xNf" secondAttribute="trailing" constant="20" id="X5Z-yx-hrX"/>
+                                                <constraint firstItem="674-oX-820" firstAttribute="top" secondItem="FC9-XK-MWD" secondAttribute="bottom" constant="0.5" id="as6-CH-x7Q"/>
+                                                <constraint firstItem="FJx-5I-xNf" firstAttribute="top" secondItem="pyT-QD-0rX" secondAttribute="top" constant="20" symbolic="YES" id="bdw-zG-DvN"/>
+                                                <constraint firstItem="x5f-bP-Mmr" firstAttribute="leading" secondItem="HOF-di-4o6" secondAttribute="leading" id="d92-MN-fBb"/>
+                                                <constraint firstItem="FC9-XK-MWD" firstAttribute="trailing" secondItem="Zvg-sl-0k8" secondAttribute="trailing" id="dyQ-pn-r0x"/>
+                                                <constraint firstAttribute="bottom" secondItem="x5f-bP-Mmr" secondAttribute="bottom" constant="33.5" id="e4E-k4-m9Z"/>
+                                                <constraint firstItem="HOF-di-4o6" firstAttribute="top" secondItem="674-oX-820" secondAttribute="bottom" constant="23.5" id="ftr-MY-eU3"/>
+                                                <constraint firstItem="FJx-5I-xNf" firstAttribute="leading" secondItem="pyT-QD-0rX" secondAttribute="leading" constant="20" symbolic="YES" id="jPz-pF-LhH"/>
+                                                <constraint firstItem="HOF-di-4o6" firstAttribute="trailing" secondItem="674-oX-820" secondAttribute="trailing" id="jfm-vL-Wh6"/>
+                                                <constraint firstItem="674-oX-820" firstAttribute="leading" secondItem="FC9-XK-MWD" secondAttribute="leading" id="kJe-1G-hN5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="customerAddressLabel" destination="x5f-bP-Mmr" id="2dI-ta-Q7K"/>
+                                            <outlet property="customerNameLabel" destination="Zvg-sl-0k8" id="h5U-2H-C6h"/>
+                                            <outlet property="customerPhoneNumberLabel" destination="674-oX-820" id="Fve-Mu-cHQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellDetailsCell" rowHeight="194" id="qax-f3-m76" customClass="OrderDishesDetailTableViewCell" customModule="KitchenApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="327.5" width="414" height="194"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qax-f3-m76" id="7k2-U1-GuY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="194"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DishName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lj1-wP-we7">
+                                                    <rect key="frame" x="20" y="20" width="374" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DishName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVI-K3-Rqm">
+                                                    <rect key="frame" x="20" y="56.5" width="374" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dish Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD2-bX-ZY8">
+                                                    <rect key="frame" x="20" y="101" width="374" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DishName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgS-cK-0N3">
+                                                    <rect key="frame" x="20" y="137.5" width="374" height="24.5"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="cgS-cK-0N3" secondAttribute="bottom" constant="32" id="0cg-tF-9EV"/>
+                                                <constraint firstItem="cgS-cK-0N3" firstAttribute="top" secondItem="pD2-bX-ZY8" secondAttribute="bottom" constant="8" symbolic="YES" id="45M-mH-MZP"/>
+                                                <constraint firstItem="pD2-bX-ZY8" firstAttribute="top" secondItem="MVI-K3-Rqm" secondAttribute="bottom" constant="20" id="6rv-ra-SeS"/>
+                                                <constraint firstItem="lj1-wP-we7" firstAttribute="top" secondItem="7k2-U1-GuY" secondAttribute="top" constant="20" id="9x5-OQ-nha"/>
+                                                <constraint firstItem="lj1-wP-we7" firstAttribute="leading" secondItem="7k2-U1-GuY" secondAttribute="leading" constant="20" symbolic="YES" id="A7z-1C-Wgw"/>
+                                                <constraint firstAttribute="trailing" secondItem="lj1-wP-we7" secondAttribute="trailing" constant="20" id="H37-b1-OkM"/>
+                                                <constraint firstItem="MVI-K3-Rqm" firstAttribute="trailing" secondItem="lj1-wP-we7" secondAttribute="trailing" id="Os7-eJ-t4h"/>
+                                                <constraint firstItem="cgS-cK-0N3" firstAttribute="trailing" secondItem="pD2-bX-ZY8" secondAttribute="trailing" id="VVc-pv-CdT"/>
+                                                <constraint firstItem="pD2-bX-ZY8" firstAttribute="trailing" secondItem="MVI-K3-Rqm" secondAttribute="trailing" id="gx1-u4-BYe"/>
+                                                <constraint firstItem="MVI-K3-Rqm" firstAttribute="leading" secondItem="lj1-wP-we7" secondAttribute="leading" id="ixR-t7-fQd"/>
+                                                <constraint firstItem="pD2-bX-ZY8" firstAttribute="leading" secondItem="MVI-K3-Rqm" secondAttribute="leading" id="joC-As-VKp"/>
+                                                <constraint firstItem="cgS-cK-0N3" firstAttribute="leading" secondItem="pD2-bX-ZY8" secondAttribute="leading" id="p0t-RA-Qa7"/>
+                                                <constraint firstItem="MVI-K3-Rqm" firstAttribute="top" secondItem="lj1-wP-we7" secondAttribute="bottom" constant="8" symbolic="YES" id="tDU-zO-3WP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dishName" destination="MVI-K3-Rqm" id="Hh9-ET-1PO"/>
+                                            <outlet property="dishQuantity" destination="cgS-cK-0N3" id="xnJ-f2-Fai"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YO2-b8-ZbQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YO2-b8-ZbQ" firstAttribute="trailing" secondItem="a1a-dY-Cwv" secondAttribute="trailing" id="2oL-Ts-fhf"/>
+                            <constraint firstItem="U7b-Yw-HsH" firstAttribute="top" secondItem="YO2-b8-ZbQ" secondAttribute="top" id="2xy-Ei-62h"/>
+                            <constraint firstItem="U7b-Yw-HsH" firstAttribute="leading" secondItem="YO2-b8-ZbQ" secondAttribute="leading" id="4rZ-IM-Hg9"/>
+                            <constraint firstItem="YO2-b8-ZbQ" firstAttribute="bottom" secondItem="a1a-dY-Cwv" secondAttribute="bottom" id="DSH-LG-vIU"/>
+                            <constraint firstItem="U7b-Yw-HsH" firstAttribute="trailing" secondItem="YO2-b8-ZbQ" secondAttribute="trailing" id="UxE-Al-mw7"/>
+                            <constraint firstItem="a1a-dY-Cwv" firstAttribute="top" secondItem="U7b-Yw-HsH" secondAttribute="bottom" id="lOi-ye-DFI"/>
+                            <constraint firstItem="a1a-dY-Cwv" firstAttribute="leading" secondItem="YO2-b8-ZbQ" secondAttribute="leading" id="m11-E8-zmT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="orderDetailsTableView" destination="a1a-dY-Cwv" id="Nzh-qh-1O3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WhH-Jj-0IA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4.3478260869565224" y="105.80357142857143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

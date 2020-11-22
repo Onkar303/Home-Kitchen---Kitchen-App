@@ -40,6 +40,7 @@ class Constants{
                                          "Thai",
                                          "Vietnamese"]
     
+    
     static let SPOONOCULAR_BASE = "https://api.spoonacular.com/recipes/"
     static let SPOONOCULAR_KEY = "7197d6ced50f405c963c1ea1e7d24844"
     static let SPOONOCULAR_KEYPARAM = "&apiKey="
